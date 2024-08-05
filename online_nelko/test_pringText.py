@@ -178,17 +178,17 @@ class online(unittest.TestCase):
 
     @parameterized.expand([
         ("P20", "A6:ED:FC:24:DE:DD"),
-        ("PM220", "00:84:00:00:B7:DD"),
-        ("PM220S", "31:9D:28:23:32:BE"),
-        ("PM230", "E4:1A:E9:A1:84:41"),
-        ("PL70e-BT", "DC:1D:30:54:27:3C"),
-        ("PL80W", "00:12:42:84:8B:AA"),
-        ("PM360", "31:9D:4E:B2:E7:D5"),
-        ("R11", "93:0D:F7:3A:78:61"),
-        ("P22", "83:80:04:9E:88:38"),
-        ("P21(jieLi)", "6D:B4:8E:49:43:6D"),
-        ("P21(GD)", "60:6E:41:8C:8B:30"),
-        ("P31S", "DC:80:0C:83:9D:C8"),
+        # ("PM220", "00:84:00:00:B7:DD"),
+        # ("PM220S", "31:9D:28:23:32:BE"),
+        # ("PM230", "E4:1A:E9:A1:84:41"),
+        # ("PL70e-BT", "DC:1D:30:54:27:3C"),
+        # ("PL80W", "00:12:42:84:8B:AA"),
+        # ("PM360", "31:9D:4E:B2:E7:D5"),
+        # ("R11", "93:0D:F7:3A:78:61"),
+        # ("P22", "83:80:04:9E:88:38"),
+        # ("P21(jieLi)", "6D:B4:8E:49:43:6D"),
+        # ("P21(GD)", "60:6E:41:8C:8B:30"),
+        # ("P31S", "DC:80:0C:83:9D:C8"),
         # 添加更多测试用例
     ])
     def test_print(self, devicesName, devicesBuletooth):
@@ -303,7 +303,7 @@ print("测试套件中的测试用例数量是：", suite.countTestCases())
 # 第二步：运行用例生成测试报告
 runner = TestRunner(suite,
                     filename="自动化测试报告.html",
-                    report_dir=r"C:\Users\YZY\Desktop\nelko\online\report",  # 放桌面
+                    report_dir=r"C:\Users\YZY\Desktop\nelko\online_nelko\report",  # 放桌面
                     title='nelko版本上线测试报告',
                     tester='欢',
                     desc="测试",

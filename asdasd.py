@@ -510,4 +510,4 @@
 #
 #     device = ['XPATH',
 #               f'//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_ble_address" and @text="{value}"]']
-#     print(device)
+#     print(device)//android.widget.TextView[@resource-id="com.labelnize.printer:id/tv_connect"]
