@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>nelko版本上线测试报告</title>
+    <title>Labelnize版本上线测试报告</title>
 
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <script src=" https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
@@ -200,7 +200,7 @@
 <body>
 <div class="main">
     <div class="title">
-        nelko版本上线测试报告
+        Labelnize版本上线测试报告
     </div>
     <div class="content-box">
         <div class="box1">
@@ -223,7 +223,7 @@
                     <div class="info">
                         <div style="flex:5">
                             <button type="button" class="btn btn-primary btn-sm">开始时间</button>
-                            <span>2024-08-05 17:13:04</span>
+                            <span>2024-08-05 19:27:32</span>
                         </div>
                         <div style="flex:5">
                             <button type="button" class="btn btn-primary btn-sm">用例总数</button>
@@ -233,7 +233,7 @@
                     <div class="info">
                         <div style="flex:5">
                             <button type="button" class="btn btn-primary btn-sm">运行时长</button>
-                            <span>111.10 S</span>
+                            <span>148.75 S</span>
                         </div>
                         <div style="flex:5">
                             <button type="button" class="btn btn-primary btn-sm ">测试人员</button>
@@ -271,6 +271,20 @@
                         </tr>
                         </thead>
                         <tbody>
+                        
+                        <tr>
+                            <th scope="row">2024-08-05 19:27:32</th>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>100.00%</td>
+                        </tr>
+                        
+                        <tr>
+                            <th scope="row">2024-08-05 19:26:18</th>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0.00%</td>
+                        </tr>
                         
                         <tr>
                             <th scope="row">2024-08-05 17:13:04</th>
@@ -331,7 +345,7 @@
                     <td class="online">online</td>
                     <td>test_print_0_P20</td>
                     <td>:return: [with devicesName='P20', devicesBuletooth='A6:ED:FC:24:DE:DD']</td>
-                    <td>1.11e+02s</td>
+                    <td>1.49e+02s</td>
                     
                     <td class="text-success">成功</td>
                     
@@ -355,7 +369,8 @@ P20连接成功
 
 打开自定义模板功能结束测试
 
-P20打印5份完成
+P20文本类型打印5份完成
+P20图片类型打印5份完成
 
 连接P20功能结束测试
 
@@ -384,12 +399,12 @@ test_print_0_P20 (test_labelnizePrint.online)执行——>【通过】
             "fail": `0`,
             "skip": '0',
             "error": `0`,
-            "runtime": '111.10 S',
-            "begin_time": "111.10 S",
+            "runtime": '148.75 S',
+            "begin_time": "148.75 S",
             "pass_rate": '100.00',
         }
     ;
-    const history = [{'success': 1, 'all': 1, 'fail': 0, 'skip': 0, 'error': 0, 'runtime': '111.10 S', 'begin_time': '2024-08-05 17:13:04', 'pass_rate': '100.00'}];
+    const history = [{'success': 1, 'all': 1, 'fail': 0, 'skip': 0, 'error': 0, 'runtime': '111.10 S', 'begin_time': '2024-08-05 17:13:04', 'pass_rate': '100.00'}, {'success': 0, 'all': 1, 'fail': 0, 'skip': 0, 'error': 1, 'runtime': '18.72 S', 'begin_time': '2024-08-05 19:26:18', 'pass_rate': '0.00'}, {'success': 1, 'all': 1, 'fail': 0, 'skip': 0, 'error': 0, 'runtime': '148.75 S', 'begin_time': '2024-08-05 19:27:32', 'pass_rate': '100.00'}];
 
     var passRate = [];
     var dTime = [];

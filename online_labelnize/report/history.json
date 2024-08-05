@@ -1,1 +1,1 @@
-[{"success": 1, "all": 1, "fail": 0, "skip": 0, "error": 0, "runtime": "111.10 S", "begin_time": "2024-08-05 17:13:04", "pass_rate": "100.00"}]
+[{"success": 1, "all": 1, "fail": 0, "skip": 0, "error": 0, "runtime": "111.10 S", "begin_time": "2024-08-05 17:13:04", "pass_rate": "100.00"}, {"success": 0, "all": 1, "fail": 0, "skip": 0, "error": 1, "runtime": "18.72 S", "begin_time": "2024-08-05 19:26:18", "pass_rate": "0.00"}, {"success": 1, "all": 1, "fail": 0, "skip": 0, "error": 0, "runtime": "148.75 S", "begin_time": "2024-08-05 19:27:32", "pass_rate": "100.00"}]

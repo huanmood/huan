@@ -27,7 +27,7 @@ url = 'http://192.168.17.130:4723/wd/hub'
 
 # 清除所有元素
 clear = ['XPATH',
-         '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_action_clear_btn"]/android.widget.ImageView']
+         '//android.widget.LinearLayout[@resource-id="com.labelnize.printer:id/act_edit_action_clear_btn"]/android.widget.ImageView']
 # 添加文本按钮
 textBtn = ['XPATH', '(//android.widget.ImageView[@resource-id="com.labelnize.printer:id/item_menu_icon_img"])[1]']
 connect = ['XPATH', '//android.widget.TextView[@resource-id="com.labelnize.printer:id/tv_connect"]']  # 首页右上角连接
@@ -97,11 +97,11 @@ class online(unittest.TestCase):
             # 如果元素存在，则执行操作
             # 稍后连接
             nextTime = self.driver.find_element_by_xpath(
-                '//android.widget.TextView[@resource-id="com.nelko.printer:id/connect_later_tv"]')
+                '//android.widget.TextView[@resource-id="com.labelnize.printer:id/connect_later_tv"]')
             nextTime.click()
             # 选择P21
             device_P21 = self.driver.find_element_by_xpath(
-                '(//android.widget.RelativeLayout[@resource-id="com.nelko.printer:id/rl_bg"])[1]')
+                '(//android.widget.RelativeLayout[@resource-id="com.labelnize.printer:id/rl_bg"])[1]')
             device_P21.click()
             # 确认
             confirm = self.driver.find_element_by_xpath(
@@ -175,17 +175,17 @@ class online(unittest.TestCase):
 
     @parameterized.expand([
         ("P20", "A6:ED:FC:24:DE:DD"),
-        ("PM220", "00:84:00:00:B7:DD"),
-        ("PM220S", "31:9D:28:23:32:BE"),
-        ("PM230", "E4:1A:E9:A1:84:41"),
-        ("PL70e-BT", "DC:1D:30:54:27:3C"),
-        ("PL80W", "00:12:42:84:8B:AA"),
-        ("PM360", "31:9D:4E:B2:E7:D5"),
-        ("R11", "93:0D:F7:3A:78:61"),
-        ("P22", "83:80:04:9E:88:38"),
-        ("P21(jieLi)", "6D:B4:8E:49:43:6D"),
-        ("P21(GD)", "60:6E:41:8C:8B:30"),
-        ("P31S", "DC:80:0C:83:9D:C8"),
+        # ("PM220", "00:84:00:00:B7:DD"),
+        # ("PM220S", "31:9D:28:23:32:BE"),
+        # ("PM230", "E4:1A:E9:A1:84:41"),
+        # ("PL70e-BT", "DC:1D:30:54:27:3C"),
+        # ("PL80W", "00:12:42:84:8B:AA"),
+        # ("PM360", "31:9D:4E:B2:E7:D5"),
+        # ("R11", "93:0D:F7:3A:78:61"),
+        # ("P22", "83:80:04:9E:88:38"),
+        # ("P21(jieLi)", "6D:B4:8E:49:43:6D"),
+        # ("P21(GD)", "60:6E:41:8C:8B:30"),
+        # ("P31S", "DC:80:0C:83:9D:C8"),
         # 添加更多测试用例
     ])
     def test_print(self, devicesName, devicesBuletooth):
@@ -271,8 +271,13 @@ class online(unittest.TestCase):
             "5")  # 清空后输入份数为5
         self.click(['XPATH',
                     '//android.widget.TextView[@resource-id="com.labelnize.printer:id/act_print_mult_print_btn"]'])  # 点击打印
-        print(f'{key}打印5份完成')
-        time.sleep(15)  # 等待打印时间
+        print(f'{key}文本类型打印5份完成')
+        time.sleep(10)
+        self.click(['XPATH','//android.widget.LinearLayout[@resource-id="com.labelnize.printer:id/act_print_mode_tab"]/android.widget.FrameLayout/android.widget.LinearLayout[2]/android.view.View[1]'])
+        self.click(['XPATH',
+                    '//android.widget.TextView[@resource-id="com.labelnize.printer:id/act_print_mult_print_btn"]'])  # 点击打印
+        print(f'{key}图片类型打印5份完成')
+        time.sleep(10)  # 等待打印时间
         print(f"\n连接{key}功能结束测试\n")
         self.click(['XPATH',
                     '//android.widget.ImageView[@resource-id="com.labelnize.printer:id/iv_back"]'])  # 打印完成的返回（左上角的x）

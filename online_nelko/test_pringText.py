@@ -177,7 +177,7 @@ class online(unittest.TestCase):
         self.driver.swipe(start_x, start_y, end_x, end_y)
 
     @parameterized.expand([
-        ("P20", "A6:ED:FC:24:DE:DD"),
+        # ("P20", "A6:ED:FC:24:DE:DD"),
         # ("PM220", "00:84:00:00:B7:DD"),
         # ("PM220S", "31:9D:28:23:32:BE"),
         # ("PM230", "E4:1A:E9:A1:84:41"),
@@ -187,7 +187,7 @@ class online(unittest.TestCase):
         # ("R11", "93:0D:F7:3A:78:61"),
         # ("P22", "83:80:04:9E:88:38"),
         # ("P21(jieLi)", "6D:B4:8E:49:43:6D"),
-        # ("P21(GD)", "60:6E:41:8C:8B:30"),
+        ("P21(GD)", "60:6E:41:8C:8B:30"),
         # ("P31S", "DC:80:0C:83:9D:C8"),
         # 添加更多测试用例
     ])
@@ -274,8 +274,16 @@ class online(unittest.TestCase):
             "5")  # 清空后输入份数为5
         self.click(['XPATH',
                     '//android.widget.TextView[@resource-id="com.nelko.printer:id/act_print_mult_print_btn"]'])  # 点击打印
-        print(f'{key}打印5份完成')
+        print(f'{key}文本类型打印5份完成')
+        if key == 'PM230':
+            self.click(['XPATH', '//android.widget.TextView[@text="关闭"]'])
         time.sleep(15)  # 等待打印时间
+        self.click(['XPATH',
+                    '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_print_mode_tab"]/android.widget.FrameLayout/android.widget.LinearLayout[2]/android.view.View[1]'])  # 图片类型
+        self.click(['XPATH',
+                    '//android.widget.TextView[@resource-id="com.nelko.printer:id/act_print_mult_print_btn"]'])  # 点击打印
+        time.sleep(15)  # 等待打印时间
+        print(f'{key}图片类型打印5份完成')
         if key == 'PM230':
             self.click(['XPATH', '//android.widget.TextView[@text="关闭"]'])  # 打印完成的关闭：PM230需要手动点击完成
         print(f"\n连接{key}功能结束测试\n")
