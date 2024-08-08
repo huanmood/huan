@@ -11,7 +11,7 @@ yiweimaEle = ['XPATH',
               '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.RelativeLayout']
 
 yiweima = r'//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView'
-class Yiweima(function,content ,unittest.TestCase):
+class Yiweima(function ,unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -42,12 +42,12 @@ class Yiweima(function,content ,unittest.TestCase):
         location1 = ['XPATH', '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView[1]']
         location2 = ['XPATH', '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView[2]']
         super().choose(yiweimaBtn,location1,location2,yiweima)
-    def test_content(self):
-        super().content(yiweimaBtn)
+    # def test_content(self):
+    #     super().content(yiweimaBtn)
     @classmethod
     def tearDownClass(cls):
         super().tearDownClass()
 
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()

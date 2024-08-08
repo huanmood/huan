@@ -1,3 +1,5 @@
+import ast
+import random
 import re
 import time
 import os
@@ -34,8 +36,8 @@ class function(unittest.TestCase):
         cls.base = Base()  # 实例化Base对象
         cls.base.open(url, desired_caps)  # 启动Appium会话
         cls.base.first_open()  # 处理初次连接逻辑
-        cls.base.test_01_connectP21()
-        cls.base.test_02_openEditor()
+        cls.base.connectP21()
+        cls.base.connectP21()
      except Exception as e:
          print(e)
     def setUp(self):
@@ -46,10 +48,10 @@ class function(unittest.TestCase):
             self.base.tap_at_Windows(0.5, 0.3)
             self.base.click(clear)
             self.base.click(Btn)
-            self.base.twoStpe_shucai()
-            self.base.twoStpe_biankuang()
-            self.base.threeStep_photo()
-            self.base.twoStpe_tuya()
+            self.twoStpe_shucai()
+            self.twoStpe_biankuang()
+            self.threeStep_photo()
+            self.twoStpe_tuya()
             for i in range(4):
                 location = self.base.getAttribute(Location, 'bounds')
                 matches = re.findall(r'\[(.*?)\]', location)  # 匹配中括号内的内容
@@ -71,8 +73,8 @@ class function(unittest.TestCase):
         except Exception as e:
             print("旋转功能测试失败: ", e)
             self.base.open(url, desired_caps)  # 启动Appium会话
-            self.base.test_01_connectP21()
-            self.base.test_02_openEditor()
+            self.base.connectP21()
+            self.base.connectP21()
             return
 
     def lock(self, Btn, Location, lockBtn):
@@ -82,10 +84,10 @@ class function(unittest.TestCase):
             self.base.tap_at_Windows(0.5, 0.3)
             self.base.click(clear)
             self.base.click(Btn)
-            self.base.twoStpe_shucai()
-            self.base.twoStpe_biankuang()
-            self.base.threeStep_photo()
-            self.base.twoStpe_tuya()
+            self.twoStpe_shucai()
+            self.twoStpe_biankuang()
+            self.threeStep_photo()
+            self.twoStpe_tuya()
             time.sleep(2)
             self.base.drag_element(ele=Location, end_x=402, end_y=478)  # 拖动文本元素（证明可拖动）
             location1 = self.base.elementBoundary(Location)  # 获取文本元素的位置1
@@ -102,8 +104,8 @@ class function(unittest.TestCase):
         except Exception as e:
             print("锁定功能测试失败: ", e)
             self.base.open(url, desired_caps)  # 启动Appium会话
-            self.base.test_01_connectP21()
-            self.base.test_02_openEditor()
+            self.base.connectP21()
+            self.base.connectP21()
             return
 
     def center(self, Btn, location, centerBtn):
@@ -112,10 +114,10 @@ class function(unittest.TestCase):
             self.base.tap_at_Windows(0.5, 0.3)
             self.base.click(clear)
             self.base.click(Btn)
-            self.base.twoStpe_shucai()
-            self.base.twoStpe_biankuang()
-            self.base.threeStep_photo()
-            self.base.twoStpe_tuya()
+            self.twoStpe_shucai()
+            self.twoStpe_biankuang()
+            self.threeStep_photo()
+            self.twoStpe_tuya()
             # 居中功能
             print("\n居中功能开始测试\n")
             location1 = self.base.elementBoundary(location)  # 获取居中前文本元素的位置
@@ -135,8 +137,8 @@ class function(unittest.TestCase):
         except Exception as e:
             print("居中功能测试失败: ", e)
             self.base.open(url, desired_caps)  # 启动Appium会话
-            self.base.test_01_connectP21()
-            self.base.test_02_openEditor()
+            self.base.connectP21()
+            self.base.connectP21()
             return
 
     def copy(self, Btn, location, copyBtn):
@@ -147,10 +149,10 @@ class function(unittest.TestCase):
             self.base.tap_at_Windows(0.5, 0.3)
             self.base.click(clear)
             self.base.click(Btn)
-            self.base.twoStpe_shucai()
-            self.base.twoStpe_biankuang()
-            self.base.threeStep_photo()
-            self.base.twoStpe_tuya()
+            self.twoStpe_shucai()
+            self.twoStpe_biankuang()
+            self.threeStep_photo()
+            self.twoStpe_tuya()
             self.base.click(copyBtn)
             # 使用 XPath 查找所有匹配的元素
             elements = self.base.matchingElement(location)
@@ -162,8 +164,8 @@ class function(unittest.TestCase):
         except Exception as e:
             print("复制功能测试失败: ", e)
             self.base.open(url, desired_caps)  # 启动Appium会话
-            self.base.test_01_connectP21()
-            self.base.test_02_openEditor()
+            self.base.connectP21()
+            self.base.connectP21()
             return
 
     """     choose（）
@@ -177,10 +179,10 @@ class function(unittest.TestCase):
             self.base.tap_at_Windows(0.5, 0.3)
             self.base.click(clear)
             self.base.click(Btn)
-            self.base.twoStpe_shucai()
-            self.base.twoStpe_biankuang()
-            self.base.threeStep_photo()
-            self.base.twoStpe_tuya()
+            self.twoStpe_shucai()
+            self.twoStpe_biankuang()
+            self.threeStep_photo()
+            self.twoStpe_tuya()
             copy = ['XPATH',
                     '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_action_copy_btn"]/android.widget.ImageView']
             self.base.click(copy)
@@ -199,9 +201,84 @@ class function(unittest.TestCase):
         except Exception as e:
             print("复制功能测试失败: ", e)
             self.base.open(url, desired_caps)  # 启动Appium会话
-            self.base.test_01_connectP21()
-            self.base.test_02_openEditor()
+            self.base.connectP21()
+            self.base.connectP21()
             return
+    def twoStpe_shucai(self):
+        if self.base.is_element_present(
+                '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.nelko.printer:id/leer_rcv"]/android.widget.RelativeLayout[1]'):
+            # 生成一个范围在 [a, b] 之间的随机整数
+            ele = r'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.nelko.printer:id/leer_rcv"]/android.widget.RelativeLayout'
+            num = self.base.matchingElement(ele)
+            raNum = random.randint(1, len(num))
+            eleNum = ['XPATH',
+                      '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.nelko.printer:id/leer_rcv"]/android.widget.RelativeLayout' + '[' + str(
+                          raNum) + ']']
+            self.base.click(eleNum)
+            location = ['XPATH',
+                        '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView']
+            self.base.tap_at_coordinate(location)
+
+    def twoStpe_biankuang(self):
+        if self.base.is_element_present(
+                '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.nelko.printer:id/leer_rcv"]/android.widget.LinearLayout[1]'):
+            # 生成一个范围在 [a, b] 之间的随机整数
+            ele = r'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.nelko.printer:id/leer_rcv"]/android.widget.LinearLayout'
+            num = self.base.matchingElement(ele)
+            raNum = random.randint(1, len(num))
+            eleNum = ['XPATH',
+                      '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.nelko.printer:id/leer_rcv"]/android.widget.LinearLayout' + '[' + str(
+                          raNum) + ']']
+            self.base.click(eleNum)
+            location = ['XPATH',
+                        '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView']
+            self.base.tap_at_coordinate(location)
+
+    def twoStpe_tuya(self):
+        if self.base.is_element_present(
+                '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_title"]'):
+            tuyaLocation = self.base.getAttribute(
+                ['XPATH', '//android.view.View[@resource-id="com.nelko.printer:id/db_view"]'], 'bounds')
+            tuyaBounds = '[' + tuyaLocation.replace('][', '],[') + ']'
+            result = ast.literal_eval(tuyaBounds)
+
+            raNum = []
+            for i in range(0, 2):
+                a = random.randint(result[0][0], result[1][0])
+                raNum.append(a)
+            for i in range(0, 2):
+                a = random.randint(result[0][1], result[1][1])
+                raNum.append(a)
+
+            self.base.drag_location(start_x=raNum[0], start_y=raNum[2], end_x=raNum[1], end_y=raNum[3])
+            time.sleep(3)
+            self.base.click(['XPATH', '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_right"]'])
+            print('raNum为', raNum)
+
+    def threeStep_photo(self):
+        # phoneBtn = ['XPATH', '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/item_menu_icon_img"])[5]']
+        if self.base.is_element_present(
+                '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_text" and @text="拍照"]'):
+            takePhoto = ['XPATH',
+                         '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_text" and @text="拍照"]']  # 点击图片后的拍照选项
+            permission = ['XPATH',
+                          '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_ui_confirm"]']  # 前往授权
+            allow = ['XPATH',
+                     '//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_foreground_only_button"]']  # 允许Nelko拍照（使用该应用时允许）
+            press = ['XPATH', '//android.view.View']  # 拍照快门
+            confirm = ['XPATH',
+                       '//android.widget.FrameLayout[@resource-id="com.nelko.printer:id/capture_layout"]/android.view.View[2]']  # 按下快门后的确认
+            if self.base.is_element_present(
+                    '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_text" and @text="拍照"]'):
+                self.base.click(takePhoto)
+            if self.base.is_element_present(
+                    '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_message_message"]'):
+                self.base.click(permission)
+            if self.base.is_element_present(
+                    '//android.widget.TextView[@resource-id="com.android.permissioncontroller:id/permission_message"]'):
+                self.base.click(allow)
+            self.base.click(press)
+            self.base.click(confirm)
     @classmethod
     def tearDownClass(cls):
         cls.base.driver.quit()

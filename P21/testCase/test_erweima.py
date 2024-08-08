@@ -48,5 +48,3 @@ class Erweima(function, unittest.TestCase):
         super().tearDownClass()
 
 
-if __name__ == "__main__":
-    unittest.main()

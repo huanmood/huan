@@ -1,4 +1,5 @@
 import os
+import random
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from P21.View.Function import function
@@ -16,7 +17,7 @@ shucaiEle = ['XPATH',
 shucai = r'//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView'
 
 
-class Text(function, unittest.TestCase):
+class Sucai(function, unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -24,6 +25,7 @@ class Text(function, unittest.TestCase):
 
     def setUp(self):
         super().setUp()
+
 
     def test_rotate(self):
         rotateBtn = ['XPATH',
@@ -53,6 +55,3 @@ class Text(function, unittest.TestCase):
 
 
 
-
-if __name__ == "__main__":
-    unittest.main()

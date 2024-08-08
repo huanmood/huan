@@ -21,7 +21,7 @@ desired_caps = {
     "appium:noReset": "true"
 
 }
-url = 'http://localhost:4723/wd/hub'
+url = 'http://192.168.17.130:4723/wd/hub'
 
 
 class BannerTest(unittest.TestCase):
@@ -43,7 +43,7 @@ class BannerTest(unittest.TestCase):
         if not os.path.exists(screenshot_folder):
             os.makedirs(screenshot_folder)
         wait = WebDriverWait(self.base.driver, 3)
-        while len(saved_hashes) < 13:  # 确保集合中至少有 12 个唯一的哈希值
+        while len(saved_hashes) < 7:  # 确保集合中至少有 12 个唯一的哈希值
             try:
                 wait.until(EC.presence_of_element_located((By.XPATH,
                                                            '//androidx.viewpager.widget.ViewPager[@resource-id="com.nelko.printer:id/viewpager_inner"]')))

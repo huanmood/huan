@@ -16,7 +16,7 @@ tuyaEle = ['XPATH',
 tuya = r'//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView'
 
 
-class classtime(function, unittest.TestCase):
+class Tuya(function, unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -55,5 +55,3 @@ class classtime(function, unittest.TestCase):
         super().tearDownClass()
 
 
-if __name__ == "__main__":
-    unittest.main()

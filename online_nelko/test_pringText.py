@@ -264,6 +264,7 @@ class online(unittest.TestCase):
             self.click(clear)
             time.sleep(1)
             self.click(textBtn)
+
         self.click(['XPATH', '//android.widget.TextView[@text="打印"]'])  # 直接点击打印
         time.sleep(2)
         self.driver.find_element_by_xpath(

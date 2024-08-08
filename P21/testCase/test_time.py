@@ -19,7 +19,7 @@ timeEle = ['XPATH',
 times = r'//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout[2]/android.widget.RelativeLayout'
 
 
-class classtime(function, align, unittest.TestCase):
+class Time(function, align, unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -58,5 +58,4 @@ class classtime(function, align, unittest.TestCase):
         super().tearDownClass()
 
 
-if __name__ == "__main__":
-    unittest.main()
+

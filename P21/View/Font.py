@@ -6,14 +6,14 @@ import random
 
 desired_caps = {
     "platformName": "Android",
-    "appium:platformVersion": "14",
+    "appium:platformVersion": "12",
     "appium:appPackage": "com.nelko.printer",
     "appium:appActivity": "com.print.android.zhprint.home.SplashActivity",
     "appium:deviceName": "emulator-5554",
     "appium:noReset": "true"
 
 }
-url = 'http://localhost:4723/wd/hub'
+url = 'http://192.168.17.130:4723/wd/hub'
 
 # 清除所有元素
 clear = ['XPATH',
@@ -32,9 +32,6 @@ class font(unittest.TestCase):
         cls.base.first_open()  # 处理初次连接逻辑
         cls.base.test_01_connectP21()
         cls.base.test_02_openEditor()
-
-    def setUp(self):
-        time.sleep(2)
 
     def test_01_fontType(self):
 
@@ -116,12 +113,12 @@ class font(unittest.TestCase):
         print(add)
         language1[0].click()
         num = self.base.matchingElement('(//android.widget.FrameLayout[@resource-id="com.nelko.printer:id/fl_select"])')
-        if len(num) == 4:
+        if len(num) == 6:
             print("字体测试通过")
 
     @classmethod
     def tearDownClass(cls):
-        cls.base.driver.quit()
+        cls.base.quit()
 # if __name__ == "__main__":
 #     unittest.main()
 # #

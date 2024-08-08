@@ -511,3 +511,6 @@
 #     device = ['XPATH',
 #               f'//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_ble_address" and @text="{value}"]']
 #     print(device)//android.widget.TextView[@resource-id="com.labelnize.printer:id/tv_connect"]
+def adjust_position(*args):
+    print(args[0])
+adjust_position('2','1','4','4')

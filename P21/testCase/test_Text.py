@@ -134,8 +134,8 @@ class TextFont(font, unittest.TestCase):
     def setUpClass(cls):
         super().setUpClass()
 
-    def setUp(self):
-        super().setUp()
+    # def setUp(self):
+    #     super().setUp()
 
     def ass(self):
         super().test_01_fontType()
@@ -267,21 +267,5 @@ class TextFont(font, unittest.TestCase):
     #         self.base.test_02_openEditor()
     #         return
 
-
-pwd = os.getcwd()
-# case_path = os.path.join(pwd,"unittestreport数据驱动之列表.py")
-suite = unittest.defaultTestLoader.discover(pwd)  # 自动获取测试用例类
-print("测试套件中的测试用例数量是：", suite.countTestCases())
-# 第二步：运行用例生成测试报告
-runner = TestRunner(suite,
-                    filename="自动化测试报告.html",
-                    report_dir=r"C:\Users\YZY\Desktop\nelko\P21\report",  # 放桌面
-                    title='nelko版本上线测试报告',
-                    tester='欢',
-                    desc="测试",
-                    templates=2  # 报告的风格，有三种，取值是1,2,3
-                    )
-runner.run()
-sys.exit()
 
 

@@ -1,4 +1,3 @@
-import ast
 import os
 import random
 import re
@@ -19,8 +18,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 class Base(unittest.TestCase):
-    def __init__(self):
-        self.driver = None
+
 
 
     def is_element_present(self, what):
@@ -317,13 +315,7 @@ class Base(unittest.TestCase):
 
     # 将元素拖到x、y位置
     def drag_element(self, ele, end_x, end_y):
-        """
-        拖动操作
-        :param start_x: 起始位置的X坐标
-        :param start_y: 起始位置的Y坐标
-        :param end_x: 结束位置的X坐标
-        :param end_y: 结束位置的Y坐标
-        """
+
 
         action = TouchAction(self.driver)
         ele = self.centerLocation(ele)
@@ -341,7 +333,7 @@ class Base(unittest.TestCase):
         action = TouchAction(self.driver)
         action.press(x=start_x, y=start_y).move_to(x=end_x, y=end_y).release().perform()
 
-    def test_01_connectP21(self):
+    def connectP21(self):
         print("\n连接P21功能开始测试\n")
         connect = ['XPATH', '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_connect"]']
         back = ['XPATH', '//android.widget.ImageView[@resource-id="com.nelko.printer:id/iv_back"]']
@@ -385,7 +377,7 @@ class Base(unittest.TestCase):
             time.sleep(3)
             print("\n连接P21功能结束测试\n")
 
-    def test_02_openEditor(self):
+    def openEditor(self):
         print("\n打开自定义模板功能开始测试\n")
         editor = ['XPATH',
                   '//android.widget.ImageView[@resource-id="com.nelko.printer:id/act_home_new_img"]']
@@ -418,81 +410,9 @@ class Base(unittest.TestCase):
         centerPoint.append(centerPointY)
         return centerPoint
 
-    def twoStpe_shucai(self):
-        if self.is_element_present(
-                '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.nelko.printer:id/leer_rcv"]/android.widget.RelativeLayout[1]'):
-            # 生成一个范围在 [a, b] 之间的随机整数
-            ele = r'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.nelko.printer:id/leer_rcv"]/android.widget.RelativeLayout'
-            num = self.matchingElement(ele)
-            raNum = random.randint(1, len(num))
-            eleNum = ['XPATH',
-                      '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.nelko.printer:id/leer_rcv"]/android.widget.RelativeLayout' + '[' + str(
-                          raNum) + ']']
-            self.click(eleNum)
-            location = ['XPATH',
-                        '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView']
-            self.tap_at_coordinate(location)
 
-    def twoStpe_biankuang(self):
-        if self.is_element_present(
-                '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.nelko.printer:id/leer_rcv"]/android.widget.LinearLayout[1]'):
-            # 生成一个范围在 [a, b] 之间的随机整数
-            ele = r'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.nelko.printer:id/leer_rcv"]/android.widget.LinearLayout'
-            num = self.matchingElement(ele)
-            raNum = random.randint(1, len(num))
-            eleNum = ['XPATH',
-                      '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.nelko.printer:id/leer_rcv"]/android.widget.LinearLayout' + '[' + str(
-                          raNum) + ']']
-            self.click(eleNum)
-            location = ['XPATH',
-                        '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView']
-            self.tap_at_coordinate(location)
 
-    def twoStpe_tuya(self):
-        if self.is_element_present(
-                '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_title"]'):
-            tuyaLocation = self.getAttribute(
-                ['XPATH', '//android.view.View[@resource-id="com.nelko.printer:id/db_view"]'], 'bounds')
-            tuyaBounds = '[' + tuyaLocation.replace('][', '],[') + ']'
-            result = ast.literal_eval(tuyaBounds)
 
-            raNum = []
-            for i in range(0, 2):
-                a = random.randint(result[0][0], result[1][0])
-                raNum.append(a)
-            for i in range(0, 2):
-                a = random.randint(result[0][1], result[1][1])
-                raNum.append(a)
-
-            self.drag_location(start_x=raNum[0], start_y=raNum[2], end_x=raNum[1], end_y=raNum[3])
-            time.sleep(3)
-            self.click(['XPATH', '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_right"]'])
-            print('raNum为', raNum)
-
-    def threeStep_photo(self):
-        # phoneBtn = ['XPATH', '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/item_menu_icon_img"])[5]']
-        if self.is_element_present(
-                '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_text" and @text="拍照"]'):
-            takePhoto = ['XPATH',
-                         '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_text" and @text="拍照"]']  # 点击图片后的拍照选项
-            permission = ['XPATH',
-                          '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_ui_confirm"]']  # 前往授权
-            allow = ['XPATH',
-                     '//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_foreground_only_button"]']  # 允许Nelko拍照（使用该应用时允许）
-            press = ['XPATH', '//android.view.View']  # 拍照快门
-            confirm = ['XPATH',
-                       '//android.widget.FrameLayout[@resource-id="com.nelko.printer:id/capture_layout"]/android.view.View[2]']  # 按下快门后的确认
-            if self.is_element_present(
-                    '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_text" and @text="拍照"]'):
-                self.click(takePhoto)
-            if self.is_element_present(
-                    '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_message_message"]'):
-                self.click(permission)
-            if self.is_element_present(
-                    '//android.widget.TextView[@resource-id="com.android.permissioncontroller:id/permission_message"]'):
-                self.click(allow)
-            self.click(press)
-            self.click(confirm)
 
     def generate_random_string(self):
         # 生成一个包含大小写字母和数字的所有字符集合

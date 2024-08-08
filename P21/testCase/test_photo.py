@@ -19,7 +19,7 @@ phoneEle = ['XPATH',
 phone = r'//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView'
 
 
-class classtime(function, align, unittest.TestCase):
+class Photo(function, align, unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -57,6 +57,3 @@ class classtime(function, align, unittest.TestCase):
     def tearDownClass(cls):
         super().tearDownClass()
 
-
-if __name__ == "__main__":
-    unittest.main()
