@@ -30,18 +30,21 @@ delete = ['XPATH', '//android.widget.LinearLayout[@resource-id="com.nelko.printe
 
 class function(unittest.TestCase):
     base = None
+
     @classmethod
     def setUpClass(cls):
-     try:
-        cls.base = Base()  # 实例化Base对象
-        cls.base.open(url, desired_caps)  # 启动Appium会话
-        cls.base.first_open()  # 处理初次连接逻辑
-        cls.base.connectP21()
-        cls.base.connectP21()
-     except Exception as e:
-         print(e)
+        try:
+            cls.base = Base()  # 实例化Base对象
+            cls.base.open(url, desired_caps)  # 启动Appium会话
+            cls.base.first_open()  # 处理初次连接逻辑
+            cls.base.connectP21()
+            cls.base.connectP21()
+        except Exception as e:
+            print(e)
+
     def setUp(self):
         time.sleep(2)
+
     def rotate(self, Btn, Location, rotateBtn):
         try:
             # 对文本进行测试
@@ -204,6 +207,7 @@ class function(unittest.TestCase):
             self.base.connectP21()
             self.base.connectP21()
             return
+
     def twoStpe_shucai(self):
         if self.base.is_element_present(
                 '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.nelko.printer:id/leer_rcv"]/android.widget.RelativeLayout[1]'):
@@ -279,6 +283,7 @@ class function(unittest.TestCase):
                 self.base.click(allow)
             self.base.click(press)
             self.base.click(confirm)
+
     @classmethod
     def tearDownClass(cls):
         cls.base.driver.quit()

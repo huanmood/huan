@@ -101,25 +101,25 @@ class BannerTest(unittest.TestCase):
     def test_02_jiekoPic(self):
         # 保存接口返回image到文件夹
         # 发送请求获取图片
-        url1='http://app.nelko.net/api/user/login'
-        data1={
+        url1 = 'http://app.nelko.net/api/user/login'
+        data1 = {
             "email": "1508908114@qq.com",
             "password": "111111"
         }
         headers1 = {
             "language": "zh",
         }
-        login=requests.post(url=url1,json=data1,headers=headers1)
-        login=login.json()
-        accessToken=login['data']['accessToken']
-        language=login['data']['language']
+        login = requests.post(url=url1, json=data1, headers=headers1)
+        login = login.json()
+        accessToken = login['data']['accessToken']
+        language = login['data']['language']
         url2 = 'http://app.nelko.net/api/banner/list'
         data2 = {
             "dev": "P21",
             "position": 1
         }
         header2 = {
-            "accessToken":accessToken,
+            "accessToken": accessToken,
             "language": language
         }
         response = requests.post(url=url2, json=data2, headers=header2)

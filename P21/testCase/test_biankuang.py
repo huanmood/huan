@@ -68,7 +68,6 @@ class Biankuang(function, unittest.TestCase):
 
     # 第一步：收集测试用例
 
-
 # pwd = os.getcwd()
 # print(pwd)
 #

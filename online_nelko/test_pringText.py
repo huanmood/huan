@@ -43,7 +43,7 @@ class online(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Remote(url, desired_caps)  # 打开APP
-        self.driver.implicitly_wait(10)
+        self.driver.implicitly_wait(30)
 
     def first_connect(self):
         """
@@ -147,7 +147,6 @@ class online(unittest.TestCase):
         self.findElement(element).click()
 
     def openEditor(self):
-        print("\n打开自定义模板功能开始测试\n")
         editor = ['XPATH',
                   '//android.widget.ImageView[@resource-id="com.nelko.printer:id/act_home_new_img"]']
         self.click(editor)
@@ -157,10 +156,7 @@ class online(unittest.TestCase):
             self.click(customTag)
             confirm = ['XPATH', '//android.widget.TextView[@text="确定"]']
             self.click(confirm)
-        if self.is_element_present('//android.widget.TextView[@text="双击文本框编辑"]'):
-            print("打开自定义模板成功")
         time.sleep(2)
-        print("\n打开自定义模板功能结束测试\n")
 
     def quit(self):
         self.driver.quit()
@@ -177,18 +173,18 @@ class online(unittest.TestCase):
         self.driver.swipe(start_x, start_y, end_x, end_y)
 
     @parameterized.expand([
-        # ("P20", "A6:ED:FC:24:DE:DD"),
-        # ("PM220", "00:84:00:00:B7:DD"),
-        # ("PM220S", "31:9D:28:23:32:BE"),
-        # ("PM230", "E4:1A:E9:A1:84:41"),
-        # ("PL70e-BT", "DC:1D:30:54:27:3C"),
-        # ("PL80W", "00:12:42:84:8B:AA"),
-        # ("PM360", "31:9D:4E:B2:E7:D5"),
-        # ("R11", "93:0D:F7:3A:78:61"),
-        # ("P22", "83:80:04:9E:88:38"),
-        # ("P21(jieLi)", "6D:B4:8E:49:43:6D"),
+        ("P20", "A6:ED:FC:24:DE:DD"),
+        ("PM220", "00:84:00:00:B7:DD"),
+        ("PM220S", "31:9D:8B:B6:E2:6C"),
+        ("PM230", "E4:1A:E9:A1:84:41"),
+        ("PL70e-BT", "DC:1D:30:54:27:3C"),
+        ("PL80W", "00:12:42:84:8B:AA"),
+        ("PM360", "31:9D:4E:B2:E7:D5"),
+        ("R11", "93:0D:F7:3A:78:61"),
+        ("P22", "0F:80:07:6C:30:F8"),
+        ("P21(jieLi)", "6D:B4:8E:49:43:6D"),
         ("P21(GD)", "60:6E:41:8C:8B:30"),
-        # ("P31S", "DC:80:0C:83:9D:C8"),
+        ("P31S", "DC:80:0C:83:9D:C8"),
         # 添加更多测试用例
     ])
     def test_print(self, devicesName, devicesBuletooth):
@@ -224,6 +220,7 @@ class online(unittest.TestCase):
                 if self.is_element_present(
                         f'//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_ble_address" and @text="{value}"]'):  # 如果找到了就退出循环
                     break
+        time.sleep(3)
         self.click(['XPATH',
                     f'//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_ble_address" and @text="{value}"]'])  # 找到了就点击蓝牙进行连接
         time.sleep(10)  # 连接需要等待时间
@@ -258,7 +255,7 @@ class online(unittest.TestCase):
             print(f"{key}连接成功")
         else:
             print(f"{key}连接失败")
-
+        time.sleep(3)
         self.openEditor()  # 点击首页的+号，创建自定义模板
         if key == 'PM230':  # PM230初始模板宽高太长，需要修改短一点，使用重新添加文本解决
             self.click(clear)
@@ -278,7 +275,9 @@ class online(unittest.TestCase):
         print(f'{key}文本类型打印5份完成')
         if key == 'PM230':
             self.click(['XPATH', '//android.widget.TextView[@text="关闭"]'])
-        time.sleep(15)  # 等待打印时间
+        if key == 'PL70e-BT':
+            self.driver.quit()
+        time.sleep(20)  # 等待打印时间
         self.click(['XPATH',
                     '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_print_mode_tab"]/android.widget.FrameLayout/android.widget.LinearLayout[2]/android.view.View[1]'])  # 图片类型
         self.click(['XPATH',
@@ -316,7 +315,7 @@ runner = TestRunner(suite,
                     title='nelko版本上线测试报告',
                     tester='欢',
                     desc="测试",
-                    templates=2  # 报告的风格，有三种，取值是1,2,3
+                    templates=1  # 报告的风格，有三种，取值是1,2,3
                     )
 runner.run()
 sys.exit()

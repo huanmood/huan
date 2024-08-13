@@ -30,11 +30,11 @@ class font(unittest.TestCase):
         cls.base = Base()  # 实例化Base对象
         cls.base.open(url, desired_caps)  # 启动Appium会话
         cls.base.first_open()  # 处理初次连接逻辑
-        cls.base.test_01_connectP21()
-        cls.base.test_02_openEditor()
+        cls.base.connectP21()
+        cls.base.openEditor()
 
     def test_01_fontType(self):
-
+        jiekoList = []
         # 语言view
         j = 0
         local = ['XPATH',
@@ -47,7 +47,8 @@ class font(unittest.TestCase):
         font = ['XPATH', '//android.widget.TextView[@resource-id="com.nelko.printer:id/tab_3"]']
         self.base.tap_at_Windows(0.5, 0.3)
         self.base.click(clear)
-        self.base.click(['XPATH', '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/item_menu_icon_img"])[1]'])
+        self.base.click(
+            ['XPATH', '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/item_menu_icon_img"])[1]'])
         self.base.click(font)
 
         APPList = []
@@ -90,7 +91,8 @@ class font(unittest.TestCase):
         languageViem = 'com.nelko.printer:id/tv_tab_title'
         self.base.tap_at_Windows(0.5, 0.3)
         self.base.click(clear)
-        self.base.click(['XPATH', '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/item_menu_icon_img"])[1]'])
+        self.base.click(
+            ['XPATH', '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/item_menu_icon_img"])[1]'])
         self.base.click(font)
         language1 = self.base.matchingElementID(languageViem)
         for i in range(1, len(language1)):

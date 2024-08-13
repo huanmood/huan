@@ -4,7 +4,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from P21.View.Function import function
 from P21.View.Align import align
-from P21.View.Font import font
+
 import unittest
 
 clear = ['XPATH',
@@ -14,7 +14,7 @@ clear = ['XPATH',
 phoneBtn = ['XPATH', '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/item_menu_icon_img"])[5]']
 # 素材位置
 phoneEle = ['XPATH',
-           '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView']
+            '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView']
 
 phone = r'//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView'
 
@@ -48,12 +48,12 @@ class Photo(function, align, unittest.TestCase):
         super().copy(phoneBtn, phone, copy)
 
     def test_05_choose(self):
-
-        location1 = ['XPATH', '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView[1]']
-        location2 = ['XPATH', '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView[2]']
+        location1 = ['XPATH',
+                     '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView[1]']
+        location2 = ['XPATH',
+                     '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView[2]']
         super().choose(phoneBtn, location1, location2, phone)
 
     @classmethod
     def tearDownClass(cls):
         super().tearDownClass()
-

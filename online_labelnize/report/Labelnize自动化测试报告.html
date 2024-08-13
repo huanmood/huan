@@ -223,17 +223,17 @@
                     <div class="info">
                         <div style="flex:5">
                             <button type="button" class="btn btn-primary btn-sm">开始时间</button>
-                            <span>2024-08-05 19:27:32</span>
+                            <span>2024-08-13 18:21:41</span>
                         </div>
                         <div style="flex:5">
                             <button type="button" class="btn btn-primary btn-sm">用例总数</button>
-                            <span>1</span>
+                            <span>6</span>
                         </div>
                     </div>
                     <div class="info">
                         <div style="flex:5">
                             <button type="button" class="btn btn-primary btn-sm">运行时长</button>
-                            <span>148.75 S</span>
+                            <span>54.75 S</span>
                         </div>
                         <div style="flex:5">
                             <button type="button" class="btn btn-primary btn-sm ">测试人员</button>
@@ -243,11 +243,11 @@
                     <div class="info">
                         <div style="flex:5">
                             <button type="button" class="btn btn-primary btn-sm">成功用例</button>
-                            <span>1</span>
+                            <span>0</span>
                         </div>
                         <div style="flex:5">
                             <button type="button" class="btn btn-primary btn-sm ">通过率</button>
-                            <span>100.00%</span>
+                            <span>0.00%</span>
                         </div>
                     </div>
                 </div>
@@ -271,6 +271,13 @@
                         </tr>
                         </thead>
                         <tbody>
+                        
+                        <tr>
+                            <th scope="row">2024-08-13 18:21:41</th>
+                            <td>6</td>
+                            <td>0</td>
+                            <td>0.00%</td>
+                        </tr>
                         
                         <tr>
                             <th scope="row">2024-08-05 19:27:32</th>
@@ -345,9 +352,9 @@
                     <td class="online">online</td>
                     <td>test_print_0_P20</td>
                     <td>:return: [with devicesName='P20', devicesBuletooth='A6:ED:FC:24:DE:DD']</td>
-                    <td>1.49e+02s</td>
+                    <td>9.14s</td>
                     
-                    <td class="text-success">成功</td>
+                    <td class="text-danger">错误</td>
                     
                     <td>
                         <button type="button" class="btn btn_info btn-primary btn-sm">查看详情</button>
@@ -359,22 +366,1253 @@
                      <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
                         
 
-                            <pre>P20 开始测试
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
 
-P20连接成功
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+</pre>
+                        
 
-打开自定义模板功能开始测试
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+</pre>
+                        
 
-打开自定义模板成功
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+</pre>
+                        
 
-打开自定义模板功能结束测试
+                            <pre>ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+</pre>
+                        
 
-P20文本类型打印5份完成
-P20图片类型打印5份完成
+                            <pre>
+During handling of the above exception, another exception occurred:
 
-连接P20功能结束测试
+</pre>
+                        
 
-test_print_0_P20 (test_labelnizePrint.online)执行——>【通过】
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 670, in urlopen
+    httplib_response = self._make_request(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 392, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1037, in _send_output
+    self.send(msg)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 975, in send
+    self.connect()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 187, in connect
+    conn = self._new_conn()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+</pre>
+                        
+
+                            <pre>urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001D270659750>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+</pre>
+                        
+
+                            <pre>
+During handling of the above exception, another exception occurred:
+
+</pre>
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 59, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 587, in run
+    self._callSetUp()
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 546, in _callSetUp
+    self.setUp()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\online_labelnize\test_labelnizePrint.py", line 45, in setUp
+    self.driver = webdriver.Remote(url, desired_caps)  # 打开APP
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\appium\webdriver\webdriver.py", line 156, in __init__
+    super().__init__(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\appium\webdriver\webdriver.py", line 226, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, parameters)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 319, in execute
+    response = self.command_executor.execute(driver_command, params)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 374, in execute
+    return self._request(command_info[0], url, body=data)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 397, in _request
+    resp = self._conn.request(method, url, body=body, headers=headers)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\request.py", line 79, in request
+    return self.request_encode_body(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\request.py", line 171, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\poolmanager.py", line 336, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 726, in urlopen
+    retries = retries.increment(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\retry.py", line 446, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+</pre>
+                        
+
+                            <pre>urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.17.130', port=4723): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001D270659750>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+</pre>
+                        
+
+                            <pre>test_print_0_P20 (test_labelnizePrint.online)执行——>【错误Error】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+                
+                <tr class="case_">
+                    <td>2</td>
+                    <td class="online">online</td>
+                    <td>test_print_1_PM220</td>
+                    <td>:return: [with devicesName='PM220', devicesBuletooth='00:84:00:00:B7:DD']</td>
+                    <td>9.13s</td>
+                    
+                    <td class="text-danger">错误</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn_info btn-primary btn-sm">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                     <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+</pre>
+                        
+
+                            <pre>ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+</pre>
+                        
+
+                            <pre>
+During handling of the above exception, another exception occurred:
+
+</pre>
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 670, in urlopen
+    httplib_response = self._make_request(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 392, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1037, in _send_output
+    self.send(msg)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 975, in send
+    self.connect()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 187, in connect
+    conn = self._new_conn()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+</pre>
+                        
+
+                            <pre>urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001D27065A350>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+</pre>
+                        
+
+                            <pre>
+During handling of the above exception, another exception occurred:
+
+</pre>
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 59, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 587, in run
+    self._callSetUp()
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 546, in _callSetUp
+    self.setUp()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\online_labelnize\test_labelnizePrint.py", line 45, in setUp
+    self.driver = webdriver.Remote(url, desired_caps)  # 打开APP
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\appium\webdriver\webdriver.py", line 156, in __init__
+    super().__init__(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\appium\webdriver\webdriver.py", line 226, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, parameters)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 319, in execute
+    response = self.command_executor.execute(driver_command, params)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 374, in execute
+    return self._request(command_info[0], url, body=data)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 397, in _request
+    resp = self._conn.request(method, url, body=body, headers=headers)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\request.py", line 79, in request
+    return self.request_encode_body(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\request.py", line 171, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\poolmanager.py", line 336, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 726, in urlopen
+    retries = retries.increment(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\retry.py", line 446, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+</pre>
+                        
+
+                            <pre>urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.17.130', port=4723): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001D27065A350>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+</pre>
+                        
+
+                            <pre>test_print_1_PM220 (test_labelnizePrint.online)执行——>【错误Error】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+                
+                <tr class="case_">
+                    <td>3</td>
+                    <td class="online">online</td>
+                    <td>test_print_2_P22</td>
+                    <td>:return: [with devicesName='P22', devicesBuletooth='83:80:04:9E:88:38']</td>
+                    <td>9.11s</td>
+                    
+                    <td class="text-danger">错误</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn_info btn-primary btn-sm">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                     <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+</pre>
+                        
+
+                            <pre>ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+</pre>
+                        
+
+                            <pre>
+During handling of the above exception, another exception occurred:
+
+</pre>
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 670, in urlopen
+    httplib_response = self._make_request(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 392, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1037, in _send_output
+    self.send(msg)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 975, in send
+    self.connect()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 187, in connect
+    conn = self._new_conn()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+</pre>
+                        
+
+                            <pre>urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001D27065AC20>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+</pre>
+                        
+
+                            <pre>
+During handling of the above exception, another exception occurred:
+
+</pre>
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 59, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 587, in run
+    self._callSetUp()
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 546, in _callSetUp
+    self.setUp()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\online_labelnize\test_labelnizePrint.py", line 45, in setUp
+    self.driver = webdriver.Remote(url, desired_caps)  # 打开APP
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\appium\webdriver\webdriver.py", line 156, in __init__
+    super().__init__(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\appium\webdriver\webdriver.py", line 226, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, parameters)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 319, in execute
+    response = self.command_executor.execute(driver_command, params)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 374, in execute
+    return self._request(command_info[0], url, body=data)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 397, in _request
+    resp = self._conn.request(method, url, body=body, headers=headers)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\request.py", line 79, in request
+    return self.request_encode_body(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\request.py", line 171, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\poolmanager.py", line 336, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 726, in urlopen
+    retries = retries.increment(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\retry.py", line 446, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+</pre>
+                        
+
+                            <pre>urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.17.130', port=4723): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001D27065AC20>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+</pre>
+                        
+
+                            <pre>test_print_2_P22 (test_labelnizePrint.online)执行——>【错误Error】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+                
+                <tr class="case_">
+                    <td>4</td>
+                    <td class="online">online</td>
+                    <td>test_print_3_P21_jieLi_</td>
+                    <td>:return: [with devicesName='P21(jieLi)', devicesBuletooth='6D:B4:8E:49:43:6D']</td>
+                    <td>9.13s</td>
+                    
+                    <td class="text-danger">错误</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn_info btn-primary btn-sm">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                     <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+</pre>
+                        
+
+                            <pre>ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+</pre>
+                        
+
+                            <pre>
+During handling of the above exception, another exception occurred:
+
+</pre>
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 670, in urlopen
+    httplib_response = self._make_request(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 392, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1037, in _send_output
+    self.send(msg)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 975, in send
+    self.connect()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 187, in connect
+    conn = self._new_conn()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+</pre>
+                        
+
+                            <pre>urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001D27065A5F0>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+</pre>
+                        
+
+                            <pre>
+During handling of the above exception, another exception occurred:
+
+</pre>
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 59, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 587, in run
+    self._callSetUp()
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 546, in _callSetUp
+    self.setUp()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\online_labelnize\test_labelnizePrint.py", line 45, in setUp
+    self.driver = webdriver.Remote(url, desired_caps)  # 打开APP
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\appium\webdriver\webdriver.py", line 156, in __init__
+    super().__init__(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\appium\webdriver\webdriver.py", line 226, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, parameters)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 319, in execute
+    response = self.command_executor.execute(driver_command, params)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 374, in execute
+    return self._request(command_info[0], url, body=data)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 397, in _request
+    resp = self._conn.request(method, url, body=body, headers=headers)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\request.py", line 79, in request
+    return self.request_encode_body(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\request.py", line 171, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\poolmanager.py", line 336, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 726, in urlopen
+    retries = retries.increment(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\retry.py", line 446, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+</pre>
+                        
+
+                            <pre>urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.17.130', port=4723): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001D27065A5F0>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+</pre>
+                        
+
+                            <pre>test_print_3_P21_jieLi_ (test_labelnizePrint.online)执行——>【错误Error】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+                
+                <tr class="case_">
+                    <td>5</td>
+                    <td class="online">online</td>
+                    <td>test_print_4_P21_GD_</td>
+                    <td>:return: [with devicesName='P21(GD)', devicesBuletooth='60:6E:41:8C:8B:30']</td>
+                    <td>9.13s</td>
+                    
+                    <td class="text-danger">错误</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn_info btn-primary btn-sm">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                     <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+</pre>
+                        
+
+                            <pre>ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+</pre>
+                        
+
+                            <pre>
+During handling of the above exception, another exception occurred:
+
+</pre>
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 670, in urlopen
+    httplib_response = self._make_request(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 392, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1037, in _send_output
+    self.send(msg)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 975, in send
+    self.connect()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 187, in connect
+    conn = self._new_conn()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+</pre>
+                        
+
+                            <pre>urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001D270659C30>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+</pre>
+                        
+
+                            <pre>
+During handling of the above exception, another exception occurred:
+
+</pre>
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 59, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 587, in run
+    self._callSetUp()
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 546, in _callSetUp
+    self.setUp()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\online_labelnize\test_labelnizePrint.py", line 45, in setUp
+    self.driver = webdriver.Remote(url, desired_caps)  # 打开APP
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\appium\webdriver\webdriver.py", line 156, in __init__
+    super().__init__(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\appium\webdriver\webdriver.py", line 226, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, parameters)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 319, in execute
+    response = self.command_executor.execute(driver_command, params)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 374, in execute
+    return self._request(command_info[0], url, body=data)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 397, in _request
+    resp = self._conn.request(method, url, body=body, headers=headers)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\request.py", line 79, in request
+    return self.request_encode_body(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\request.py", line 171, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\poolmanager.py", line 336, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 726, in urlopen
+    retries = retries.increment(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\retry.py", line 446, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+</pre>
+                        
+
+                            <pre>urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.17.130', port=4723): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001D270659C30>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+</pre>
+                        
+
+                            <pre>test_print_4_P21_GD_ (test_labelnizePrint.online)执行——>【错误Error】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+                
+                <tr class="case_">
+                    <td>6</td>
+                    <td class="online">online</td>
+                    <td>test_print_5_P31S</td>
+                    <td>:return: [with devicesName='P31S', devicesBuletooth='DC:80:0C:83:9D:C8']</td>
+                    <td>9.12s</td>
+                    
+                    <td class="text-danger">错误</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn_info btn-primary btn-sm">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                     <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+</pre>
+                        
+
+                            <pre>ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+</pre>
+                        
+
+                            <pre>
+During handling of the above exception, another exception occurred:
+
+</pre>
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 670, in urlopen
+    httplib_response = self._make_request(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 392, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 1037, in _send_output
+    self.send(msg)
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\http\client.py", line 975, in send
+    self.connect()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 187, in connect
+    conn = self._new_conn()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+</pre>
+                        
+
+                            <pre>urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001D27065B4F0>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+</pre>
+                        
+
+                            <pre>
+During handling of the above exception, another exception occurred:
+
+</pre>
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 59, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 587, in run
+    self._callSetUp()
+</pre>
+                        
+
+                            <pre>  File "D:\python\lib\unittest\case.py", line 546, in _callSetUp
+    self.setUp()
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\online_labelnize\test_labelnizePrint.py", line 45, in setUp
+    self.driver = webdriver.Remote(url, desired_caps)  # 打开APP
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\appium\webdriver\webdriver.py", line 156, in __init__
+    super().__init__(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\appium\webdriver\webdriver.py", line 226, in start_session
+    response = self.execute(RemoteCommand.NEW_SESSION, parameters)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 319, in execute
+    response = self.command_executor.execute(driver_command, params)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 374, in execute
+    return self._request(command_info[0], url, body=data)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 397, in _request
+    resp = self._conn.request(method, url, body=body, headers=headers)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\request.py", line 79, in request
+    return self.request_encode_body(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\request.py", line 171, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\poolmanager.py", line 336, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 754, in urlopen
+    return self.urlopen(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\connectionpool.py", line 726, in urlopen
+    retries = retries.increment(
+</pre>
+                        
+
+                            <pre>  File "C:\Users\YZY\Desktop\nelko\.venv\lib\site-packages\urllib3\util\retry.py", line 446, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+</pre>
+                        
+
+                            <pre>urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.17.130', port=4723): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001D27065B4F0>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+</pre>
+                        
+
+                            <pre>test_print_5_P31S (test_labelnizePrint.online)执行——>【错误Error】
 </pre>
                         
                         
@@ -394,17 +1632,17 @@ test_print_0_P20 (test_labelnizePrint.online)执行——>【通过】
 <script type="text/javascript">
 
     const resulte = {
-            "success": `1`,
-            "all": `1`,
+            "success": `0`,
+            "all": `6`,
             "fail": `0`,
             "skip": '0',
-            "error": `0`,
-            "runtime": '148.75 S',
-            "begin_time": "148.75 S",
-            "pass_rate": '100.00',
+            "error": `6`,
+            "runtime": '54.75 S',
+            "begin_time": "54.75 S",
+            "pass_rate": '0.00',
         }
     ;
-    const history = [{'success': 1, 'all': 1, 'fail': 0, 'skip': 0, 'error': 0, 'runtime': '111.10 S', 'begin_time': '2024-08-05 17:13:04', 'pass_rate': '100.00'}, {'success': 0, 'all': 1, 'fail': 0, 'skip': 0, 'error': 1, 'runtime': '18.72 S', 'begin_time': '2024-08-05 19:26:18', 'pass_rate': '0.00'}, {'success': 1, 'all': 1, 'fail': 0, 'skip': 0, 'error': 0, 'runtime': '148.75 S', 'begin_time': '2024-08-05 19:27:32', 'pass_rate': '100.00'}];
+    const history = [{'success': 1, 'all': 1, 'fail': 0, 'skip': 0, 'error': 0, 'runtime': '111.10 S', 'begin_time': '2024-08-05 17:13:04', 'pass_rate': '100.00'}, {'success': 0, 'all': 1, 'fail': 0, 'skip': 0, 'error': 1, 'runtime': '18.72 S', 'begin_time': '2024-08-05 19:26:18', 'pass_rate': '0.00'}, {'success': 1, 'all': 1, 'fail': 0, 'skip': 0, 'error': 0, 'runtime': '148.75 S', 'begin_time': '2024-08-05 19:27:32', 'pass_rate': '100.00'}, {'success': 0, 'all': 6, 'fail': 0, 'skip': 0, 'error': 6, 'runtime': '54.75 S', 'begin_time': '2024-08-13 18:21:41', 'pass_rate': '0.00'}];
 
     var passRate = [];
     var dTime = [];

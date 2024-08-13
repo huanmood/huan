@@ -1,4 +1,3 @@
-import re
 import time
 import os
 import sys
@@ -34,13 +33,11 @@ class TestTextView(unittest.TestCase):
         cls.base = Base()  # 实例化Base对象
         cls.base.open(url, desired_caps)  # 启动Appium会话
         cls.base.first_open()  # 处理初次连接逻辑
-        cls.base.test_01_connectP21()
-        cls.base.test_02_openEditor()
+        cls.base.connectP21()
+        cls.base.openEditor()
 
     def setUp(self):
         time.sleep(2)
-
-
 
     def TextCompare(self, Btn, location, move):
         self.base.tap_at_Windows(0.5, 0.3)
@@ -70,7 +67,6 @@ class TestTextView(unittest.TestCase):
     #     print("Images are identical" if result else "Images are different")
     # def test_fontType(self):
     #     super().fontType()
-
 
     @classmethod
     def tearDownClass(cls):

@@ -16,10 +16,7 @@ import unittest
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-
 class Base(unittest.TestCase):
-
-
 
     def is_element_present(self, what):
         """
@@ -144,7 +141,6 @@ class Base(unittest.TestCase):
         """
         self.driver.quit()
 
-
     def waitElement(self, ele1):
         """
         等待元素出现，特定用于蓝牙
@@ -159,7 +155,8 @@ class Base(unittest.TestCase):
             CC.click()
         except:
             # 定义双击的元素的坐标
-            bounds=self.findElement(['XPATH','//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_title"]'])
+            bounds = self.findElement(
+                ['XPATH', '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_title"]'])
             self.double_tap_element(bounds)
 
     def waitElementAppear(self, ele):
@@ -218,6 +215,7 @@ class Base(unittest.TestCase):
         except AssertionError:
             # 如果抛出了 AssertionError 错误，表示两个字典不相等，即位置发生了变化
             return False  # 发生变化时返回 True
+
     def matchingElement(self, ele):
         """
         查找一共有多少个（ele）这样的XPATH元素传
@@ -316,7 +314,6 @@ class Base(unittest.TestCase):
     # 将元素拖到x、y位置
     def drag_element(self, ele, end_x, end_y):
 
-
         action = TouchAction(self.driver)
         ele = self.centerLocation(ele)
         action.long_press(x=ele[0], y=ele[1]).move_to(x=end_x, y=end_y).release().perform()  # 将元素拖到x、y位置
@@ -409,10 +406,6 @@ class Base(unittest.TestCase):
         centerPoint.append(centerPointX)
         centerPoint.append(centerPointY)
         return centerPoint
-
-
-
-
 
     def generate_random_string(self):
         # 生成一个包含大小写字母和数字的所有字符集合

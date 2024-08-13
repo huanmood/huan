@@ -1,6 +1,7 @@
 import os
-import random
+
 import sys
+
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from P21.View.Function import function
 import unittest
@@ -26,7 +27,6 @@ class Sucai(function, unittest.TestCase):
     def setUp(self):
         super().setUp()
 
-
     def test_rotate(self):
         rotateBtn = ['XPATH',
                      '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_action_rotate_btn"]']
@@ -45,13 +45,14 @@ class Sucai(function, unittest.TestCase):
         copy = ['XPATH',
                 '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_action_copy_btn"]']
         super().copy(shucaiBtn, shucai, copy)
+
     def test_choose(self):
-        location1 = ['XPATH', '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView[1]']
-        location2 = ['XPATH', '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView[2]']
-        super().choose(shucaiBtn,location1,location2,shucai)
+        location1 = ['XPATH',
+                     '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView[1]']
+        location2 = ['XPATH',
+                     '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView[2]']
+        super().choose(shucaiBtn, location1, location2, shucai)
+
     @classmethod
     def tearDownClass(cls):
         super().tearDownClass()
-
-
-

@@ -1,11 +1,7 @@
 import time
 
-import requests
-from selenium.webdriver.support.wait import WebDriverWait
-
 from Method.Base import Base
 import unittest
-import random
 
 desired_caps = {
     "platformName": "Android",
@@ -33,12 +29,13 @@ class content(unittest.TestCase):
         cls.base = Base()  # 实例化Base对象
         cls.base.open(url, desired_caps)  # 启动Appium会话
         cls.base.first_open()  # 处理初次连接逻辑
-        cls.base.test_01_connectP21()
-        cls.base.test_02_openEditor()
+        cls.base.connectP21()
+        cls.base.openEditor()
 
     def setUp(self):
         time.sleep(2)
-    def content(self,Btn):
+
+    def content(self, Btn):
         random_string = self.base.generate_random_string()
         self.base.tap_at_Windows(0.5, 0.3)
         self.base.click(clear)

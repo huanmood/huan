@@ -1,5 +1,6 @@
 import os
 import sys
+
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from P21.View.Function import function
 import unittest
@@ -45,13 +46,12 @@ class Tuya(function, unittest.TestCase):
         super().copy(tuyaBtn, tuya, copy)
 
     def test_05_choose(self):
-
-        location1 = ['XPATH', '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView[1]']
-        location2 = ['XPATH', '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView[2]']
+        location1 = ['XPATH',
+                     '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView[1]']
+        location2 = ['XPATH',
+                     '//android.widget.LinearLayout[@resource-id="com.nelko.printer:id/act_edit_editlayout"]/android.widget.RelativeLayout/android.widget.RelativeLayout[1]/android.widget.ImageView[2]']
         super().choose(tuyaBtn, location1, location2, tuya)
 
     @classmethod
     def tearDownClass(cls):
         super().tearDownClass()
-
-

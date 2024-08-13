@@ -1,7 +1,7 @@
 import os
 import sys
 
-from unittestreport import TestRunner
+
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from P21.View.Function import function
@@ -128,6 +128,7 @@ class Text(function, unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         super().tearDownClass()
+
 
 class TextFont(font, unittest.TestCase):
     @classmethod
@@ -266,6 +267,3 @@ class TextFont(font, unittest.TestCase):
     #         self.base.test_01_connectP21()
     #         self.base.test_02_openEditor()
     #         return
-
-
-

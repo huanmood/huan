@@ -4,7 +4,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from P21.View.Function import function
 from P21.View.Align import align
-from P21.View.Font import font
+
 import unittest
 
 clear = ['XPATH',
@@ -56,6 +56,3 @@ class Time(function, align, unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         super().tearDownClass()
-
-
-

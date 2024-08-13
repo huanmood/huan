@@ -52,9 +52,10 @@ class online(unittest.TestCase):
         """
         if self.is_element_present('//android.widget.TextView[@resource-id="com.labelnize.printer:id/tv_sure"]'):
             # 授权
-            self.click(['XPATH','//android.widget.TextView[@resource-id="com.labelnize.printer:id/tv_sure"]'])
+            self.click(['XPATH', '//android.widget.TextView[@resource-id="com.labelnize.printer:id/tv_sure"]'])
             # 允许获取位置
-            self.click(['XPATH','//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]'])
+            self.click(['XPATH',
+                        '//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]'])
 
     def findElement(self, element):
         """
@@ -90,10 +91,12 @@ class online(unittest.TestCase):
         :return:
         """
         # 判断元素是否存在
-        if self.is_element_present('//android.widget.TextView[@resource-id="com.labelnize.printer:id/tv_message_message"]'):
+        if self.is_element_present(
+                '//android.widget.TextView[@resource-id="com.labelnize.printer:id/tv_message_message"]'):
             agree = ['XPATH', '//android.widget.TextView[@resource-id="com.labelnize.printer:id/tv_ui_confirm"]']
             self.click(agree)
-        if self.is_element_present('//android.widget.TextView[@resource-id="com.labelnize.printer:id/connect_later_tv"]'):
+        if self.is_element_present(
+                '//android.widget.TextView[@resource-id="com.labelnize.printer:id/connect_later_tv"]'):
             # 如果元素存在，则执行操作
             # 稍后连接
             nextTime = self.driver.find_element_by_xpath(
@@ -274,7 +277,8 @@ class online(unittest.TestCase):
                     '//android.widget.TextView[@resource-id="com.labelnize.printer:id/act_print_mult_print_btn"]'])  # 点击打印
         print(f'{key}文本类型打印5份完成')
         time.sleep(10)
-        self.click(['XPATH','//android.widget.LinearLayout[@resource-id="com.labelnize.printer:id/act_print_mode_tab"]/android.widget.FrameLayout/android.widget.LinearLayout[2]/android.view.View[1]'])
+        self.click(['XPATH',
+                    '//android.widget.LinearLayout[@resource-id="com.labelnize.printer:id/act_print_mode_tab"]/android.widget.FrameLayout/android.widget.LinearLayout[2]/android.view.View[1]'])
         self.click(['XPATH',
                     '//android.widget.TextView[@resource-id="com.labelnize.printer:id/act_print_mult_print_btn"]'])  # 点击打印
         print(f'{key}图片类型打印5份完成')
@@ -283,14 +287,16 @@ class online(unittest.TestCase):
         self.click(['XPATH',
                     '//android.widget.ImageView[@resource-id="com.labelnize.printer:id/iv_back"]'])  # 打印完成的返回（左上角的x）
         self.click(
-            ['XPATH', '//android.widget.ImageView[@resource-id="com.labelnize.printer:id/act_edit_back_img"]'])  # 模板左上角的返回
+            ['XPATH',
+             '//android.widget.ImageView[@resource-id="com.labelnize.printer:id/act_edit_back_img"]'])  # 模板左上角的返回
         self.click(
             ['XPATH', '//android.widget.TextView[@resource-id="com.labelnize.printer:id/tv_cancel"]'])  # 从模板返回，不保存
         self.click(connect)  # 重新进入连接页面
         time.sleep(3)
         self.click(['XPATH', disconnect])  # 取消上一台连接的打印机连接状态
         time.sleep(2)
-        self.click(['XPATH', '//android.widget.TextView[@resource-id="com.labelnize.printer:id/tv_sure"]'])  # 点击确认（取消连接的确认）
+        self.click(
+            ['XPATH', '//android.widget.TextView[@resource-id="com.labelnize.printer:id/tv_sure"]'])  # 点击确认（取消连接的确认）
         time.sleep(3)
         self.driver.quit()
 
