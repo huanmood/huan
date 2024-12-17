@@ -1,9 +1,7 @@
 import os.path
 import pandas as pd
+from gitProject.aa.Config import globalconfig
 # import xlrd此库只适合xls，xlsx已经不再适配
-from Config import globalconfig
-from Config.globalconfig import project_path
-
 DataPath = globalconfig.DataPath
 print(DataPath)
 

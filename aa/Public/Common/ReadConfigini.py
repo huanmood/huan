@@ -20,7 +20,7 @@ from Demos.RegRestoreKey import required_privs
 
 import configparser
 
-class readini():
+class readconfigini():
     """
     传入ini文件
     """
@@ -58,5 +58,5 @@ class readini():
         return value
 
 if __name__ == '__main__':
-    cdb = readini("../Config/data.ini")
+    cdb = readconfigini("../../Config/data.ini")
     cdb.get_section(section="dataBase")

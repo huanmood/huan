@@ -1,11 +1,11 @@
 import mysql.connector
-from ReadiNi import connectDataBase
-from result.log import MyLog
+from gitProject.aa.Public.Common.ReadConfigini import readconfigini
+from .log import MyLog
 log = MyLog().get_log()#获取Log对象
 logger = log.get_logger()#利用Log对象调用里面的log生产对象（looger）
 class selectMysql():
     def __init__(self,filename,section):
-        self.con = connectDataBase(filename)#获取配置文件类对象(传入ini文件)
+        self.con = readconfigini(filename)#获取配置文件类对象(传入ini文件)
         self.data = self.con.connect(section=section)  #
         try:
             self.connection = mysql.connector.connect(
@@ -28,6 +28,6 @@ class selectMysql():
         self.connection.close()
 
 if __name__ == '__main__':
-    c = selectMysql("../Config/data.ini", "dataBase")
+    c = selectMysql("../../Config/data.ini", "dataBase")
     c.sql_execute("show databases;")
     c.sql_close()
