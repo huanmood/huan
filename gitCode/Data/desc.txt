@@ -1,0 +1,2 @@
+http://127.0.0.1:4720/wd/hub;{"platformName":"Android","platformVersion":"15","appPackage":"com.nelko.printer","appActivity":"com.print.android.zhprint.home.SplashActivity","deviceName":"28361FDH300HGB","noReset":"true"}
+http://127.0.0.1:4726/wd/hub;{"platformName":"Android","platformVersion":"14","appPackage":"com.nelko.printer","appActivity":"com.print.android.zhprint.home.SplashActivity","deviceName":"RFCX80KMDET","noReset":"true"}
