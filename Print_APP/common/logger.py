@@ -18,7 +18,7 @@ class Log(object):
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.DEBUG)
         # 日志的输出格式
-        self.formatter = logging.Formatter('%(asctime)s %(filename)s [line:%(lineno)d] %(levelname)s %(message)s')
+        self.formatter = logging.Formatter('%(filename)s [line:%(lineno)d] %(levelname)s %(message)s')
 
     def console(self,level,message):
         fh = logging.FileHandler(self.logname,'a',encoding='utf-8')

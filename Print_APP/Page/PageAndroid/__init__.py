@@ -82,6 +82,6 @@ accept_button=(By.ID,'com.android.settings:id/pairing_accept_button')
 search=(By.ID,'com.nelko.printer:id/view_et_content')
 #模板尺寸列表
 templateSize=(By.ID,'com.nelko.printer:id/text_size')
-#现在尺寸的确定
+#选择尺寸的确定
 templateSize_sure=(By.ID,'com.nelko.printer:id/btn_selected')
 

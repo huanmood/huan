@@ -16,6 +16,7 @@ class TemplateTest(unittest.TestCase):
 
     @parameterized.expand(dev)
     def test_getTempleList(self, devIndex, devName):
+        print(devName)
         self.base.get_getCategory(devIndex, devName)
 
     @classmethod

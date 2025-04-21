@@ -6,11 +6,13 @@ import os
 import unittest
 from appium.webdriver.common.touch_action import TouchAction
 from selenium.webdriver.support.ui import WebDriverWait
-
 from selenium.webdriver.support import expected_conditions as EC
-
 from Page import PageAndroid
 from TestCase.TestAndroid.share_devices import thread_local
+import traceback
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
+
+from common.logger import Log
 
 cur_path = os.path.dirname(os.path.realpath(__file__))
 screenshot_path = os.path.join(os.path.dirname(cur_path), 'screenshots')
@@ -18,7 +20,7 @@ if not os.path.exists(screenshot_path): os.mkdir(screenshot_path)
 
 
 class Action(unittest.TestCase):
-
+    logger=Log()
     def __init__(self):
         self.driver = thread_local.driverName
         self.buttonElement = PageAndroid
@@ -26,25 +28,23 @@ class Action(unittest.TestCase):
     def find_element(self, loc):
         """重写查找元素方法"""
         try:
-            WebDriverWait(self.driver, 15).until(lambda driver: driver.find_element(*loc).is_displayed())
+            WebDriverWait(self.driver, 15).until(EC.visibility_of_element_located(loc))
             return self.driver.find_element(*loc)
-        except:
-            print('%s 页面中未能找到%s 元素' % (self, loc))
+        except TimeoutException:
+            self.logger.error(f"元素 {loc} 超时未找到")
+        except NoSuchElementException:
+            self.logger.error(f"元素 {loc} 不存在")
+        except Exception as e:
+            self.logger.error(f"其他错误: {e}")
+
     def find_elements(self, loc):
         """重写查找元素方法"""
         try:
             WebDriverWait(self.driver, 15).until(lambda driver: driver.find_element(*loc).is_displayed())
             return self.driver.find_elements(*loc)
-        except:
-            print('%s 页面中未能找到%s 元素' % (self, loc))
+        except Exception:
+            self.logger.error('%s 页面中未能找到%s 元素' % (self, loc))
 
-    # def find_elements(self, loc):
-    #     """重写查找元素方法"""
-    #     try:
-    #         WebDriverWait(self.driver, 15).until(lambda driver: driver.find_elements(*loc).is_displayed())
-    #         return self.driver.find_elements(*loc)
-    #     except:
-    #         print('%s 页面中未能找到%s 元素' % (self, loc))
     def clear_key(self, loc):
         """重写清空文本输入法"""
         time.sleep(1)
@@ -61,11 +61,10 @@ class Action(unittest.TestCase):
             # 尝试获取元素文本（兼容空文本情况）
             element_text = element.text if element.text else "[无可见文本]"
             # 打印定位器类型+定位值 + 元素文本
-            print(f"点击元素 => 定位方式: {loc[0]}, 定位值: {loc[1]}, 元素文本: {element_text}")
-        except Exception as e:
-            print(f"获取元素信息失败 => 定位方式: {loc[0]}, 定位值: {loc[1]}, 错误: {str(e)}")
-
-        element.click()  # 再执行点击
+            self.logger.debug(f"点击文本:{element_text}=>定位值: {loc[1]}, ")
+            element.click()  # 再执行点击
+        except:
+            self.logger.error(f"获取位置失败{loc[1]},点击事件执行失败")
 
     def back_button(self):
         """点击返回按钮"""
@@ -158,13 +157,14 @@ class Action(unittest.TestCase):
     # 软键盘执行搜索操作
     def search(self):
         self.driver.execute_script('mobile: performEditorAction', {'action': 'search'})
+
     def isConnect(self):
         if self.exists_element(self.buttonElement.myTemplate):
             print("现在位置是首页")
-            text=self.find_element(self.buttonElement.connectState)
-            if text.text=="已连接":
+            text = self.find_element(self.buttonElement.connectState)
+            if text.text == "已连接":
                 print("打印机已连接")
-            if text.text=='未连接':
+            if text.text == '未连接':
                 print("打印机未连接")
             return True
         else:

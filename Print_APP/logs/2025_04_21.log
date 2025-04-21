@@ -1,0 +1,309 @@
+2025-04-21 20:20:12,651 logger.py [line:37] DEBUG P21完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '地址', '其他']
+2025-04-21 20:20:12,651 logger.py [line:37] DEBUG P21完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '地址', '其他']
+2025-04-21 20:20:15,353 logger.py [line:37] DEBUG P21接口返回尺寸: ['14x40', '40x14', '40x15']
+2025-04-21 20:20:15,353 logger.py [line:37] DEBUG P21APP展示尺寸: ['14x40', '40x14', '40x15']
+2025-04-21 20:20:16,178 logger.py [line:37] DEBUG 获取到模板名称: 圣诞节
+2025-04-21 20:20:24,486 logger.py [line:37] DEBUG 名称比对: 原始[圣诞节] vs 搜索[圣诞节] 一致
+2025-04-21 20:20:30,078 logger.py [line:37] DEBUG 尺寸验证通过: 选择[40x14] ↔ 显示[40x14]
+2025-04-21 20:20:41,818 logger.py [line:37] DEBUG P31S完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '地址', '其他']
+2025-04-21 20:20:41,819 logger.py [line:37] DEBUG P31S完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '地址', '其他']
+2025-04-21 20:20:44,356 logger.py [line:37] DEBUG P31S接口返回尺寸: ['14x40', '40x14', '40x15']
+2025-04-21 20:20:44,356 logger.py [line:37] DEBUG P31SAPP展示尺寸: ['14x40', '40x14', '40x15']
+2025-04-21 20:20:45,115 logger.py [line:37] DEBUG 获取到模板名称: 圣诞节
+2025-04-21 20:20:53,430 logger.py [line:37] DEBUG 名称比对: 原始[圣诞节] vs 搜索[圣诞节] 一致
+2025-04-21 20:20:58,912 logger.py [line:37] DEBUG 尺寸验证通过: 选择[40x14] ↔ 显示[40x14]
+2025-04-21 20:21:11,487 logger.py [line:37] DEBUG PM220完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+2025-04-21 20:21:11,487 logger.py [line:37] DEBUG PM220完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+2025-04-21 20:21:14,235 logger.py [line:37] DEBUG PM220接口返回尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x80', '80x50']
+2025-04-21 20:21:14,236 logger.py [line:37] DEBUG PM220APP展示尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x80', '80x50']
+2025-04-21 20:21:14,980 logger.py [line:37] DEBUG 获取到模板名称: Back to school
+2025-04-21 20:21:21,496 logger.py [line:37] DEBUG 名称比对: 原始[Back to school] vs 搜索[Back to school] 一致
+2025-04-21 20:21:26,852 logger.py [line:37] DEBUG 尺寸验证通过: 选择[50x30] ↔ 显示[50x30]
+2025-04-21 20:21:39,144 logger.py [line:37] DEBUG PM220S完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+2025-04-21 20:21:39,144 logger.py [line:37] DEBUG PM220S完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+2025-04-21 20:21:41,818 logger.py [line:37] DEBUG PM220S接口返回尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x80', '80x50']
+2025-04-21 20:21:41,818 logger.py [line:37] DEBUG PM220SAPP展示尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x80', '80x50']
+2025-04-21 20:21:42,552 logger.py [line:37] DEBUG 获取到模板名称: Back to school
+2025-04-21 20:21:50,874 logger.py [line:37] DEBUG 名称比对: 原始[Back to school] vs 搜索[Back to school] 一致
+2025-04-21 20:21:56,796 logger.py [line:37] DEBUG 尺寸验证通过: 选择[50x30] ↔ 显示[50x30]
+2025-04-21 20:22:27,120 logger.py [line:37] DEBUG PM230完整API模板: ['存储', '零售', '工作', '名片', '待办清单', '便利贴', '艺术', '自然植物']
+2025-04-21 20:22:27,121 logger.py [line:37] DEBUG PM230完整APP模板: ['存储', '零售', '工作', '名片', '待办清单', '便利贴', '艺术', '自然植物']
+2025-04-21 20:22:29,981 logger.py [line:37] DEBUG PM230接口返回尺寸: ['115x54', '54x166', '54x24', '54x31', '54x35', '54x36', '54x37', '54x38', '54x41', '54x46', '54x47', '54x48', '54x50', '54x52', '54x54', '54x56', '54x58', '54x60', '54x62', '54x64', '54x67', '54x68', '54x70', '54x73', '54x74', '54x75', '54x76', '54x77', '54x79', '54x80', '54x85', '54x87', '54x90', '86x54']
+2025-04-21 20:22:29,981 logger.py [line:37] DEBUG PM230APP展示尺寸: ['115x54', '54x166', '54x24', '54x31', '54x35', '54x36', '54x37', '54x38', '54x41', '54x46', '54x47', '54x48', '54x50', '54x52', '54x54', '54x56', '54x58', '54x60', '54x62', '54x64', '54x67', '54x68', '54x70', '54x73', '54x74', '54x75', '54x76', '54x77', '54x79', '54x80', '54x85', '54x87', '54x90', '86x54']
+2025-04-21 20:22:30,819 logger.py [line:37] DEBUG 获取到模板名称: Flowers Rectangular Label
+2025-04-21 20:22:39,995 logger.py [line:37] DEBUG 名称比对: 原始[Flowers Rectangular Label] vs 搜索[Flowers Rectangular Label] 一致
+2025-04-21 20:23:02,332 logger.py [line:41] ERROR 测试失败: 'Template' object has no attribute '_testMethodName'
+2025-04-21 20:23:56,138 logger.py [line:37] DEBUG PL70e-BT完整API模板: ['存储', '零售', '文件', '条码', '地址']
+2025-04-21 20:23:56,138 logger.py [line:37] DEBUG PL70e-BT完整APP模板: ['存储', '零售', '文件', '条码', '地址']
+2025-04-21 20:23:58,737 logger.py [line:37] DEBUG PL70e-BT接口返回尺寸: ['102x57', '25x51', '51x25', '51x76', '57x32', '76x25', '76x51']
+2025-04-21 20:23:58,738 logger.py [line:37] DEBUG PL70e-BTAPP展示尺寸: ['102x57', '25x51', '51x25', '51x76', '57x32', '76x25', '76x51']
+2025-04-21 20:23:59,463 logger.py [line:37] DEBUG 获取到模板名称: Product inventory 
+2025-04-21 20:24:08,041 logger.py [line:37] DEBUG 名称比对: 原始[Product inventory ] vs 搜索[Product inventory ] 一致
+2025-04-21 20:24:13,275 logger.py [line:37] DEBUG 尺寸验证通过: 选择[76x51] ↔ 显示[76x51]
+2025-04-21 20:24:25,416 logger.py [line:37] DEBUG PM360完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+2025-04-21 20:24:25,416 logger.py [line:37] DEBUG PM360完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+2025-04-21 20:24:28,116 logger.py [line:37] DEBUG PM360接口返回尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x40', '70x80', '80x50', '80x70']
+2025-04-21 20:24:28,116 logger.py [line:37] DEBUG PM360APP展示尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x40', '70x80', '80x50', '80x70']
+2025-04-21 20:24:28,836 logger.py [line:37] DEBUG 获取到模板名称: Back to school
+2025-04-21 20:24:37,075 logger.py [line:37] DEBUG 名称比对: 原始[Back to school] vs 搜索[Back to school] 一致
+2025-04-21 20:24:43,194 logger.py [line:37] DEBUG 尺寸验证通过: 选择[50x30] ↔ 显示[50x30]
+2025-04-21 20:24:55,721 logger.py [line:37] DEBUG P22完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '其他']
+2025-04-21 20:24:55,722 logger.py [line:37] DEBUG P22完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '其他']
+2025-04-21 20:24:58,431 logger.py [line:37] DEBUG P22接口返回尺寸: ['14x40', '40x14', '40x15']
+2025-04-21 20:24:58,431 logger.py [line:37] DEBUG P22APP展示尺寸: ['14x40', '40x14', '40x15']
+2025-04-21 20:24:59,206 logger.py [line:37] DEBUG 获取到模板名称: 圣诞节
+2025-04-21 20:25:07,420 logger.py [line:37] DEBUG 名称比对: 原始[圣诞节] vs 搜索[圣诞节] 一致
+2025-04-21 20:25:12,837 logger.py [line:37] DEBUG 尺寸验证通过: 选择[40x14] ↔ 显示[40x14]
+2025-04-21 20:26:02,284 logger.py [line:37] DEBUG PL80E完整API模板: ['存储', '零售', '文件', '条码', '地址']
+2025-04-21 20:26:02,284 logger.py [line:37] DEBUG PL80E完整APP模板: ['存储', '零售', '文件', '条码', '地址']
+2025-04-21 20:26:05,627 logger.py [line:37] DEBUG PL80E接口返回尺寸: ['102x57', '25x51', '51x25', '51x76', '57x32', '76x25', '76x51']
+2025-04-21 20:26:05,627 logger.py [line:37] DEBUG PL80EAPP展示尺寸: ['102x57', '25x51', '51x25', '51x76', '57x32', '76x25', '76x51']
+2025-04-21 20:26:06,327 logger.py [line:37] DEBUG 获取到模板名称: Product inventory 
+2025-04-21 20:26:14,498 logger.py [line:37] DEBUG 名称比对: 原始[Product inventory ] vs 搜索[Product inventory ] 一致
+2025-04-21 20:26:20,941 logger.py [line:37] DEBUG 尺寸验证通过: 选择[76x51] ↔ 显示[76x51]
+logger.py [line:37] DEBUG P21所有模板类型与接口返回一致
+logger.py [line:37] DEBUG P21完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '地址', '其他']
+logger.py [line:37] DEBUG P21完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '地址', '其他']
+logger.py [line:37] DEBUG P21接口返回尺寸: ['14x40', '40x14', '40x15']
+logger.py [line:37] DEBUG P21APP展示尺寸: ['14x40', '40x14', '40x15']
+logger.py [line:37] DEBUG 获取到模板名称: 圣诞节
+logger.py [line:37] DEBUG 名称比对: 原始[圣诞节] vs 搜索[圣诞节] 一致
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[40x14] ↔ 显示[40x14]
+logger.py [line:37] DEBUG P31S所有模板类型与接口返回一致
+logger.py [line:37] DEBUG P31S完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '地址', '其他']
+logger.py [line:37] DEBUG P31S完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '地址', '其他']
+logger.py [line:37] DEBUG P31S接口返回尺寸: ['14x40', '40x14', '40x15']
+logger.py [line:37] DEBUG P31SAPP展示尺寸: ['14x40', '40x14', '40x15']
+logger.py [line:37] DEBUG 获取到模板名称: 圣诞节
+logger.py [line:37] DEBUG 名称比对: 原始[圣诞节] vs 搜索[圣诞节] 一致
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[40x14] ↔ 显示[40x14]
+logger.py [line:37] DEBUG PM220所有模板类型与接口返回一致
+logger.py [line:37] DEBUG PM220完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+logger.py [line:37] DEBUG PM220完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+logger.py [line:37] DEBUG PM220接口返回尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x80', '80x50']
+logger.py [line:37] DEBUG PM220APP展示尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x80', '80x50']
+logger.py [line:37] DEBUG 获取到模板名称: Back to school
+logger.py [line:37] DEBUG 名称比对: 原始[Back to school] vs 搜索[Back to school] 一致
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[50x30] ↔ 显示[50x30]
+logger.py [line:37] DEBUG PM220S所有模板类型与接口返回一致
+logger.py [line:37] DEBUG PM220S完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+logger.py [line:37] DEBUG PM220S完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+logger.py [line:37] DEBUG PM220S接口返回尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x80', '80x50']
+logger.py [line:37] DEBUG PM220SAPP展示尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x80', '80x50']
+logger.py [line:37] DEBUG 获取到模板名称: Back to school
+logger.py [line:37] DEBUG 名称比对: 原始[Back to school] vs 搜索[Back to school] 一致
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[50x30] ↔ 显示[50x30]
+logger.py [line:37] DEBUG PM230所有模板类型与接口返回一致
+logger.py [line:37] DEBUG PM230完整API模板: ['存储', '零售', '工作', '名片', '待办清单', '便利贴', '艺术', '自然植物']
+logger.py [line:37] DEBUG PM230完整APP模板: ['存储', '零售', '工作', '名片', '待办清单', '便利贴', '艺术', '自然植物']
+logger.py [line:37] DEBUG PM230接口返回尺寸: ['115x54', '54x166', '54x24', '54x31', '54x35', '54x36', '54x37', '54x38', '54x41', '54x46', '54x47', '54x48', '54x50', '54x52', '54x54', '54x56', '54x58', '54x60', '54x62', '54x64', '54x67', '54x68', '54x70', '54x73', '54x74', '54x75', '54x76', '54x77', '54x79', '54x80', '54x85', '54x87', '54x90', '86x54']
+logger.py [line:37] DEBUG PM230APP展示尺寸: ['115x54', '54x166', '54x24', '54x31', '54x35', '54x36', '54x37', '54x38', '54x41', '54x46', '54x47', '54x48', '54x50', '54x52', '54x54', '54x56', '54x58', '54x60', '54x62', '54x64', '54x67', '54x68', '54x70', '54x73', '54x74', '54x75', '54x76', '54x77', '54x79', '54x80', '54x85', '54x87', '54x90', '86x54']
+logger.py [line:37] DEBUG 获取到模板名称: Flowers Rectangular Label
+logger.py [line:37] DEBUG 名称比对: 原始[Flowers Rectangular Label] vs 搜索[Flowers Rectangular Label] 一致
+logger.py [line:41] ERROR 测试失败: 'Template' object has no attribute '_testMethodName'
+logger.py [line:37] DEBUG PL70e-BT所有模板类型与接口返回一致
+logger.py [line:37] DEBUG PL70e-BT完整API模板: ['存储', '零售', '文件', '条码', '地址']
+logger.py [line:37] DEBUG PL70e-BT完整APP模板: ['存储', '零售', '文件', '条码', '地址']
+logger.py [line:37] DEBUG PL70e-BT接口返回尺寸: ['102x57', '25x51', '51x25', '51x76', '57x32', '76x25', '76x51']
+logger.py [line:37] DEBUG PL70e-BTAPP展示尺寸: ['102x57', '25x51', '51x25', '51x76', '57x32', '76x25', '76x51']
+logger.py [line:37] DEBUG 获取到模板名称: Product inventory 
+logger.py [line:37] DEBUG 名称比对: 原始[Product inventory ] vs 搜索[Product inventory ] 一致
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[76x51] ↔ 显示[76x51]
+logger.py [line:37] DEBUG PM360所有模板类型与接口返回一致
+logger.py [line:37] DEBUG PM360完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+logger.py [line:37] DEBUG PM360完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+logger.py [line:37] DEBUG PM360接口返回尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x40', '70x80', '80x50', '80x70']
+logger.py [line:37] DEBUG PM360APP展示尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x40', '70x80', '80x50', '80x70']
+logger.py [line:37] DEBUG 获取到模板名称: Back to school
+logger.py [line:37] DEBUG 名称比对: 原始[Back to school] vs 搜索[Back to school] 一致
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[50x30] ↔ 显示[50x30]
+logger.py [line:37] DEBUG P22所有模板类型与接口返回一致
+logger.py [line:37] DEBUG P22完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '其他']
+logger.py [line:37] DEBUG P22完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '其他']
+logger.py [line:37] DEBUG P22接口返回尺寸: ['14x40', '40x14', '40x15']
+logger.py [line:37] DEBUG P22APP展示尺寸: ['14x40', '40x14', '40x15']
+logger.py [line:37] DEBUG 获取到模板名称: 圣诞节
+logger.py [line:37] DEBUG 名称比对: 原始[圣诞节] vs 搜索[圣诞节] 一致
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[40x14] ↔ 显示[40x14]
+logger.py [line:37] DEBUG PL80E所有模板类型与接口返回一致
+logger.py [line:37] DEBUG PL80E完整API模板: ['存储', '零售', '文件', '条码', '地址']
+logger.py [line:37] DEBUG PL80E完整APP模板: ['存储', '零售', '文件', '条码', '地址']
+logger.py [line:37] DEBUG PL80E接口返回尺寸: ['102x57', '25x51', '51x25', '51x76', '57x32', '76x25', '76x51']
+logger.py [line:37] DEBUG PL80EAPP展示尺寸: ['102x57', '25x51', '51x25', '51x76', '57x32', '76x25', '76x51']
+logger.py [line:37] DEBUG 获取到模板名称: Product inventory 
+logger.py [line:37] DEBUG 名称比对: 原始[Product inventory ] vs 搜索[Product inventory ] 一致
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[76x51] ↔ 显示[76x51]
+logger.py [line:37] DEBUG P21所有模板类型与接口返回一致
+logger.py [line:37] DEBUG P21完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '地址', '其他']
+logger.py [line:37] DEBUG P21完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '地址', '其他']
+logger.py [line:37] DEBUG P21接口返回尺寸: ['14x40', '40x14', '40x15']
+logger.py [line:37] DEBUG P21APP展示尺寸: ['14x40', '40x14', '40x15']
+logger.py [line:37] DEBUG 获取到模板名称: 圣诞节
+logger.py [line:41] ERROR 测试失败: 'NoneType' object has no attribute 'clear'
+logger.py [line:41] ERROR 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+logger.py [line:41] ERROR 获取元素位置失败 => 定位值: com.nelko.printer:id/tv_printer_model,点击事件执行失败
+logger.py [line:41] ERROR 元素 ('xpath', '(//android.widget.RelativeLayout[@resource-id="com.nelko.printer:id/rela"])[1]') 超时未找到
+logger.py [line:41] ERROR 获取元素位置失败 => 定位值: (//android.widget.RelativeLayout[@resource-id="com.nelko.printer:id/rela"])[1],点击事件执行失败
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_printer_model, 元素文本: P21
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.RelativeLayout[@resource-id="com.nelko.printer:id/rela"])[1], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_ok, 元素文本: 确定
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG P21所有模板类型与接口返回一致
+logger.py [line:37] DEBUG P21完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '地址', '其他']
+logger.py [line:37] DEBUG P21完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '地址', '其他']
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG P21接口返回尺寸: ['14x40', '40x14', '40x15']
+logger.py [line:37] DEBUG P21APP展示尺寸: ['14x40', '40x14', '40x15']
+logger.py [line:37] DEBUG 获取到模板名称: 圣诞节
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 搜索
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 请输入搜索内容
+logger.py [line:37] DEBUG 名称比对: 原始[圣诞节] vs 搜索[圣诞节] 一致
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG 点击元素 =>定位值: //android.widget.CheckBox[@text="40x14"], 元素文本: 40x14
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/btn_selected, 元素文本: 确定
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[40x14] ↔ 显示[40x14]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_printer_model, 元素文本: P21
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.RelativeLayout[@resource-id="com.nelko.printer:id/rela"])[2], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_ok, 元素文本: 确定
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG P31S所有模板类型与接口返回一致
+logger.py [line:37] DEBUG P31S完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '地址', '其他']
+logger.py [line:37] DEBUG P31S完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '地址', '其他']
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG P31S接口返回尺寸: ['14x40', '40x14', '40x15']
+logger.py [line:37] DEBUG P31SAPP展示尺寸: ['14x40', '40x14', '40x15']
+logger.py [line:37] DEBUG 获取到模板名称: 圣诞节
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 搜索
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 请输入搜索内容
+logger.py [line:37] DEBUG 名称比对: 原始[圣诞节] vs 搜索[圣诞节] 一致
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG 点击元素 =>定位值: //android.widget.CheckBox[@text="40x14"], 元素文本: 40x14
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/btn_selected, 元素文本: 确定
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[40x14] ↔ 显示[40x14]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_printer_model, 元素文本: P31S
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.RelativeLayout[@resource-id="com.nelko.printer:id/rela"])[3], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_ok, 元素文本: 确定
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG PM220所有模板类型与接口返回一致
+logger.py [line:37] DEBUG PM220完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+logger.py [line:37] DEBUG PM220完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG PM220接口返回尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x80', '80x50']
+logger.py [line:37] DEBUG PM220APP展示尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x80', '80x50']
+logger.py [line:37] DEBUG 获取到模板名称: Back to school
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 搜索
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 请输入搜索内容
+logger.py [line:37] DEBUG 名称比对: 原始[Back to school] vs 搜索[Back to school] 一致
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG 点击元素 =>定位值: //android.widget.CheckBox[@text="50x30"], 元素文本: 50x30
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/btn_selected, 元素文本: 确定
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[50x30] ↔ 显示[50x30]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_printer_model, 元素文本: PM220
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.RelativeLayout[@resource-id="com.nelko.printer:id/rela"])[2], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_ok, 元素文本: 确定
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG PM220S所有模板类型与接口返回一致
+logger.py [line:37] DEBUG PM220S完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+logger.py [line:37] DEBUG PM220S完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG PM220S接口返回尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x80', '80x50']
+logger.py [line:37] DEBUG PM220SAPP展示尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x80', '80x50']
+logger.py [line:37] DEBUG 获取到模板名称: Back to school
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 搜索
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 请输入搜索内容
+logger.py [line:37] DEBUG 名称比对: 原始[Back to school] vs 搜索[Back to school] 一致
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG 点击元素 =>定位值: //android.widget.CheckBox[@text="50x30"], 元素文本: 50x30
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/btn_selected, 元素文本: 确定
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[50x30] ↔ 显示[50x30]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_printer_model, 元素文本: PM220S
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.RelativeLayout[@resource-id="com.nelko.printer:id/rela"])[3], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_ok, 元素文本: 确定
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[2], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG PM230所有模板类型与接口返回一致
+logger.py [line:37] DEBUG PM230完整API模板: ['存储', '零售', '工作', '名片', '待办清单', '便利贴', '艺术', '自然植物']
+logger.py [line:37] DEBUG PM230完整APP模板: ['存储', '零售', '工作', '名片', '待办清单', '便利贴', '艺术', '自然植物']
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG PM230接口返回尺寸: ['115x54', '54x166', '54x24', '54x31', '54x35', '54x36', '54x37', '54x38', '54x41', '54x46', '54x47', '54x48', '54x50', '54x52', '54x54', '54x56', '54x58', '54x60', '54x62', '54x64', '54x67', '54x68', '54x70', '54x73', '54x74', '54x75', '54x76', '54x77', '54x79', '54x80', '54x85', '54x87', '54x90', '86x54']
+logger.py [line:37] DEBUG PM230APP展示尺寸: ['115x54', '54x166', '54x24', '54x31', '54x35', '54x36', '54x37', '54x38', '54x41', '54x46', '54x47', '54x48', '54x50', '54x52', '54x54', '54x56', '54x58', '54x60', '54x62', '54x64', '54x67', '54x68', '54x70', '54x73', '54x74', '54x75', '54x76', '54x77', '54x79', '54x80', '54x85', '54x87', '54x90', '86x54']
+logger.py [line:37] DEBUG 获取到模板名称: Flowers Rectangular Label
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 搜索
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 请输入搜索内容
+logger.py [line:37] DEBUG 名称比对: 原始[Flowers Rectangular Label] vs 搜索[Flowers Rectangular Label] 一致
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG 点击元素 =>定位值: //android.widget.CheckBox[@text="115x54"], 元素文本: 115x54
+logger.py [line:41] ERROR 元素 ('id', 'com.nelko.printer:id/btn_selected') 超时未找到
+logger.py [line:41] ERROR 获取元素位置失败 => 定位值: com.nelko.printer:id/btn_selected,点击事件执行失败
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[115x54] ↔ 显示[115x54]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_printer_model, 元素文本: PM230
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.RelativeLayout[@resource-id="com.nelko.printer:id/rela"])[2], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_ok, 元素文本: 确定
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[2], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG PL70e-BT所有模板类型与接口返回一致
+logger.py [line:37] DEBUG PL70e-BT完整API模板: ['存储', '零售', '文件', '条码', '地址']
+logger.py [line:37] DEBUG PL70e-BT完整APP模板: ['存储', '零售', '文件', '条码', '地址']
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG PL70e-BT接口返回尺寸: ['102x57', '25x51', '51x25', '51x76', '57x32', '76x25', '76x51']
+logger.py [line:37] DEBUG PL70e-BTAPP展示尺寸: ['102x57', '25x51', '51x25', '51x76', '57x32', '76x25', '76x51']
+logger.py [line:37] DEBUG 获取到模板名称: Product inventory 
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 搜索
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 请输入搜索内容
+logger.py [line:37] DEBUG 名称比对: 原始[Product inventory ] vs 搜索[Product inventory ] 一致
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG 点击元素 =>定位值: //android.widget.CheckBox[@text="76x51"], 元素文本: 76x51
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/btn_selected, 元素文本: 确定
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[76x51] ↔ 显示[76x51]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_printer_model, 元素文本: PL70e-BT
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.RelativeLayout[@resource-id="com.nelko.printer:id/rela"])[3], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_ok, 元素文本: 确定
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG PM360所有模板类型与接口返回一致
+logger.py [line:37] DEBUG PM360完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+logger.py [line:37] DEBUG PM360完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG PM360接口返回尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x40', '70x80', '80x50', '80x70']
+logger.py [line:37] DEBUG PM360APP展示尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '60x40', '70x40', '70x80', '80x50', '80x70']
+logger.py [line:37] DEBUG 获取到模板名称: Back to school
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 搜索
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 请输入搜索内容
+logger.py [line:37] DEBUG 名称比对: 原始[Back to school] vs 搜索[Back to school] 一致
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG 点击元素 =>定位值: //android.widget.CheckBox[@text="50x30"], 元素文本: 50x30
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/btn_selected, 元素文本: 确定
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[50x30] ↔ 显示[50x30]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_printer_model, 元素文本: PM360
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.RelativeLayout[@resource-id="com.nelko.printer:id/rela"])[2], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_ok, 元素文本: 确定
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG P22所有模板类型与接口返回一致
+logger.py [line:37] DEBUG P22完整API模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '其他']
+logger.py [line:37] DEBUG P22完整APP模板: ['存储', '零售', '工作', '名字', '医疗', '祝福', '开关', '课程', '其他']
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG P22接口返回尺寸: ['14x40', '40x14', '40x15']
+logger.py [line:37] DEBUG P22APP展示尺寸: ['14x40', '40x14', '40x15']
+logger.py [line:37] DEBUG 获取到模板名称: 圣诞节
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 搜索
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 请输入搜索内容
+logger.py [line:37] DEBUG 名称比对: 原始[圣诞节] vs 搜索[圣诞节] 一致
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG 点击元素 =>定位值: //android.widget.CheckBox[@text="40x14"], 元素文本: 40x14
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/btn_selected, 元素文本: 确定
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[40x14] ↔ 显示[40x14]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_printer_model, 元素文本: P22
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.RelativeLayout[@resource-id="com.nelko.printer:id/rela"])[3], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/tv_ok, 元素文本: 确定
+logger.py [line:37] DEBUG 点击元素 =>定位值: (//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[2], 元素文本: [无可见文本]
+logger.py [line:37] DEBUG PL80E所有模板类型与接口返回一致
+logger.py [line:37] DEBUG PL80E完整API模板: ['存储', '零售', '文件', '条码', '地址']
+logger.py [line:37] DEBUG PL80E完整APP模板: ['存储', '零售', '文件', '条码', '地址']
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG PL80E接口返回尺寸: ['102x57', '25x51', '51x25', '51x76', '57x32', '76x25', '76x51']
+logger.py [line:37] DEBUG PL80EAPP展示尺寸: ['102x57', '25x51', '51x25', '51x76', '57x32', '76x25', '76x51']
+logger.py [line:37] DEBUG 获取到模板名称: Product inventory 
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 搜索
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/view_et_content, 元素文本: 请输入搜索内容
+logger.py [line:37] DEBUG 名称比对: 原始[Product inventory ] vs 搜索[Product inventory ] 一致
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/text_size, 元素文本: 全部尺寸
+logger.py [line:37] DEBUG 点击元素 =>定位值: //android.widget.CheckBox[@text="76x51"], 元素文本: 76x51
+logger.py [line:37] DEBUG 点击元素 =>定位值: com.nelko.printer:id/btn_selected, 元素文本: 确定
+logger.py [line:37] DEBUG 尺寸验证通过: 选择[76x51] ↔ 显示[76x51]

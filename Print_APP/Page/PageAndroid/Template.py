@@ -1,5 +1,6 @@
 import random
 import time
+import traceback
 
 import requests
 from selenium.webdriver.common.by import By
@@ -146,15 +147,12 @@ class Template(Action):
         # 验证搜索结果(模板尺寸)
         searched_size = self.find_element(SIEZ_NAME_LOCATOR).text
         cleaned_size = searched_size.replace('(', '').replace(')', '').replace('mm', '').replace(' ', '')
-        print(cleaned_size)
         # --- 第二部分：尺寸筛选验证 ---
         # 打开尺寸选择弹窗
         self.click_button(self.buttonElement.templateSize)
         # 选择特定尺寸
         self.click_button((By.XPATH, f'//android.widget.CheckBox[@text="{cleaned_size}"]'))
         self.click_button(self.buttonElement.templateSize_sure)
-        time.sleep(3)
-
         # 验证显示的尺寸
         a, b = cleaned_size.split('x')
         if cleaned_size in (f"{a}x{b}", f"{b}x{a}"):
@@ -186,9 +184,9 @@ class Template(Action):
             print(f"{devName}所有模板类型与接口返回一致")
         else:
             if diff_in_api:
-                print(f"{devName}模板类型在接口但不在APP中: {', '.join(diff_in_api)}")
+                self.log.error(f"{devName}模板类型在接口但不在APP中: {', '.join(diff_in_api)}")
             if diff_in_app:
-                print(f"{devName}模板类型在APP但不在接口中: {', '.join(diff_in_app)}")
+                self.log.error(f"{devName}模板类型在APP但不在接口中: {', '.join(diff_in_app)}")
 
         self.log.debug(f"{devName}完整API模板: {api_templates}")
         self.log.debug(f"{devName}完整APP模板: {app_templates}")

@@ -17,9 +17,9 @@ import unittest
 from Page.PageAndroid.Banner import Banner
 from common.logger import Log
 
-app_banner = r'D:\test\Print_APP\screenshots\app_banner'
+app_banner = r'D:\huan\Print_APP\screenshots\app_banner'
 
-jieko_banner = r'D:\test\Print_APP\screenshots\jieko_banner'
+jieko_banner = r'D:\huan\Print_APP\screenshots\jieko_banner'
 
 
 class BannerTest(unittest.TestCase):
