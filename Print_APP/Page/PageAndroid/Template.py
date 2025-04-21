@@ -49,12 +49,12 @@ DEVICE_TEMPLATE_MAPPING = {
         "position": 2,
         "special_handlers": [
             {
-                "element": "replacePrintPaper",
-                "action": "know"
-            },
-            {
                 "element": "moreFeatures",
                 "action": "sure"
+            },
+            {
+                "element": "replacePrintPaper",
+                "action": "know"
             }
         ]
     },
@@ -240,17 +240,26 @@ class Template(Action):
         self.click_button(PageAndroid.deviceConfirm)
 
     def _handle_device_template(self, devName):
+        F = '•'
+        i = 1
         """处理设备特定模板"""
         device_config = DEVICE_TEMPLATE_MAPPING.get(devName)
         if not device_config:
             raise ValueError(f"未知设备: {devName}")
-
         # 处理特殊操作（如弹窗等）
         if "special_handlers" in device_config:
+            print(f"正在查找是否有引导提示中", end='')
             for handler in device_config["special_handlers"]:
+                print(f"{F * i}", end='')
                 element = getattr(self.buttonElement, handler["element"])
                 if self.exists_element(element):
+                    print('\n')
                     getattr(self, f"click_button")(getattr(self.buttonElement, handler["action"]))
+                else:
+                    i+=5
+
+
+
         # 点击模板
         self.click_button(device_config["template_locator"])
 
@@ -294,4 +303,3 @@ class Template(Action):
 
             self.log.debug(f"{devName}完整API模板: {api_templates}")
             self.log.debug(f"{devName}完整APP模板: {app_templates}")
-

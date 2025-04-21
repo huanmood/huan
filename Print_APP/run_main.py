@@ -25,7 +25,6 @@ cur_path = os.path.dirname(os.path.realpath(__file__))
 
 def add_case(devices_data_file, testPyName):  # 第一个参数是（json文件名）用于获取不同手机的版本号，第二个参数是（测试用例的包名）
     devices_data = read_json_nokey(devices_data_file)
-    print("devi ces_data:::", devices_data)
     data = read_caps(caps_path=caps_path)
     desired_caps = {
         'platformName': data['platformName'],
@@ -53,7 +52,7 @@ if __name__ == '__main__':
     threads = []
     # 方式2
     matched_file_names = [
-        ["Android_12.json", r"D:\huan\Print_APP\TestCase\TestAndroid\index"]
+        ["Android_12.json", r"D:\huan\huan\Print_APP\TestCase\TestAndroid\index"]
         # ["Android_11.json", r"D:\test\Print_APP\TestCase\TestAndroid\mypage"]
     ]
     # 方式1
