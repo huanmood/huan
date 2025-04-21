@@ -1,0 +1,11 @@
+platformName: Android
+# 真机
+noReset: True
+noSign: True
+unicodeKeyBoard: True
+resetKeyboard: True
+appPackage: com.nelko.printer
+appActivity: com.print.android.zhprint.home.SplashActivity
+ip: 172.16.130.63
+#公司ip：172.16.130.63
+#笔记本ip：192.168.184.252

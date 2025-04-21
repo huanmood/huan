@@ -1,0 +1,16 @@
+{
+  "add_device": [
+    {
+      "desc": "安卓14系统_修改注意同步修改deviceName",
+      "deviceName": "28141JEGR06776",
+      "platformVersion": "14",
+      "port": "4723"
+    },
+    {
+      "desc": "安卓14系统_修改注意同步修改deviceName",
+      "deviceName": "a12b830d",
+      "platformVersion": "11",
+      "port": "4726"
+    }
+  ]
+}

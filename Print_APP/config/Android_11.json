@@ -1,0 +1,10 @@
+{
+  "add_device": [
+    {
+      "desc": "安卓14系统_修改注意同步修改deviceName",
+      "platformVersion": "11",
+      "deviceName": "a12b830d",
+      "port": "4723"
+    }
+  ]
+}
