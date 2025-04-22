@@ -22,7 +22,7 @@ def read_json(filename, key):
 
 def read_json_nokey(filename):
     file_path = config.DIR_PATH + os.sep + filename
-    print(file_path)
+    print(f"当前读取的手机配置路径：{file_path},当前读取APP包信息路径：同级目录下的android_caps.yaml文件")
     arrs = []
     with open(file_path, "r", encoding="utf-8") as f:
         for data in json.load(f).get("add_device"):

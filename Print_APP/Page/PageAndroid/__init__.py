@@ -27,7 +27,7 @@ myTemplate=(By.XPATH,'//android.widget.TextView[@resource-id="com.nelko.printer:
 # 点击登录/用户名称
 username_button_loc = ('id', 'com.nelko.printer:id/text_user_name')
 # 首页连接
-Homepage_connect = (By.XPATH, '//android.view.ViewGroup[@resource-id="com.nelko.printer:id/constraint"]/android.widget.LinearLayout[2]')
+Homepage_connect = (By.ID, 'com.nelko.printer:id/tv_connect')
 '''登录页面'''
 # 邮箱
 email_loc = ('id', 'com.nelko.printer:id/edit_email')
@@ -54,9 +54,9 @@ firstDownload_UserAgreementPrivacyPolicy = (By.ID, 'com.nelko.printer:id/tv_ui_t
 # 同意
 firstDownload_sure = (By.ID, 'com.nelko.printer:id/tv_ui_confirm')
 # 稍后连接
-firstDownload_afterConnect = (By.XPATH, '//android.widget.TextView[@resource-id="com.nelko.printer:id/connect_later_tv"]')
+firstDownload_afterConnect = (By.ID, 'com.nelko.printer:id/connect_later_tv')
 # 选择机型处的确认
-firstDownload_confirm = (By.XPATH, '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_ok"]')
+firstDownload_confirm = (By.ID, 'com.nelko.printer:id/tv_ok')
 # 首次下载获取权限页面：跳过
 skip = (By.ID, 'com.nelko.printer:id/iv_back')
 # 我知道了
@@ -64,17 +64,21 @@ connect_Dev_know = (By.ID, 'com.nelko.printer:id/hint_more_btn_ok')
 
 
 '''连接页面'''
-# 连接页面：使用时允许
-connectPage_Allow_in_use = (By.XPATH, '//android.widget.Button[@resource-id="com.android.permissioncontroller:id/permission_allow_button"]')
-connectPage_accredit = (By.XPATH, '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_sure"]')
+#连接附件的设备->始终允许
+connectPage_Allow_in_use = (By.ID, 'com.lbe.security.miui:id/permission_allow_button_1')
+#授权
+connectPage_shouquan=(By.ID,'com.nelko.printer:id/tv_sure')
 # 顶部排序连接
 connectPage_title = (By.XPATH, '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_title"]')
+#刷新
 connectPage_refresh = (By.XPATH, '//android.widget.TextView[@text="刷新"]')
-# 连接页面授权
-accredit = (By.XPATH, '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_sure"]')
+#连接失败
+connectFaile=(By.ID,'com.nelko.printer:id/tv_title')
+#连接失败->确认
+connectFaile_sure=(By.ID,'com.nelko.printer:id/tv_sure')
 #要与***配对吗？
 alertTitle=(By.ID,'com.android.settings:id/alertTitle')
-#配对
+#要与***配对吗？->配对
 accept_button=(By.ID,'com.android.settings:id/pairing_accept_button')
 
 '''模板'''

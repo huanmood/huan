@@ -6,13 +6,11 @@ from Page.BasePage import Action
 from common.logger import Log
 
 
-class TestMathOperations(Action):
+class Connect(Action):
     log = Log()
 
     def connect(self, deviceName, deviceMac):
-        a = self.buttonElement.Homepage_connect
-        self.connectButton = self.wait_for_element(a)
-        self.connectButton.click()
+        self.click_button(self.buttonElement.Homepage_connect)
         self.first_connect()
         connectTitle = self.find_element(self.buttonElement.connectPage_title)
         deviceMacs = (By.XPATH,f'//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_ble_address" and @text="{deviceMac}"]')

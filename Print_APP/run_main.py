@@ -40,10 +40,10 @@ def add_case(devices_data_file, testPyName):  # 第一个参数是（json文件�
     thread_local.driverName = driver
     test_loader = unittest.TestLoader()
     # 加载测试用例方式1（同一个包不同py名称）
-    # testPyName1 = os.path.splitext(testPyName)[0]
-    # test_suite = test_loader.loadTestsFromName(testPyName1)
+    testPyName1 = os.path.splitext(testPyName)[0]
+    test_suite = test_loader.loadTestsFromName(testPyName1)
     # 加载测试用例方式2（不同包）
-    test_suite = test_loader.discover(testPyName, pattern='test_*.py')
+    # test_suite = test_loader.discover(testPyName, pattern='test_*.py')
     test_runner = unittest.TextTestRunner()
     test_runner.run(test_suite)
 
@@ -51,16 +51,16 @@ def add_case(devices_data_file, testPyName):  # 第一个参数是（json文件�
 if __name__ == '__main__':
     threads = []
     # 方式2
-    matched_file_names = [
-        ["Android_12.json", r"D:\huan\huan\Print_APP\TestCase\TestAndroid\index"]
-        # ["Android_11.json", r"D:\test\Print_APP\TestCase\TestAndroid\mypage"]
-    ]
-    # 方式1
     # matched_file_names = [
-    #     ["Android_12.json", "TestCase.TestAndroid.index.test_Template.py"],
-    #     ["Android_11.json", "TestCase.TestAndroid.index.AiPrint.py"]
-    #
+    #     ["Android_12.json", r"D:\huan\huan\Print_APP\TestCase\TestAndroid\index"]
+    #     # ["Android_11.json", r"D:\test\Print_APP\TestCase\TestAndroid\mypage"]
     # ]
+    # 方式1
+    matched_file_names = [
+        ["Android_12.json", "TestCase.TestAndroid.index.test_Connect.py"]
+        # ["Android_11.json", "TestCase.TestAndroid.index.test_AiPrint.py"]
+
+    ]
     for i in matched_file_names:
         thread = threading.Thread(target=add_case, args=(i[0], i[1]))
         threads.append(thread)

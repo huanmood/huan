@@ -102,21 +102,22 @@ from selenium.webdriver.common.by import By
 # a=['14x40', '40x14', '40x15']
 # raNum=random.randint(0,len(a))
 # print(raNum)
-import logging
-logger = logging.getLogger('my.logger.namespace')
-
-fh = logging.FileHandler('test.log')  # 可以向文件发送日志
-
-ch = logging.StreamHandler()  # 可以向屏幕发送日志
-
-fm = logging.Formatter('%(asctime)s %(message)s')  # 打印格式
-
-fh.setFormatter(fm)
-ch.setFormatter(fm)
-
-logger.addHandler(fh)
-logger.addHandler(ch)
-logger.setLevel(logging.ERROR)  # 设置级别
-
-
-logger.error('debug 喜喜')
+# import logging
+# logger = logging.getLogger('my.logger.namespace')
+#
+# fh = logging.FileHandler('test.log')  # 可以向文件发送日志
+#
+# ch = logging.StreamHandler()  # 可以向屏幕发送日志
+#
+# fm = logging.Formatter('%(asctime)s %(message)s')  # 打印格式
+#
+# fh.setFormatter(fm)
+# ch.setFormatter(fm)
+#
+# logger.addHandler(fh)
+# logger.addHandler(ch)
+# logger.setLevel(logging.ERROR)  # 设置级别
+#
+#
+# logger.error('debug 喜喜')
+print('\na')

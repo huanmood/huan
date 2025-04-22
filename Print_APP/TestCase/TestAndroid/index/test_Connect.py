@@ -2,16 +2,16 @@ import unittest
 
 from parameterized import parameterized
 
-from Page.PageAndroid.Connect import TestMathOperations
+from Page.PageAndroid.Connect import Connect
 
 devices = [
-    ("PM230", "8A:BF:99:4D:F7:AB")
+    ("PM230", "11:FB:AF:F5:6F:52")
 ]
 
 
-class connectTest(unittest.TestCase):
+class ConnectTest(unittest.TestCase):
     def setUp(self):
-        self.base = TestMathOperations()
+        self.base = Connect()
         self.base.firstDownload_open()
 
     @parameterized.expand(devices)

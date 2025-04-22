@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 
 from Page import PageAndroid
@@ -6,39 +8,39 @@ from Page.BasePage import Action
 DEVICE_TEMPLATE_MAPPING = {
     # 模板位置位于首页第1个位置的设备
     "P21": {
-        "template_locator": (
+        "AiPrint_locator": (
             By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[3]'),
         "position": 1
     },
     "P31S": {
-        "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1]'),
+        "AiPrint_locator": (
+            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[2]'),
         "position": 1
     },
     "PM220": {
-        "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1]'),
+        "AiPrint_locator": (
+            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[3]'),
         "position": 1
     },
     "PM220S": {
-        "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1]'),
+        "AiPrint_locator": (
+            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[3]'),
         "position": 1
     },
     "PM360": {
-        "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1]'),
+        "AiPrint_locator": (
+            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[3]'),
         "position": 1
     },
     "P22": {
-        "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1]'),
+        "AiPrint_locator": (
+            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[3]'),
         "position": 1
     },
     # 模板位置位于首页第2个位置的设备
     "PL70e-BT": {
-        "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[2]'),
+        "AiPrint_locator": (
+            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[4]'),
         "position": 2,
         "special_handlers": [
             {
@@ -52,23 +54,23 @@ DEVICE_TEMPLATE_MAPPING = {
         ]
     },
     "PL80E": {
-        "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[2]'),
+        "AiPrint_locator": (
+            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[4]'),
         "position": 2,
-        "special_handlers": [
-            {
-                "element": "moreFeatures",
-                "action": "sure"
-            },
-            {
-                "element": "replacePrintPaper",
-                "action": "know"
-            }
-        ]
+        # "special_handlers": [
+        #     {
+        #         "element": "moreFeatures",
+        #         "action": "sure"
+        #     },
+        #     {
+        #         "element": "replacePrintPaper",
+        #         "action": "know"
+        #     }
+        # ]
     },
     "PM230": {
-        "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[2]'),
+        "AiPrint_locator": (
+            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[4]'),
         "position": 2,
         "special_handlers": [
             {
@@ -85,7 +87,7 @@ class AiPrint(Action):
     def get_aiprint(self, devIndex, devName):
         self._select_device(devIndex, devName)
         self._handle_device_template(devName)
-
+        self.back_button()
     def _select_device(self, devIndex, devName):
         """选择指定设备"""
         self.click_button(PageAndroid.deviceName_loc)
@@ -107,3 +109,10 @@ class AiPrint(Action):
                 if self.exists_element(element):
                     getattr(self, f"click_button")(getattr(self.buttonElement, handler["action"]))
 
+        if devName=='PM230':
+            self.click_button(device_config['AiPrint_locator'])
+            time.sleep(0.5)
+            self.click_button(device_config['AiPrint_locator'])
+
+        else:
+            self.click_button(device_config['AiPrint_locator'])

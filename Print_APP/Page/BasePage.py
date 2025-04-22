@@ -61,7 +61,7 @@ class Action(unittest.TestCase):
             # 尝试获取元素文本（兼容空文本情况）
             element_text = element.text if element.text else "[无可见文本]"
             # 打印定位器类型+定位值 + 元素文本
-            self.logger.debug(f"点击文本:{element_text}=>定位值: {loc[1]}, ")
+            self.logger.debug(f"点击{element_text}             =>定位值: {loc[1]}, ")
             element.click()  # 再执行点击
         except:
             self.logger.error(f"获取位置失败{loc[1]},点击事件执行失败")
@@ -101,10 +101,10 @@ class Action(unittest.TestCase):
         首次点击右上角连接的授权
         :return:
         """
-        if self.exists_element(self.buttonElement.accredit):
+        if self.exists_element(self.buttonElement.connectPage_shouquan):
             # 授权
-            self.click_button(self.buttonElement.accredit)
-            # 允许获取位置
+            self.click_button(self.buttonElement.connectPage_shouquan)
+            # 始终允许
             self.click_button(self.buttonElement.connectPage_Allow_in_use)
 
     def firstDownload_open(self):
