@@ -1,35 +1,32 @@
-import glob
 import hashlib
 import os
 import time
+
+from parameterized import parameterized
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-import cv2
-import numpy as np
 from PIL import Image
 from io import BytesIO
 from selenium.webdriver.support.wait import WebDriverWait
 import requests
-
 import unittest
-
-
 from Page.PageAndroid.Banner import Banner
+from common.GlobalValue import GlobalVar
 from common.logger import Log
 
 app_banner = r'D:\huan\Print_APP\screenshots\app_banner'
-
 jieko_banner = r'D:\huan\Print_APP\screenshots\jieko_banner'
 
 
 class BannerTest(unittest.TestCase):
     base = None
-    log=Log()
+    log = Log()
+    global_var = GlobalVar()
+    @classmethod
+    def setUpClass(cls):
+        cls.base = Banner()  # 实例化Base对象
+        cls.base.firstDownload_open()
 
-    def setUp(self):
-
-        self.base = Banner()  # 实例化Base对象
-        self.base.firstDownload_open()
     def test_01_jiekoPic(self):
         # 保存接口返回image到文件夹
         # 发送请求获取图片
@@ -45,10 +42,10 @@ class BannerTest(unittest.TestCase):
         login = login.json()
         accessToken = login['data']['accessToken']
         language = login['data']['language']
-        url2 = 'http://app.labelnize.com/api/banner/list'
+        url2 = 'http://app.nelko.net/api/banner/list'
         data2 = {
             "dev": "P21",
-            "position": 2
+            "position": 1
         }
         header2 = {
             "accessToken": accessToken,
@@ -56,7 +53,9 @@ class BannerTest(unittest.TestCase):
         }
         response = requests.post(url=url2, json=data2, headers=header2)
         data = response.json()
-        for i in range(len(data['data'])):
+        data_len = len(data['data'])
+        self.global_var.set_value("banner_Len", data_len)
+        for i in range(data_len):
             imageUrl = data['data'][i]['image']
             image_response = requests.get(imageUrl)
             if image_response.status_code == 200:
@@ -68,7 +67,7 @@ class BannerTest(unittest.TestCase):
                 with open(save_path, 'wb') as file:
                     # 将响应内容写入文件
                     file.write(image_response.content)
-                    self.log.debug(f"保存接口返回的第{i+1}个图片")
+                    self.log.debug(f"保存接口返回的第{i + 1}个图片")
         self.log.debug(f"一共{len(data['data'])}张图片")
 
     def test_02_banner(self):
@@ -81,13 +80,12 @@ class BannerTest(unittest.TestCase):
         screenshot_folder = app_banner
         if not os.path.exists(screenshot_folder):
             os.makedirs(screenshot_folder)
-        wait = WebDriverWait(self.base.driver, 5)
-        while len(saved_hashes) < 5:  #
+        wait = WebDriverWait(self.base.driver, 25)
+        while len(saved_hashes) < self.global_var.get_value("banner_Len"):  #
             try:
                 wait.until(EC.presence_of_element_located((By.XPATH,
                                                            '//androidx.viewpager.widget.ViewPager[@resource-id="com.nelko.printer:id/viewpager_inner"]')))
                 # 等待轮播到下一张图片
-
                 # 获取屏幕截图并加载到内存
                 screenshot = self.base.driver.get_screenshot_as_png()
                 # 获取元素的位置信息
@@ -137,71 +135,20 @@ class BannerTest(unittest.TestCase):
 
         self.log.debug(f"共截取并保存了 {len(saved_hashes)} 张唯一的banner截图。")
 
-    def resize_image(self, img, width=None, height=None):
-        if width is not None and height is not None:
-            return cv2.resize(img, (width, height))
-        elif width is not None:
-            h, w = img.shape[:2]
-            new_height = int(h * (width / w))
-            return cv2.resize(img, (width, new_height))
-        elif height is not None:
-            h, w = img.shape[:2]
-            new_width = int(w * (height / h))
-            return cv2.resize(img, (new_width, height))
-        else:
-            return img
-
-    def images_are_similar(self, img1_path, img2_path, threshold=0.2):
-
-        img1 = cv2.imread(img1_path)
-        img2 = cv2.imread(img2_path)
-
-        # 调整图片尺寸
-        img2_resized = self.resize_image(img2, width=img1.shape[1], height=img1.shape[0])
-
-        # 计算两个图像之间的差异
-        diff = cv2.absdiff(img1, img2_resized)
-
-        # 将差异矩阵转换为灰度图像
-        gray_diff = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
-
-        # 计算差异的平均值
-        mean_diff = np.mean(gray_diff)
-
-        # 设定阈值，判断平均差异是否在可接受范围内
-        similarity = 1 - mean_diff / 255.0
-        return similarity >= threshold
-
     def test_03_getPicList(self):
+        confirmNum = 0
         image_files1 = self.base.get_images_from_folder(app_banner)
         image_files2 = self.base.get_images_from_folder(jieko_banner)
         for image_file1 in image_files1:
             for image_file2 in image_files2:
-                if self.images_are_similar(image_file1, image_file2, threshold=0.95):
+                if self.base.images_are_similar(image_file1, image_file2, threshold=0.95):
                     self.log.debug("APP保存的图片与接口返回的图片有95%以上相似，无需手动确认")
-                else:
-                    self.log.debug("APP保存的图片与接口返回的图片不相似，需要手动确认")
-        time.sleep(1)
-        self.clear_images_in_folder(app_banner)
-        self.clear_images_in_folder(jieko_banner)
-
-    def clear_images_in_folder(self, folder_path):
-        # 支持的图片文件扩展名
-        image_extensions = ['*.jpg', '*.jpeg', '*.png', '*.gif', '*.bmp', '*.tiff']
-
-        # 检查文件夹是否存在
-        if os.path.exists(folder_path):
-            # 遍历所有支持的图片文件
-            for ext in image_extensions:
-                # 使用 glob 匹配文件夹中的所有图片文件
-                for image_path in glob.glob(os.path.join(folder_path, ext)):
-                    try:
-                        # 删除图片文件
-                        os.remove(image_path)
-                        print(f"Deleted: {image_path}")
-                    except Exception as e:
-                        print(f"Failed to delete {image_path}. Reason: {e}")
-        else:
-            self.log.debug(f"The folder {folder_path} does not exist.")
-    def tearDown(self):
+                    confirmNum += 1
+        if confirmNum == self.global_var.get_value("banner_Len"):
+            self.base.clear_images_in_folder(app_banner)
+            self.base.clear_images_in_folder(jieko_banner)
+        if confirmNum < self.global_var.get_value("banner_Len"):
+            self.log.error(f"APP保存的图片与接口返回的图片存在不相似，需要手动确认")
+    @classmethod
+    def tearDownClass(cls):
         pass

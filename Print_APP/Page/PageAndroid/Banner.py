@@ -1,12 +1,15 @@
+import glob
 import os
 import cv2
 import numpy as np
 from skimage.metrics import structural_similarity as ssim
 
 from Page.BasePage import Action
+from common.logger import Log
 
 
 class Banner(Action):
+    logger = Log()
     def capture_element_screenshot(self, element) -> np.ndarray:
         """
         截取指定元素的屏幕截图，并返回裁剪后的图像。
@@ -36,7 +39,7 @@ class Banner(Action):
             return element_screenshot
 
         except Exception as e:
-            print(f"截取元素截图失败: {e}")
+            self.logger.error(f"截取元素截图失败: {e}")
             return None
 
     def compare_images(self, img1: np.ndarray, img2: np.ndarray, threshold: float = 0.95) -> bool:
@@ -49,11 +52,11 @@ class Banner(Action):
         :return: True（一致）或 False（不一致）。
         """
         if img1 is None or img2 is None:
-            print("输入图像为空")
+            self.logger.error("输入图像为空")
             return False
 
         if img1.shape != img2.shape:
-            print("图像尺寸不一致")
+            self.logger.error("图像尺寸不一致")
             return False
 
         try:
@@ -66,7 +69,7 @@ class Banner(Action):
             return similarity >= threshold
 
         except Exception as e:
-            print(f"图片比较失败: {e}")
+            self.logger.error(f"图片比较失败: {e}")
             return False
 
     def get_images_from_folder(self, folder_path):
@@ -78,3 +81,57 @@ class Banner(Action):
                     file_path = os.path.join(root, file)
                     image_files.append(file_path)
         return image_files
+
+    def clear_images_in_folder(self, folder_path):
+        # 支持的图片文件扩展名
+        image_extensions = ['*.jpg', '*.jpeg', '*.png', '*.gif', '*.bmp', '*.tiff']
+
+        # 检查文件夹是否存在
+        if os.path.exists(folder_path):
+            # 遍历所有支持的图片文件
+            for ext in image_extensions:
+                # 使用 glob 匹配文件夹中的所有图片文件
+                for image_path in glob.glob(os.path.join(folder_path, ext)):
+                    try:
+                        # 删除图片文件
+                        os.remove(image_path)
+                        self.logger.debug(f"Deleted: {image_path}")
+                    except Exception as e:
+                        self.logger.error(f"Failed to delete {image_path}. Reason: {e}")
+        else:
+            self.log.error(f"{folder_path}文件夹不存在")
+
+    def resize_image(self, img, width=None, height=None):
+        if width is not None and height is not None:
+            return cv2.resize(img, (width, height))
+        elif width is not None:
+            h, w = img.shape[:2]
+            new_height = int(h * (width / w))
+            return cv2.resize(img, (width, new_height))
+        elif height is not None:
+            h, w = img.shape[:2]
+            new_width = int(w * (height / h))
+            return cv2.resize(img, (new_width, height))
+        else:
+            return img
+
+    def images_are_similar(self, img1_path, img2_path, threshold=0.2):
+
+        img1 = cv2.imread(img1_path)
+        img2 = cv2.imread(img2_path)
+
+        # 调整图片尺寸
+        img2_resized = self.resize_image(img2, width=img1.shape[1], height=img1.shape[0])
+
+        # 计算两个图像之间的差异
+        diff = cv2.absdiff(img1, img2_resized)
+
+        # 将差异矩阵转换为灰度图像
+        gray_diff = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
+
+        # 计算差异的平均值
+        mean_diff = np.mean(gray_diff)
+
+        # 设定阈值，判断平均差异是否在可接受范围内
+        similarity = 1 - mean_diff / 255.0
+        return similarity >= threshold
