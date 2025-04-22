@@ -14,38 +14,45 @@ DEVICE_TEMPLATE_MAPPING = {
     # 模板位置位于首页第1个位置的设备
     "P21": {
         "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1]'),
+            By.XPATH,
+            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
         "position": 1
     },
     "P31S": {
         "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1]'),
+            By.XPATH,
+            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
         "position": 1
     },
     "PM220": {
         "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1]'),
+            By.XPATH,
+            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
         "position": 1
     },
     "PM220S": {
         "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1]'),
+            By.XPATH,
+            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
         "position": 1
     },
-    "PM360": {
+    "PM230": {
         "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1]'),
-        "position": 1
-    },
-    "P22": {
-        "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[1]'),
-        "position": 1
+            By.XPATH,
+            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
+        "position": 2,
+        "special_handlers": [
+            {
+                "element": "moreFeatures",
+                "action": "sure"
+            }
+        ]
     },
     # 模板位置位于首页第2个位置的设备
     "PL70e-BT": {
         "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[2]'),
+            By.XPATH,
+            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
         "position": 2,
         "special_handlers": [
             {
@@ -57,10 +64,23 @@ DEVICE_TEMPLATE_MAPPING = {
                 "action": "know"
             }
         ]
+    },
+    "PM360": {
+        "template_locator": (
+            By.XPATH,
+            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
+        "position": 1
+    },
+    "P22": {
+        "template_locator": (
+            By.XPATH,
+            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
+        "position": 1
     },
     "PL80E": {
         "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[2]'),
+            By.XPATH,
+            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
         "position": 2,
         "special_handlers": [
             {
@@ -72,29 +92,19 @@ DEVICE_TEMPLATE_MAPPING = {
                 "action": "know"
             }
         ]
-    },
-    "PM230": {
-        "template_locator": (
-            By.XPATH, '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/view_menu_icon"])[2]'),
-        "position": 2,
-        "special_handlers": [
-            {
-                "element": "moreFeatures",
-                "action": "sure"
-            }
-        ]
     }
+
 }
 
 
 class Template(Action):
     log = Log()
 
-    def get_getCategory(self, devIndex, devName):
+    def get_getCategory(self, devName):
         """获取并比较模板类型和尺寸"""
         try:
             # 1. 选择设备
-            self._select_device(devIndex, devName)
+            self._select_device(devName)
 
             # 2. 处理设备特定模板
             self._handle_device_template(devName)
@@ -231,11 +241,11 @@ class Template(Action):
         self.log.debug(f"{devName}接口返回尺寸: {api_sizes}")
         self.log.debug(f"{devName}APP展示尺寸: {app_sizes}")
 
-    def _select_device(self, devIndex, devName):
+    def _select_device(self, devName):
         """选择指定设备"""
         self.click_button(PageAndroid.deviceName_loc)
         device_locator = (By.XPATH,
-                          f'(//android.widget.RelativeLayout[@resource-id="com.nelko.printer:id/rela"])[{devIndex}]')
+                          f'//android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="{devName}"]')
         self.click_button(device_locator)
         self.click_button(PageAndroid.deviceConfirm)
 
@@ -256,9 +266,7 @@ class Template(Action):
                     print('\n')
                     getattr(self, f"click_button")(getattr(self.buttonElement, handler["action"]))
                 else:
-                    i+=5
-
-
+                    i += 5
 
         # 点击模板
         self.click_button(device_config["template_locator"])

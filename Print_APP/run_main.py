@@ -57,7 +57,7 @@ if __name__ == '__main__':
     # ]
     # 方式1
     matched_file_names = [
-        ["Android_12.json", "TestCase.TestAndroid.index.test_Connect.py"]
+        ["Android_12.json", "TestCase.TestAndroid.index.test_AiPrint.py"]
         # ["Android_11.json", "TestCase.TestAndroid.index.test_AiPrint.py"]
 
     ]

@@ -1,8 +1,10 @@
 import unittest
 from parameterized import parameterized
 from Page.PageAndroid.AiPrint import AiPrint
-dev = [(1, "P21"), (2, "P31S"), (3, "PM220"), (2, "PM220S"), (3, "PM230"), (2, "PL70e-BT"), (3, "PM360"), (2, "P22"),
-       (3, 'PL80E')]
+
+dev = [("P21"), ("P31S"), ("PM220"), ("PM220S"), ("PM230"), ("PL70e-BT"), ("PM360"), ("P22"),
+       ("PL80E")]
+
 
 class AiPrintTest(unittest.TestCase):
     @classmethod
@@ -11,8 +13,9 @@ class AiPrintTest(unittest.TestCase):
         cls.base.firstDownload_open()
 
     @parameterized.expand(dev)
-    def test_AiPrint(self, devIndex, devName):
+    def test_AiPrint(self, devName):
         print(devName)
-        self.base.get_aiprint(devIndex, devName)
+        self.base.get_aiprint(devName)
+
     def test_aa(self):
         print("第二个case")

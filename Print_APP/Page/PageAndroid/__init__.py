@@ -11,8 +11,10 @@ mein_button_loc = ('xpath', "//*[@text='我的']")
 deviceName_loc = (By.ID, 'com.nelko.printer:id/tv_printer_model')
 # 选择打印机后的确认
 deviceConfirm = (By.ID, 'com.nelko.printer:id/tv_ok')
-# 功能大于3个后显示更多
+# 点击查看更多功能(提示语)
 moreFeatures = (By.ID, 'com.nelko.printer:id/text_view')
+#更多按钮
+moreButton=(By.XPATH,'//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="更多"]')
 # 确定
 sure = (By.ID, 'com.nelko.printer:id/more_btn_ok')
 # 点击更换打印纸

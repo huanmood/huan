@@ -9,9 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from Page import PageAndroid
 from TestCase.TestAndroid.share_devices import thread_local
-import traceback
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
-
 from common.logger import Log
 
 cur_path = os.path.dirname(os.path.realpath(__file__))
@@ -61,7 +59,7 @@ class Action(unittest.TestCase):
             # 尝试获取元素文本（兼容空文本情况）
             element_text = element.text if element.text else "[无可见文本]"
             # 打印定位器类型+定位值 + 元素文本
-            self.logger.debug(f"点击{element_text}             =>定位值: {loc[1]}, ")
+            self.logger.debug(f"点击{element_text}    =>定位值: {loc[1]}, ")
             element.click()  # 再执行点击
         except:
             self.logger.error(f"获取位置失败{loc[1]},点击事件执行失败")
@@ -69,6 +67,7 @@ class Action(unittest.TestCase):
     def back_button(self):
         """点击返回按钮"""
         self.driver.back()
+        self.logger.debug("执行返回")
 
     def exists_element(self, loc):
         """判断元素是否存在 ==0为不存在  !=0为存在"""
