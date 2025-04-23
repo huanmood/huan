@@ -1,8 +1,7 @@
 import unittest
-
 from parameterized import parameterized
-
 from Page.PageAndroid.Template import Template
+from TestCase.TestAndroid.share_devices import thread_context
 
 dev = [("P21"), ("P31S"), ("PM220"), ("PM220S"), ("PM230"), ("PL70e-BT"), ("PM360"), ("P22"),
        ("PL80E")]
@@ -16,8 +15,8 @@ class TemplateTest(unittest.TestCase):
 
     @parameterized.expand(dev)
     def test_getTempleList(self, devName):
-        print(devName)
-        self.base.get_getCategory( devName)
+        thread_context.log(devName)
+        self.base.get_getCategory(devName)
 
     @classmethod
     def tearDownClass(cls):

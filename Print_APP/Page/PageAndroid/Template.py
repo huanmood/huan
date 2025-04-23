@@ -1,14 +1,8 @@
-import random
 import time
-import traceback
-
 import requests
 from selenium.webdriver.common.by import By
-
 from Page import PageAndroid
 from Page.BasePage import Action
-from common.logger import Log
-
 # 设备配置映射表（更易维护和扩展）
 DEVICE_TEMPLATE_MAPPING = {
     # 模板位置位于首页第1个位置的设备
@@ -82,23 +76,22 @@ DEVICE_TEMPLATE_MAPPING = {
             By.XPATH,
             '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
         "position": 2,
-        "special_handlers": [
-            {
-                "element": "moreFeatures",
-                "action": "sure"
-            },
-            {
-                "element": "replacePrintPaper",
-                "action": "know"
-            }
-        ]
+        # "special_handlers": [
+        #     {
+        #         "element": "moreFeatures",
+        #         "action": "sure"
+        #     },
+        #     {
+        #         "element": "replacePrintPaper",
+        #         "action": "know"
+        #     }
+        # ]
     }
 
 }
 
 
 class Template(Action):
-    log = Log()
 
     def get_getCategory(self, devName):
         """获取并比较模板类型和尺寸"""
@@ -124,7 +117,7 @@ class Template(Action):
 
             self.back_button()
         except Exception as e:
-            self.log.error(f"测试失败: {str(e)}")
+            self.log_error(f"测试失败: {str(e)}")
             raise
 
     def _get_app_templateName(self):
@@ -140,7 +133,7 @@ class Template(Action):
         # --- 第一部分：模板名称验证 ---
         # 获取初始模板名称
         template_name = self.find_element(TEMPLATE_NAME_LOCATOR).text
-        self.log.debug(f"获取到模板名称: {template_name}")
+        self.log_debug(f"获取到模板名称: {template_name}")
 
         # 执行搜索操作（双击搜索框+输入内容）
         for _ in range(2):
@@ -152,7 +145,7 @@ class Template(Action):
         # 验证搜索结果(模板名称)
         searched_name = self.find_element(TEMPLATE_NAME_LOCATOR).text
         comparison = "一致" if template_name == searched_name else "不一致"
-        self.log.debug(f"名称比对: 原始[{template_name}] vs 搜索[{searched_name}] {comparison}")
+        self.log_debug(f"名称比对: 原始[{template_name}] vs 搜索[{searched_name}] {comparison}")
 
         # 验证搜索结果(模板尺寸)
         searched_size = self.find_element(SIEZ_NAME_LOCATOR).text
@@ -166,14 +159,14 @@ class Template(Action):
         # 验证显示的尺寸
         a, b = cleaned_size.split('x')
         if cleaned_size in (f"{a}x{b}", f"{b}x{a}"):
-            self.log.debug(f"尺寸验证通过: 选择[{cleaned_size}] ↔ 显示[{cleaned_size}]")
+            self.log_debug(f"尺寸验证通过: 选择[{cleaned_size}] ↔ 显示[{cleaned_size}]")
         else:
-            self.log.debug(f"尺寸验证失败: 选择[{cleaned_size}] ↔ 显示[{cleaned_size}]")
+            self.log_error(f"尺寸验证失败: 选择[{cleaned_size}] ↔ 显示[{cleaned_size}]")
 
         # --- 公共操作：返回上级 ---
         for _ in range(2):
             self.back_button()
-            time.sleep(1)
+
 
     def _compare_template_types(self, devName):
         """比较模板类型"""
@@ -191,15 +184,15 @@ class Template(Action):
         diff_in_app = app_set - api_set
 
         if not diff_in_api and not diff_in_app:
-            print(f"{devName}所有模板类型与接口返回一致")
+            self.log_debug(f"{devName}所有模板类型与接口返回一致")
         else:
             if diff_in_api:
-                self.log.error(f"{devName}模板类型在接口但不在APP中: {', '.join(diff_in_api)}")
+                self.log_error(f"{devName}模板类型在接口但不在APP中: {', '.join(diff_in_api)}")
             if diff_in_app:
-                self.log.error(f"{devName}模板类型在APP但不在接口中: {', '.join(diff_in_app)}")
+                self.log_error(f"{devName}模板类型在APP但不在接口中: {', '.join(diff_in_app)}")
 
-        self.log.debug(f"{devName}完整API模板: {api_templates}")
-        self.log.debug(f"{devName}完整APP模板: {app_templates}")
+        self.log(f"{devName}完整API模板: {api_templates}")
+        self.log(f"{devName}完整APP模板: {app_templates}")
 
     def _compare_template_sizes(self, devName):
         """比较模板尺寸"""
@@ -219,7 +212,7 @@ class Template(Action):
             response.raise_for_status()
             api_sizes = [item['idString'] for item in response.json().get('data', [])]
         except requests.exceptions.RequestException as e:
-            self.log.error(f"获取尺寸API失败: {str(e)}")
+            self.log_error(f"获取尺寸API失败: {str(e)}")
             api_sizes = []
 
         # 比较尺寸
@@ -227,19 +220,19 @@ class Template(Action):
         app_size_set = set(app_sizes)
 
         if api_size_set == app_size_set:
-            print(f"{devName}所有模板尺寸与接口返回一致")
+            self.log_debug(f"{devName}所有模板尺寸与接口返回一致")
         else:
             # 找出不一致的尺寸
             diff_in_api = api_size_set - app_size_set
             diff_in_app = app_size_set - api_size_set
 
             if diff_in_api:
-                print(f"{devName}接口返回但APP未展示的尺寸: {', '.join(diff_in_api)}")
+                self.log_error(f"{devName}接口返回但APP未展示的尺寸: {', '.join(diff_in_api)}")
             if diff_in_app:
-                print(f"{devName}APP展示但接口未返回的尺寸: {', '.join(diff_in_app)}")
+                self.log_error(f"{devName}APP展示但接口未返回的尺寸: {', '.join(diff_in_app)}")
 
-        self.log.debug(f"{devName}接口返回尺寸: {api_sizes}")
-        self.log.debug(f"{devName}APP展示尺寸: {app_sizes}")
+        self.log(f"{devName}接口返回尺寸: {api_sizes}")
+        self.log(f"{devName}APP展示尺寸: {app_sizes}")
 
     def _select_device(self, devName):
         """选择指定设备"""
@@ -281,7 +274,7 @@ class Template(Action):
             response.raise_for_status()
             return [item['name'] for item in response.json().get('data', [])]
         except requests.exceptions.RequestException as e:
-            self.log.error(f"API请求失败: {str(e)}")
+            self.log_error(f"API请求失败: {str(e)}")
             return []
 
     def _get_app_templates(self):
@@ -305,9 +298,9 @@ class Template(Action):
             print(f"{devName}所有模板类型与接口返回一致")
         else:
             if diff_in_api:
-                print(f"{devName}模板类型在接口但不在APP中: {', '.join(diff_in_api)}")
+                self.log_debug(f"{devName}模板类型在接口但不在APP中: {', '.join(diff_in_api)}")
             if diff_in_app:
-                print(f"{devName}模板类型在APP但不在接口中: {', '.join(diff_in_app)}")
+                self.log_debug(f"{devName}模板类型在APP但不在接口中: {', '.join(diff_in_app)}")
 
-            self.log.debug(f"{devName}完整API模板: {api_templates}")
-            self.log.debug(f"{devName}完整APP模板: {app_templates}")
+            self.log(f"{devName}完整API模板: {api_templates}")
+            self.log(f"{devName}完整APP模板: {app_templates}")

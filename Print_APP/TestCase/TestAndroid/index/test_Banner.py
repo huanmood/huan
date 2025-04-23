@@ -1,8 +1,6 @@
 import hashlib
 import os
 import time
-
-from parameterized import parameterized
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from PIL import Image
@@ -11,8 +9,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 import requests
 import unittest
 from Page.PageAndroid.Banner import Banner
+from TestCase.TestAndroid.share_devices import thread_context
 from common.GlobalValue import GlobalVar
-from common.logger import Log
 
 app_banner = r'D:\huan\Print_APP\screenshots\app_banner'
 jieko_banner = r'D:\huan\Print_APP\screenshots\jieko_banner'
@@ -20,8 +18,9 @@ jieko_banner = r'D:\huan\Print_APP\screenshots\jieko_banner'
 
 class BannerTest(unittest.TestCase):
     base = None
-    log = Log()
+
     global_var = GlobalVar()
+
     @classmethod
     def setUpClass(cls):
         cls.base = Banner()  # 实例化Base对象
@@ -67,8 +66,8 @@ class BannerTest(unittest.TestCase):
                 with open(save_path, 'wb') as file:
                     # 将响应内容写入文件
                     file.write(image_response.content)
-                    self.log.debug(f"保存接口返回的第{i + 1}个图片")
-        self.log.debug(f"一共{len(data['data'])}张图片")
+                    thread_context.log(f"保存接口返回的第{i + 1}个图片")
+        thread_context.log(f"一共{len(data['data'])}张图片")
 
     def test_02_banner(self):
         # 定位到banner图片的元素
@@ -109,7 +108,7 @@ class BannerTest(unittest.TestCase):
 
                 # 检查哈希值是否已经存在于集合中
                 if banner_hash in saved_hashes:
-                    self.log.debug("图片已经被保存过，跳过。")
+                    thread_context.log("图片已经被保存过，跳过。")
                     continue
 
                 # 将哈希值添加到集合中，表示已经保存过
@@ -122,18 +121,18 @@ class BannerTest(unittest.TestCase):
                 # 保存图片并确保成功
                 banner_image.save(image_path)
                 if os.path.exists(image_path):
-                    self.log.debug(f"成功保存截图到：{image_path}")
+                    thread_context.log(f"成功保存截图到：{image_path}")
                 else:
-                    self.log.debug(f"保存截图失败：{image_path}")
+                    thread_context.log(f"保存截图失败：{image_path}")
 
                 # 等待一段时间以确保文件系统有时间处理保存操作
                 time.sleep(2)
 
             except Exception as e:
-                self.log.debug(f"捕获到异常：{e}")
+                thread_context.log(f"捕获到异常：{e}")
                 pass
 
-        self.log.debug(f"共截取并保存了 {len(saved_hashes)} 张唯一的banner截图。")
+        thread_context.log(f"共截取并保存了 {len(saved_hashes)} 张唯一的banner截图。")
 
     def test_03_getPicList(self):
         confirmNum = 0
@@ -142,13 +141,14 @@ class BannerTest(unittest.TestCase):
         for image_file1 in image_files1:
             for image_file2 in image_files2:
                 if self.base.images_are_similar(image_file1, image_file2, threshold=0.95):
-                    self.log.debug("APP保存的图片与接口返回的图片有95%以上相似，无需手动确认")
+                    thread_context.log("APP保存的图片与接口返回的图片有95%以上相似，无需手动确认")
                     confirmNum += 1
         if confirmNum == self.global_var.get_value("banner_Len"):
             self.base.clear_images_in_folder(app_banner)
             self.base.clear_images_in_folder(jieko_banner)
         if confirmNum < self.global_var.get_value("banner_Len"):
-            self.log.error(f"APP保存的图片与接口返回的图片存在不相似，需要手动确认")
+            thread_context.log(f"APP保存的图片与接口返回的图片存在不相似，需要手动确认")
+
     @classmethod
     def tearDownClass(cls):
         pass

@@ -5,11 +5,11 @@ import numpy as np
 from skimage.metrics import structural_similarity as ssim
 
 from Page.BasePage import Action
-from common.logger import Log
+
 
 
 class Banner(Action):
-    logger = Log()
+
     def capture_element_screenshot(self, element) -> np.ndarray:
         """
         截取指定元素的屏幕截图，并返回裁剪后的图像。
@@ -39,7 +39,7 @@ class Banner(Action):
             return element_screenshot
 
         except Exception as e:
-            self.logger.error(f"截取元素截图失败: {e}")
+            self.log_error(f"截取元素截图失败: {e}")
             return None
 
     def compare_images(self, img1: np.ndarray, img2: np.ndarray, threshold: float = 0.95) -> bool:
@@ -52,11 +52,11 @@ class Banner(Action):
         :return: True（一致）或 False（不一致）。
         """
         if img1 is None or img2 is None:
-            self.logger.error("输入图像为空")
+            self.log_error("输入图像为空")
             return False
 
         if img1.shape != img2.shape:
-            self.logger.error("图像尺寸不一致")
+            self.log_error("图像尺寸不一致")
             return False
 
         try:
@@ -69,7 +69,7 @@ class Banner(Action):
             return similarity >= threshold
 
         except Exception as e:
-            self.logger.error(f"图片比较失败: {e}")
+            self.log_error(f"图片比较失败: {e}")
             return False
 
     def get_images_from_folder(self, folder_path):
@@ -95,11 +95,11 @@ class Banner(Action):
                     try:
                         # 删除图片文件
                         os.remove(image_path)
-                        self.logger.debug(f"Deleted: {image_path}")
+                        self.log_debug(f"Deleted: {image_path}")
                     except Exception as e:
-                        self.logger.error(f"Failed to delete {image_path}. Reason: {e}")
+                        self.log_debug(f"Failed to delete {image_path}. Reason: {e}")
         else:
-            self.log.error(f"{folder_path}文件夹不存在")
+            self.log_error(f"{folder_path}文件夹不存在")
 
     def resize_image(self, img, width=None, height=None):
         if width is not None and height is not None:

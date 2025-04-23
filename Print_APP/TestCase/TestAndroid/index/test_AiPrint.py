@@ -1,6 +1,10 @@
+# testcase.py
 import unittest
+
 from parameterized import parameterized
+
 from Page.PageAndroid.AiPrint import AiPrint
+from TestCase.TestAndroid.share_devices import thread_context
 
 dev = [("P21"), ("P31S"), ("PM220"), ("PM220S"), ("PM230"), ("PL70e-BT"), ("PM360"), ("P22"),
        ("PL80E")]
@@ -14,8 +18,9 @@ class AiPrintTest(unittest.TestCase):
 
     @parameterized.expand(dev)
     def test_AiPrint(self, devName):
-        print(devName)
+        self.base.log(f"开始测试设备: {devName}")
         self.base.get_aiprint(devName)
+        thread_context.log(f"设备 {devName} 测试完成")
 
     def test_aa(self):
-        print("第二个case")
+        thread_context.log("执行第二个测试用例")

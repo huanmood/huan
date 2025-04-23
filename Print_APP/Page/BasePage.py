@@ -1,27 +1,41 @@
 # -*- coding:utf-8 -*-
 # @Time   : 2025-03-05 14:52
 # @Author : TestTeam
+import logging
 import time
 import os
-import unittest
 from appium.webdriver.common.touch_action import TouchAction
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from Page import PageAndroid
-from TestCase.TestAndroid.share_devices import thread_local
+from TestCase.TestAndroid.share_devices import thread_context
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
-from common.logger import Log
 
 cur_path = os.path.dirname(os.path.realpath(__file__))
 screenshot_path = os.path.join(os.path.dirname(cur_path), 'screenshots')
 if not os.path.exists(screenshot_path): os.mkdir(screenshot_path)
 
+import unittest
+
 
 class Action(unittest.TestCase):
-    logger=Log()
     def __init__(self):
-        self.driver = thread_local.driverName
+        super().__init__()
+        self.driver = thread_context.driver
         self.buttonElement = PageAndroid
+
+    def log(self, message, level=logging.INFO):
+        """统一的日志记录方法"""
+        thread_context.log(message, level)
+
+    def log_debug(self, message):
+        self.log(message, logging.DEBUG)
+
+    def log_error(self, message):
+        self.log(message, logging.ERROR)
+
+    def log_fatal(self, message):
+        self.log(message, logging.FATAL)
 
     def find_element(self, loc):
         """重写查找元素方法"""
@@ -29,11 +43,11 @@ class Action(unittest.TestCase):
             WebDriverWait(self.driver, 15).until(EC.visibility_of_element_located(loc))
             return self.driver.find_element(*loc)
         except TimeoutException:
-            self.logger.error(f"元素 {loc} 超时未找到")
+            thread_context.log(f"元素 {loc} 超时未找到")
         except NoSuchElementException:
-            self.logger.error(f"元素 {loc} 不存在")
+            thread_context.log(f"元素 {loc} 不存在")
         except Exception as e:
-            self.logger.error(f"其他错误: {e}")
+            thread_context.log(f"其他错误: {e}")
 
     def find_elements(self, loc):
         """重写查找元素方法"""
@@ -41,7 +55,7 @@ class Action(unittest.TestCase):
             WebDriverWait(self.driver, 15).until(lambda driver: driver.find_element(*loc).is_displayed())
             return self.driver.find_elements(*loc)
         except Exception:
-            self.logger.error('%s 页面中未能找到%s 元素' % (self, loc))
+            thread_context.log('%s 页面中未能找到%s 元素' % (self, loc))
 
     def clear_key(self, loc):
         """重写清空文本输入法"""
@@ -59,15 +73,18 @@ class Action(unittest.TestCase):
             # 尝试获取元素文本（兼容空文本情况）
             element_text = element.text if element.text else "[无可见文本]"
             # 打印定位器类型+定位值 + 元素文本
-            self.logger.debug(f"点击{element_text}    =>定位值: {loc[1]}, ")
+            thread_context.log(f"点击{element_text}    =>定位值: {loc[1]}, ")
             element.click()  # 再执行点击
         except:
-            self.logger.error(f"获取位置失败{loc[1]},点击事件执行失败")
+            error_msg = f"获取位置失败 {loc[1]}, 点击事件执行失败"
+            self.log_error(error_msg)
+            self.fail(error_msg)  # 这将使测试标记为失败
 
     def back_button(self):
         """点击返回按钮"""
         self.driver.back()
-        self.logger.debug("执行返回")
+        thread_context.log("执行返回")
+        time.sleep(0.5)
 
     def exists_element(self, loc):
         """判断元素是否存在 ==0为不存在  !=0为存在"""

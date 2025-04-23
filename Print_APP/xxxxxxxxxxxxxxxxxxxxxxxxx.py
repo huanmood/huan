@@ -49,6 +49,7 @@
 #     name.append(i['name'])
 # if devIndex > 6:
 #     self.drag_location(906, 3371, 906, 412)
+import threading
 from random import random
 
 from selenium.webdriver.common.by import By
@@ -120,4 +121,51 @@ from selenium.webdriver.common.by import By
 #
 #
 # logger.error('debug 喜喜')
-print('\na')
+# print('\na')
+import logging
+# logging.basicConfig(
+#     format='%(threadName)s: %(message)s',
+#     level=logging.INFO
+# )
+# logging.info("这是打印内容")
+# 为不同线程使用不同颜色
+# import threading
+#
+#
+# class ColoredPrinter:
+#     def __init__(self):
+#         self.local = threading.local()
+#         self.colors = ['\033[91m', '\033[92m', '\033[93m', '\033[94m', '\033[95m']
+#         self.color_index = 0
+#         self.lock = threading.Lock()
+#
+#     def get_color(self):
+#         if not hasattr(self.local, 'color'):
+#             with self.lock:
+#                 self.local.color = self.colors[self.color_index % len(self.colors)]
+#                 self.color_index += 1
+#         return self.local.color
+#
+#     def print(self, message):
+#         color = self.get_color()
+#         reset = '\033[0m'
+#         print(f"{color}[Thread-{threading.get_ident()}]: {message}{reset}")
+#
+#
+# # 使用示例
+# printer = ColoredPrinter()
+#
+#
+# def worker(printer):
+#     printer.print("第一条消息")
+#     printer.print("第二条消息")
+#
+#
+# threads = []
+# for _ in range(5):
+#     t = threading.Thread(target=worker, args=(printer,))
+#     threads.append(t)
+#     t.start()
+#
+# for t in threads:
+#     t.join()

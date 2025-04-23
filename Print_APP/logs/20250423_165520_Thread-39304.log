@@ -1,0 +1,130 @@
+2025-04-23 16:55:20,530 - INFO - 测试开始 - 设备: 6ebb6b77, 版本: 12
+2025-04-23 16:55:41,125 - INFO - 开始测试设备: P21
+2025-04-23 16:55:41,125 - INFO - 开始处理设备: P21
+2025-04-23 16:55:41,125 - INFO - 正在选择设备: P21
+2025-04-23 16:55:41,268 - INFO - 点击P21    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-04-23 16:55:42,729 - INFO - 点击P21    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P21"], 
+2025-04-23 16:55:43,544 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-04-23 16:55:43,603 - INFO - 设备 P21 选择完成
+2025-04-23 16:55:45,809 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-04-23 16:55:47,121 - INFO - 执行返回
+2025-04-23 16:55:48,123 - INFO - 设备 P21 处理完成
+2025-04-23 16:55:48,123 - INFO - 设备 P21 测试完成
+2025-04-23 16:55:48,123 - INFO - 开始测试设备: P31S
+2025-04-23 16:55:48,123 - INFO - 开始处理设备: P31S
+2025-04-23 16:55:48,123 - INFO - 正在选择设备: P31S
+2025-04-23 16:55:49,176 - INFO - 点击P21    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-04-23 16:55:50,416 - INFO - 点击P31S    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P31S"], 
+2025-04-23 16:55:51,202 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-04-23 16:55:51,257 - INFO - 设备 P31S 选择完成
+2025-04-23 16:55:53,187 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-04-23 16:55:54,493 - INFO - 执行返回
+2025-04-23 16:55:55,495 - INFO - 设备 P31S 处理完成
+2025-04-23 16:55:55,495 - INFO - 设备 P31S 测试完成
+2025-04-23 16:55:55,495 - INFO - 开始测试设备: PM220
+2025-04-23 16:55:55,495 - INFO - 开始处理设备: PM220
+2025-04-23 16:55:55,495 - INFO - 正在选择设备: PM220
+2025-04-23 16:55:55,628 - INFO - 点击P31S    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-04-23 16:55:56,892 - INFO - 点击PM220    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="PM220"], 
+2025-04-23 16:55:57,653 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-04-23 16:55:57,735 - INFO - 设备 PM220 选择完成
+2025-04-23 16:55:59,207 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-04-23 16:56:00,488 - INFO - 执行返回
+2025-04-23 16:56:01,492 - INFO - 设备 PM220 处理完成
+2025-04-23 16:56:01,492 - INFO - 设备 PM220 测试完成
+2025-04-23 16:56:01,492 - INFO - 开始测试设备: PM220S
+2025-04-23 16:56:01,492 - INFO - 开始处理设备: PM220S
+2025-04-23 16:56:01,493 - INFO - 正在选择设备: PM220S
+2025-04-23 16:56:01,606 - INFO - 点击PM220    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-04-23 16:56:02,803 - INFO - 点击PM220S    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="PM220S"], 
+2025-04-23 16:56:03,719 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-04-23 16:56:03,776 - INFO - 设备 PM220S 选择完成
+2025-04-23 16:56:05,238 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-04-23 16:56:06,567 - INFO - 执行返回
+2025-04-23 16:56:07,568 - INFO - 设备 PM220S 处理完成
+2025-04-23 16:56:07,568 - INFO - 设备 PM220S 测试完成
+2025-04-23 16:56:07,568 - INFO - 开始测试设备: PM230
+2025-04-23 16:56:07,568 - INFO - 开始处理设备: PM230
+2025-04-23 16:56:07,568 - INFO - 正在选择设备: PM230
+2025-04-23 16:56:07,677 - INFO - 点击PM220S    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-04-23 16:56:08,910 - INFO - 点击PM230    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="PM230"], 
+2025-04-23 16:56:09,745 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-04-23 16:56:09,793 - INFO - 设备 PM230 选择完成
+2025-04-23 16:56:30,229 - INFO - 点击更多    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="更多"], 
+2025-04-23 16:56:31,240 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-04-23 16:56:31,951 - INFO - 执行返回
+2025-04-23 16:56:32,959 - INFO - 设备 PM230 处理完成
+2025-04-23 16:56:32,959 - INFO - 设备 PM230 测试完成
+2025-04-23 16:56:32,959 - INFO - 开始测试设备: PL70e-BT
+2025-04-23 16:56:32,959 - INFO - 开始处理设备: PL70e-BT
+2025-04-23 16:56:32,959 - INFO - 正在选择设备: PL70e-BT
+2025-04-23 16:56:33,086 - INFO - 点击PM230    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-04-23 16:56:34,289 - INFO - 点击PL70e-BT    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="PL70e-BT"], 
+2025-04-23 16:56:35,106 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-04-23 16:56:35,160 - INFO - 设备 PL70e-BT 选择完成
+2025-04-23 16:56:55,578 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-04-23 16:56:56,887 - INFO - 执行返回
+2025-04-23 16:56:57,903 - INFO - 设备 PL70e-BT 处理完成
+2025-04-23 16:56:57,903 - INFO - 设备 PL70e-BT 测试完成
+2025-04-23 16:56:57,903 - INFO - 开始测试设备: PM360
+2025-04-23 16:56:57,903 - INFO - 开始处理设备: PM360
+2025-04-23 16:56:57,903 - INFO - 正在选择设备: PM360
+2025-04-23 16:56:58,291 - INFO - 点击PL70e-BT    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-04-23 16:56:59,494 - INFO - 点击PM360    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="PM360"], 
+2025-04-23 16:57:00,236 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-04-23 16:57:00,309 - INFO - 设备 PM360 选择完成
+2025-04-23 16:57:02,007 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-04-23 16:57:04,292 - INFO - 执行返回
+2025-04-23 16:57:05,298 - INFO - 设备 PM360 处理完成
+2025-04-23 16:57:05,298 - INFO - 设备 PM360 测试完成
+2025-04-23 16:57:05,298 - INFO - 开始测试设备: P22
+2025-04-23 16:57:05,298 - INFO - 开始处理设备: P22
+2025-04-23 16:57:05,298 - INFO - 正在选择设备: P22
+2025-04-23 16:57:06,000 - INFO - 点击PM360    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-04-23 16:57:07,188 - INFO - 点击P22    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P22"], 
+2025-04-23 16:57:07,963 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-04-23 16:57:08,014 - INFO - 设备 P22 选择完成
+2025-04-23 16:57:09,542 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-04-23 16:57:10,841 - INFO - 执行返回
+2025-04-23 16:57:11,852 - INFO - 设备 P22 处理完成
+2025-04-23 16:57:11,852 - INFO - 设备 P22 测试完成
+2025-04-23 16:57:11,852 - INFO - 开始测试设备: PL80E
+2025-04-23 16:57:11,852 - INFO - 开始处理设备: PL80E
+2025-04-23 16:57:11,852 - INFO - 正在选择设备: PL80E
+2025-04-23 16:57:11,959 - INFO - 点击P22    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-04-23 16:57:13,579 - INFO - 点击PL80E    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="PL80E"], 
+2025-04-23 16:57:14,323 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-04-23 16:57:14,375 - INFO - 设备 PL80E 选择完成
+2025-04-23 16:57:16,501 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-04-23 16:57:17,814 - INFO - 执行返回
+2025-04-23 16:57:18,825 - INFO - 设备 PL80E 处理完成
+2025-04-23 16:57:18,825 - INFO - 设备 PL80E 测试完成
+2025-04-23 16:57:18,825 - INFO - 执行第二个测试用例
+2025-04-23 16:57:40,867 - INFO - 保存接口返回的第1个图片
+2025-04-23 16:57:41,208 - INFO - 保存接口返回的第2个图片
+2025-04-23 16:57:41,512 - INFO - 保存接口返回的第3个图片
+2025-04-23 16:57:41,825 - INFO - 保存接口返回的第4个图片
+2025-04-23 16:57:42,148 - INFO - 保存接口返回的第5个图片
+2025-04-23 16:57:42,610 - INFO - 保存接口返回的第6个图片
+2025-04-23 16:57:43,210 - INFO - 保存接口返回的第7个图片
+2025-04-23 16:57:43,210 - INFO - 一共7张图片
+2025-04-23 16:57:46,172 - INFO - 成功保存截图到：D:\huan\Print_APP\screenshots\app_banner\banner_1745398665.png
+2025-04-23 16:57:50,477 - INFO - 成功保存截图到：D:\huan\Print_APP\screenshots\app_banner\banner_1745398670.png
+2025-04-23 16:57:54,462 - INFO - 成功保存截图到：D:\huan\Print_APP\screenshots\app_banner\banner_1745398674.png
+2025-04-23 16:57:57,926 - INFO - 成功保存截图到：D:\huan\Print_APP\screenshots\app_banner\banner_1745398677.png
+2025-04-23 16:58:01,365 - INFO - 成功保存截图到：D:\huan\Print_APP\screenshots\app_banner\banner_1745398681.png
+2025-04-23 16:58:05,194 - INFO - 成功保存截图到：D:\huan\Print_APP\screenshots\app_banner\banner_1745398685.png
+2025-04-23 16:58:09,647 - INFO - 成功保存截图到：D:\huan\Print_APP\screenshots\app_banner\banner_1745398689.png
+2025-04-23 16:58:11,649 - INFO - 共截取并保存了 7 张唯一的banner截图。
+2025-04-23 16:58:11,750 - INFO - APP保存的图片与接口返回的图片有95%以上相似，无需手动确认
+2025-04-23 16:58:11,877 - INFO - APP保存的图片与接口返回的图片有95%以上相似，无需手动确认
+2025-04-23 16:58:12,034 - INFO - APP保存的图片与接口返回的图片有95%以上相似，无需手动确认
+2025-04-23 16:58:12,280 - INFO - APP保存的图片与接口返回的图片有95%以上相似，无需手动确认
+2025-04-23 16:58:12,451 - INFO - APP保存的图片与接口返回的图片有95%以上相似，无需手动确认
+2025-04-23 16:58:12,619 - INFO - APP保存的图片与接口返回的图片有95%以上相似，无需手动确认
+2025-04-23 16:58:12,692 - INFO - APP保存的图片与接口返回的图片有95%以上相似，无需手动确认
+2025-04-23 16:58:32,987 - INFO - 点击未连接    =>定位值: com.nelko.printer:id/tv_connect, 
+2025-04-23 16:59:13,887 - ERROR - 找不到PM230--11:FB:AF:F5:6F:52进入else
+2025-04-23 16:59:14,160 - INFO - 点击刷新    =>定位值: //android.widget.TextView[@text="刷新"], 
+2025-04-23 16:59:21,420 - INFO - 点击11:FB:AF:F5:6F:52    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/tv_ble_address" and @text="11:FB:AF:F5:6F:52"], 
+2025-04-23 16:59:21,466 - INFO - 测试结束 - 设备: 6ebb6b77, 版本: 12. 结果: 0错误, 0失败

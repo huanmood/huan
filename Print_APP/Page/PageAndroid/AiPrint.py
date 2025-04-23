@@ -1,7 +1,4 @@
-import time
-
 from selenium.webdriver.common.by import By
-
 from Page import PageAndroid
 from Page.BasePage import Action
 
@@ -88,23 +85,27 @@ DEVICE_TEMPLATE_MAPPING = {
         # ]
     }
 }
+# testpage.py
 
 
 class AiPrint(Action):
-
     def get_aiprint(self, devName):
-        # 执行
+        self.log(f"开始处理设备: {devName}")
         self._select_device(devName)
         self._handle_device_template(devName)
         self.back_button()
+        self.log(f"设备 {devName} 处理完成")
 
     def _select_device(self, devName):
         """选择指定设备"""
+        self.log(f"正在选择设备: {devName}")
         self.click_button(PageAndroid.deviceName_loc)
         device_locator = (By.XPATH,
-                          f'//android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="{devName}"]')
+                        f'//android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="{devName}"]')
         self.click_button(device_locator)
         self.click_button(PageAndroid.deviceConfirm)
+        self.log(f"设备 {devName} 选择完成")
+
 
     def _handle_device_template(self, devName):
         """处理设备特定模板"""
@@ -125,12 +126,24 @@ class AiPrint(Action):
                     getattr(self, f"click_button")(getattr(self.buttonElement, handler["action"]))
                 else:
                     i += 5
-
         if devName == 'PM230':
             self.click_button(self.buttonElement.moreButton)
-            time.sleep(0.5)
             self.click_button(device_config['AiPrint_locator'])
-            time.sleep(1)
-
         else:
             self.click_button(device_config['AiPrint_locator'])
+# class AiPrint(Action):
+#
+#     def get_aiprint(self, devName):
+#         # 执行
+#         self._select_device(devName)
+#         self._handle_device_template(devName)
+#
+#         self.back_button()
+#
+#     def _select_device(self, devName):
+#         """选择指定设备"""
+#         self.click_button(PageAndroid.deviceName_loc)
+#         device_locator = (By.XPATH,
+#                           f'//android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="{devName}"]')
+#         self.click_button(device_locator)
+#         self.click_button(PageAndroid.deviceConfirm)
