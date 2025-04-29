@@ -20,7 +20,7 @@ class AiPrintTest(unittest.TestCase):
     def test_AiPrint(self, devName):
         self.base.log(f"开始测试设备: {devName}")
         self.base.get_aiprint(devName)
-        thread_context.log(f"设备 {devName} 测试完成")
+        self.base.log(f"设备 {devName} 测试完成")
 
     def test_aa(self):
-        thread_context.log("执行第二个测试用例")
+        self.base.log("执行第二个测试用例")

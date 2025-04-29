@@ -1,0 +1,30 @@
+2025-04-28 17:28:48,450 - INFO - 测试开始 - 设备: a12b830d, 版本: 11
+2025-04-28 17:29:03,643 - INFO - 开始测试设备: P21
+2025-04-28 17:29:03,643 - INFO - 开始处理设备: P21
+2025-04-28 17:29:03,643 - INFO - 正在选择设备: P21
+2025-04-28 17:29:03,804 - INFO - 点击P21    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-04-28 17:29:04,918 - INFO - 点击P21    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P21"], 
+2025-04-28 17:29:05,640 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-04-28 17:29:05,696 - INFO - 设备 P21 选择完成
+2025-04-28 17:29:06,847 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-04-28 17:29:07,664 - INFO - 点击AI图库    =>定位值: //android.widget.TextView[@text="AI图库"], 
+2025-04-28 17:29:10,927 - INFO - P21完整API模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-04-28 17:29:10,927 - INFO - P21完整APP模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-04-28 17:29:11,201 - INFO - 点击[无可见文本]    =>定位值: (//android.widget.ImageView[@resource-id="com.nelko.printer:id/item_aigallery_image"])[1], 
+2025-04-28 17:29:11,978 - INFO - 执行返回
+2025-04-28 17:29:12,862 - INFO - 执行返回
+2025-04-28 17:29:13,373 - INFO - 设备 P21 处理完成
+2025-04-28 17:29:13,373 - INFO - 设备 P21 测试完成
+2025-04-28 17:29:13,373 - INFO - 开始测试设备: P31S
+2025-04-28 17:29:13,373 - INFO - 开始处理设备: P31S
+2025-04-28 17:29:13,373 - INFO - 正在选择设备: P31S
+2025-04-28 17:29:29,054 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-04-28 17:29:29,054 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-04-28 17:29:29,056 - INFO - 开始测试设备: PM220
+2025-04-28 17:29:29,056 - INFO - 开始处理设备: PM220
+2025-04-28 17:29:29,056 - INFO - 正在选择设备: PM220
+2025-04-28 17:29:44,702 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-04-28 17:29:44,702 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-04-28 17:29:44,703 - INFO - 开始测试设备: PM220S
+2025-04-28 17:29:44,703 - INFO - 开始处理设备: PM220S
+2025-04-28 17:29:44,703 - INFO - 正在选择设备: PM220S

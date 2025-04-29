@@ -1,0 +1,23 @@
+2025-04-29 10:56:30,215 - INFO - 测试开始 - 设备: a12b830d, 版本: 11
+2025-04-29 10:56:45,319 - INFO - 开始测试设备: P21
+2025-04-29 10:56:45,319 - INFO - 开始处理设备: P21
+2025-04-29 10:56:45,319 - INFO - 正在选择设备: P21
+2025-04-29 10:56:45,408 - INFO - 点击P21    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-04-29 10:56:47,109 - INFO - 点击P21    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P21"], 
+2025-04-29 10:56:47,804 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-04-29 10:56:48,662 - INFO - 设备 P21 选择完成
+2025-04-29 10:56:48,857 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-04-29 10:56:49,708 - INFO - 点击AI图库    =>定位值: //android.widget.TextView[@text="AI图库"], 
+2025-04-29 10:56:52,769 - INFO - P21完整API模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-04-29 10:56:52,769 - INFO - P21完整APP模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-04-29 10:56:52,919 - INFO - 点击[无可见文本]    =>定位值: (//android.widget.ImageView[@resource-id="com.nelko.printer:id/item_aigallery_image"])[1], 
+2025-04-29 10:56:54,220 - INFO - 点击643    =>定位值: com.nelko.printer:id/act_ai_detail_cv_tv, 
+2025-04-29 10:56:55,120 - INFO - 点击使用Email登录    =>定位值: //android.widget.TextView[@text="使用Email登录"], 
+2025-04-29 10:56:56,432 - INFO - 点击邮箱    =>定位值: com.nelko.printer:id/edit_email, 
+2025-04-29 10:57:00,688 - INFO - 点击密码    =>定位值: com.nelko.printer:id/edit_password, 
+2025-04-29 10:57:03,076 - INFO - 执行返回
+2025-04-29 10:57:03,695 - INFO - 点击[无可见文本]    =>定位值: com.nelko.printer:id/checkBox_agreement, 
+2025-04-29 10:57:04,379 - INFO - 点击登录    =>定位值: com.nelko.printer:id/sign_in, 
+2025-04-29 10:57:04,412 - INFO - 开始测试设备: P31S
+2025-04-29 10:57:04,412 - INFO - 开始处理设备: P31S
+2025-04-29 10:57:04,413 - INFO - 正在选择设备: P31S

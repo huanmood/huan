@@ -1,13 +1,8 @@
 from selenium.webdriver.common.by import By
-
 import time
-
 from Page.BasePage import Action
 
-
-
 class Connect(Action):
-
 
     def connect(self, deviceName, deviceMac):
         self.click_button(self.buttonElement.Homepage_connect)

@@ -67,7 +67,7 @@ class BannerTest(unittest.TestCase):
                     # 将响应内容写入文件
                     file.write(image_response.content)
                     thread_context.log(f"保存接口返回的第{i + 1}个图片")
-        thread_context.log(f"一共{len(data['data'])}张图片")
+        self.base.log(f"一共{len(data['data'])}张图片")
 
     def test_02_banner(self):
         # 定位到banner图片的元素
@@ -129,10 +129,10 @@ class BannerTest(unittest.TestCase):
                 time.sleep(2)
 
             except Exception as e:
-                thread_context.log(f"捕获到异常：{e}")
+                self.base.log(f"捕获到异常：{e}")
                 pass
 
-        thread_context.log(f"共截取并保存了 {len(saved_hashes)} 张唯一的banner截图。")
+        self.base.log(f"共截取并保存了 {len(saved_hashes)} 张唯一的banner截图。")
 
     def test_03_getPicList(self):
         confirmNum = 0
@@ -147,7 +147,7 @@ class BannerTest(unittest.TestCase):
             self.base.clear_images_in_folder(app_banner)
             self.base.clear_images_in_folder(jieko_banner)
         if confirmNum < self.global_var.get_value("banner_Len"):
-            thread_context.log(f"APP保存的图片与接口返回的图片存在不相似，需要手动确认")
+            self.base.log(f"APP保存的图片与接口返回的图片存在不相似，需要手动确认")
 
     @classmethod
     def tearDownClass(cls):

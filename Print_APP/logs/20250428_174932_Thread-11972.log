@@ -1,0 +1,59 @@
+2025-04-28 17:49:32,938 - INFO - 测试开始 - 设备: a12b830d, 版本: 11
+2025-04-28 17:49:48,035 - INFO - 开始测试设备: P21
+2025-04-28 17:49:48,035 - INFO - 开始处理设备: P21
+2025-04-28 17:49:48,035 - INFO - 正在选择设备: P21
+2025-04-28 17:49:48,136 - INFO - 点击P21    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-04-28 17:49:49,221 - INFO - 点击P21    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P21"], 
+2025-04-28 17:49:49,940 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-04-28 17:49:49,987 - INFO - 设备 P21 选择完成
+2025-04-28 17:49:50,981 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-04-28 17:49:51,845 - INFO - 点击AI图库    =>定位值: //android.widget.TextView[@text="AI图库"], 
+2025-04-28 17:49:55,125 - INFO - P21完整API模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-04-28 17:49:55,125 - INFO - P21完整APP模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-04-28 17:49:55,278 - INFO - 点击[无可见文本]    =>定位值: (//android.widget.ImageView[@resource-id="com.nelko.printer:id/item_aigallery_image"])[1], 
+2025-04-28 17:49:56,016 - INFO - 执行返回
+2025-04-28 17:49:57,896 - INFO - 执行返回
+2025-04-28 17:49:58,408 - INFO - 设备 P21 处理完成
+2025-04-28 17:49:58,408 - INFO - 设备 P21 测试完成
+2025-04-28 17:49:58,408 - INFO - 开始测试设备: P31S
+2025-04-28 17:49:58,408 - INFO - 开始处理设备: P31S
+2025-04-28 17:49:58,408 - INFO - 正在选择设备: P31S
+2025-04-28 17:50:13,963 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-04-28 17:50:13,963 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-04-28 17:50:13,966 - INFO - 开始测试设备: PM220
+2025-04-28 17:50:13,966 - INFO - 开始处理设备: PM220
+2025-04-28 17:50:13,966 - INFO - 正在选择设备: PM220
+2025-04-28 17:50:29,502 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-04-28 17:50:29,502 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-04-28 17:50:29,503 - INFO - 开始测试设备: PM220S
+2025-04-28 17:50:29,503 - INFO - 开始处理设备: PM220S
+2025-04-28 17:50:29,503 - INFO - 正在选择设备: PM220S
+2025-04-28 17:50:45,045 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-04-28 17:50:45,045 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-04-28 17:50:45,046 - INFO - 开始测试设备: PM230
+2025-04-28 17:50:45,046 - INFO - 开始处理设备: PM230
+2025-04-28 17:50:45,046 - INFO - 正在选择设备: PM230
+2025-04-28 17:51:00,593 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-04-28 17:51:00,593 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-04-28 17:51:00,594 - INFO - 开始测试设备: PL70e-BT
+2025-04-28 17:51:00,594 - INFO - 开始处理设备: PL70e-BT
+2025-04-28 17:51:00,594 - INFO - 正在选择设备: PL70e-BT
+2025-04-28 17:51:16,132 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-04-28 17:51:16,132 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-04-28 17:51:16,133 - INFO - 开始测试设备: PM360
+2025-04-28 17:51:16,133 - INFO - 开始处理设备: PM360
+2025-04-28 17:51:16,133 - INFO - 正在选择设备: PM360
+2025-04-28 17:51:31,672 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-04-28 17:51:31,672 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-04-28 17:51:31,672 - INFO - 开始测试设备: P22
+2025-04-28 17:51:31,673 - INFO - 开始处理设备: P22
+2025-04-28 17:51:31,673 - INFO - 正在选择设备: P22
+2025-04-28 17:51:47,246 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-04-28 17:51:47,246 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-04-28 17:51:47,247 - INFO - 开始测试设备: PL80E
+2025-04-28 17:51:47,247 - INFO - 开始处理设备: PL80E
+2025-04-28 17:51:47,247 - INFO - 正在选择设备: PL80E
+2025-04-28 17:52:03,256 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-04-28 17:52:03,256 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-04-28 17:52:03,257 - INFO - 执行第二个测试用例
+2025-04-28 17:52:03,261 - INFO - 测试结束 - 设备: a12b830d, 版本: 11. 结果: 0错误, 8失败

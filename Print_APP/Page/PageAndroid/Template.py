@@ -93,7 +93,7 @@ DEVICE_TEMPLATE_MAPPING = {
 
 class Template(Action):
 
-    def get_getCategory(self, devName):
+    def  get_getCategory(self, devName):
         """获取并比较模板类型和尺寸"""
         try:
             # 1. 选择设备
@@ -166,7 +166,6 @@ class Template(Action):
         # --- 公共操作：返回上级 ---
         for _ in range(2):
             self.back_button()
-
 
     def _compare_template_types(self, devName):
         """比较模板类型"""
@@ -267,7 +266,7 @@ class Template(Action):
     def _get_api_templates(self, devName):
         """从API获取模板数据"""
         url = f'https://app.nelko.net/api/template/getCategory/{devName}'
-        headers = {"language": "zh"}
+        headers = {"language": "zh-Hans"}
 
         try:
             response = requests.get(url=url, headers=headers, timeout=10)

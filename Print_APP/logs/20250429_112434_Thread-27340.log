@@ -1,0 +1,27 @@
+2025-04-29 11:24:34,558 - INFO - 测试开始 - 设备: a12b830d, 版本: 11
+2025-04-29 11:24:49,662 - INFO - 开始测试设备: P21
+2025-04-29 11:24:49,662 - INFO - 开始处理设备: P21
+2025-04-29 11:24:49,662 - INFO - 正在选择设备: P21
+2025-04-29 11:24:49,730 - INFO - 点击P21    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-04-29 11:24:51,374 - INFO - 点击P21    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P21"], 
+2025-04-29 11:24:52,043 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-04-29 11:24:52,098 - INFO - 设备 P21 选择完成
+2025-04-29 11:24:53,086 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-04-29 11:24:53,888 - INFO - 点击AI图库    =>定位值: //android.widget.TextView[@text="AI图库"], 
+2025-04-29 11:24:57,011 - INFO - P21完整API模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-04-29 11:24:57,011 - INFO - P21完整APP模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-04-29 11:24:57,177 - INFO - 点击收藏    =>定位值: //android.widget.TextView[@text="收藏"], 
+2025-04-29 11:24:59,106 - INFO - 点击使用Email登录    =>定位值: //android.widget.TextView[@text="使用Email登录"], 
+2025-04-29 11:25:00,458 - INFO - 点击邮箱    =>定位值: com.nelko.printer:id/edit_email, 
+2025-04-29 11:25:04,698 - INFO - 点击密码    =>定位值: com.nelko.printer:id/edit_password, 
+2025-04-29 11:25:07,174 - INFO - 执行返回
+2025-04-29 11:25:07,800 - INFO - 点击[无可见文本]    =>定位值: com.nelko.printer:id/checkBox_agreement, 
+2025-04-29 11:25:08,489 - INFO - 点击登录    =>定位值: com.nelko.printer:id/sign_in, 
+2025-04-29 11:25:08,544 - INFO - 开始测试设备: P31S
+2025-04-29 11:25:08,544 - INFO - 开始处理设备: P31S
+2025-04-29 11:25:08,544 - INFO - 正在选择设备: P31S
+2025-04-29 11:25:11,989 - INFO - 点击P21    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-04-29 11:25:12,990 - INFO - 点击P31S    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P31S"], 
+2025-04-29 11:25:13,692 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-04-29 11:25:13,728 - INFO - 设备 P31S 选择完成
+2025-04-29 11:25:15,272 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 

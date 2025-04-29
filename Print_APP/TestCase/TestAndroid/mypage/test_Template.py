@@ -15,7 +15,7 @@ class TemplateTest(unittest.TestCase):
 
     @parameterized.expand(dev)
     def test_getTempleList(self, devName):
-        thread_context.log(devName)
+        self.base.log(devName)
         self.base.get_getCategory(devName)
 
     @classmethod

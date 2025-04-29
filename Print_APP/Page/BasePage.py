@@ -4,6 +4,9 @@
 import logging
 import time
 import os
+
+import cv2
+import numpy as np
 from appium.webdriver.common.touch_action import TouchAction
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -59,12 +62,11 @@ class Action(unittest.TestCase):
 
     def clear_key(self, loc):
         """重写清空文本输入法"""
-        time.sleep(1)
         self.find_element(loc).clear()
 
     def send_keys(self, loc, value):
         """重写在文本框中输入内容的方法"""
-        self.clear_key(loc)  # 先调用
+        # self.clear_key(loc)  # 先调用
         self.find_element(loc).send_keys(value)
 
     def click_button(self, loc):
@@ -186,3 +188,30 @@ class Action(unittest.TestCase):
         else:
             print("当前不在首页位置，无法判断是否处于连接状态")
             return False
+    def capture_element_screenshot(self, element):
+        """
+        截取屏幕截图1
+        :param element: 传入webdriver对象
+        :return: 一张屏幕指定元素和大小的截图
+        """
+        screenshot = self.driver.get_screenshot_as_png()
+        screenshot = np.frombuffer(screenshot, np.uint8)
+        screenshot = cv2.imdecode(screenshot, cv2.IMREAD_COLOR)
+        # 获取元素位置和大小
+        location = element.location
+        size = element.size
+        # 根据元素位置和大小截取元素截图
+        element_screenshot = screenshot[int(location['y']):int(location['y'] + size['height']),
+                             int(location['x']):int(location['x'] + size['width'])]
+        return element_screenshot
+
+    def compare_images(self, img1, img2):
+        """
+        比较两张图片是否一致，调用一次方法生成一张
+        和capture_element_screenshot()方法联用
+        :param img1:
+        :param img2:
+        :return:Unknown
+        """
+        difference = np.subtract(img1, img2)
+        return not np.any(difference)

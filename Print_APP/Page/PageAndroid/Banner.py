@@ -25,15 +25,21 @@ class Banner(Action):
             screenshot = np.frombuffer(screenshot, dtype=np.uint8)
             screenshot = cv2.imdecode(screenshot, cv2.IMREAD_COLOR)
             screenshot = cv2.cvtColor(screenshot, cv2.COLOR_BGR2RGB)  # BGR 转 RGB
+            print("screenshot:",screenshot)
             # 获取元素位置和大小
             location = element.location
+            print("location:",location)
             size = element.size
+            print("size:", size)
             # 计算裁剪区域（防止越界）
             y_start = max(0, int(location['y']))
+            print(y_start)
             y_end = min(screenshot.shape[0], int(location['y'] + size['height']))
+            print(y_end)
             x_start = max(0, int(location['x']))
+            print(x_start)
             x_end = min(screenshot.shape[1], int(location['x'] + size['width']))
-
+            print(x_end)
             # 裁剪元素区域
             element_screenshot = screenshot[y_start:y_end, x_start:x_end]
             return element_screenshot
@@ -85,7 +91,6 @@ class Banner(Action):
     def clear_images_in_folder(self, folder_path):
         # 支持的图片文件扩展名
         image_extensions = ['*.jpg', '*.jpeg', '*.png', '*.gif', '*.bmp', '*.tiff']
-
         # 检查文件夹是否存在
         if os.path.exists(folder_path):
             # 遍历所有支持的图片文件

@@ -1,0 +1,33 @@
+2025-04-25 14:55:10,857 - INFO - 测试开始 - 设备: a12b830d, 版本: 11
+2025-04-25 14:55:25,957 - INFO - 开始测试设备: P21
+2025-04-25 14:55:25,957 - INFO - 开始处理设备: P21
+2025-04-25 14:55:25,957 - INFO - 正在选择设备: P21
+2025-04-25 14:55:26,037 - INFO - 点击P21    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-04-25 14:55:27,127 - INFO - 点击P21    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P21"], 
+2025-04-25 14:55:27,915 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-04-25 14:55:27,953 - INFO - 设备 P21 选择完成
+2025-04-25 14:55:28,995 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-04-25 14:55:29,779 - INFO - 点击AI图库    =>定位值: //android.widget.TextView[@text="AI图库"], 
+2025-04-25 14:55:33,379 - INFO - 开始测试设备: P31S
+2025-04-25 14:55:33,379 - INFO - 开始处理设备: P31S
+2025-04-25 14:55:33,379 - INFO - 正在选择设备: P31S
+2025-04-25 14:55:48,933 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-04-25 14:55:48,933 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-04-25 14:55:48,934 - INFO - 开始测试设备: PM220
+2025-04-25 14:55:48,934 - INFO - 开始处理设备: PM220
+2025-04-25 14:55:48,934 - INFO - 正在选择设备: PM220
+2025-04-25 14:56:04,493 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-04-25 14:56:04,493 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-04-25 14:56:04,495 - INFO - 开始测试设备: PM220S
+2025-04-25 14:56:04,495 - INFO - 开始处理设备: PM220S
+2025-04-25 14:56:04,495 - INFO - 正在选择设备: PM220S
+2025-04-25 14:56:20,396 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-04-25 14:56:20,396 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-04-25 14:56:20,397 - INFO - 开始测试设备: PM230
+2025-04-25 14:56:20,397 - INFO - 开始处理设备: PM230
+2025-04-25 14:56:20,397 - INFO - 正在选择设备: PM230
+2025-04-25 14:56:36,395 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-04-25 14:56:36,395 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-04-25 14:56:36,395 - INFO - 开始测试设备: PL70e-BT
+2025-04-25 14:56:36,396 - INFO - 开始处理设备: PL70e-BT
+2025-04-25 14:56:36,396 - INFO - 正在选择设备: PL70e-BT
