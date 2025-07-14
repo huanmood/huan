@@ -4,17 +4,17 @@
 
 import unittest
 
-from Print_APP.Page.PageAndroid.LogoutPage import LoginOut
-from Print_APP.common.logger import Log
+from Page.PageAndroid.LogoutPage import LoginOut
 
 
 class TestLogout(unittest.TestCase):
-    log = Log()
+
 
     def setUp(self):
         self.base = LoginOut()
 
     def test_logout_success(self):
+        self.base.log_debug('登出成功')
         pass
         # '''正常退出'''
         # try:

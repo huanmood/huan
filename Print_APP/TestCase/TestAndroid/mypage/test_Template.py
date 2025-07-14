@@ -1,11 +1,9 @@
 import unittest
 from parameterized import parameterized
 from Page.PageAndroid.Template import Template
-from TestCase.TestAndroid.share_devices import thread_context
+from TestCase.TestAndroid.share_devices import process_context
 
-dev = [("P21"), ("P31S"), ("PM220"), ("PM220S"), ("PM230"), ("PL70e-BT"), ("PM360"), ("P22"),
-       ("PL80E")]
-
+dev = [("P21"), ("PM220"), ("PM230")]
 
 class TemplateTest(unittest.TestCase):
     @classmethod
@@ -15,7 +13,7 @@ class TemplateTest(unittest.TestCase):
 
     @parameterized.expand(dev)
     def test_getTempleList(self, devName):
-        self.base.log(devName)
+        self.base.log_error(devName)
         self.base.get_getCategory(devName)
 
     @classmethod

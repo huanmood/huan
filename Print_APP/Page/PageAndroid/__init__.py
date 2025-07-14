@@ -81,10 +81,13 @@ connectFaile = (By.ID, 'com.nelko.printer:id/tv_title')
 # 连接失败->确认
 connectFaile_sure = (By.ID, 'com.nelko.printer:id/tv_sure')
 # 要与***配对吗？
-alertTitle = (By.ID, 'com.android.settings:id/alertTitle')
+alertTitle = (By.ID, 'com.coloros.wirelesssettings:id/message')
 # 要与***配对吗？->配对
-accept_button = (By.ID, 'com.android.settings:id/pairing_accept_button')
-
+accept_button = (By.ID, 'android:id/button1')
+# 断开连接
+disconnect=(By.ID,'com.nelko.printer:id/act_two_inch_bt_disconnect_tv')
+# 确认
+connect_sure=(By.ID,'com.nelko.printer:id/tv_sure')
 '''模板'''
 # 搜索
 search = (By.ID, 'com.nelko.printer:id/view_et_content')

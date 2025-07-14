@@ -1,0 +1,11 @@
+2025-07-09 10:39:13,152 - INFO - Driver initialized, starting test cases
+2025-07-09 10:39:16,313 - INFO - 保存接口返回的第1个图片
+2025-07-09 10:39:16,664 - INFO - 保存接口返回的第2个图片
+2025-07-09 10:39:17,249 - INFO - 保存接口返回的第3个图片
+2025-07-09 10:39:17,599 - INFO - 保存接口返回的第4个图片
+2025-07-09 10:39:17,932 - INFO - 保存接口返回的第5个图片
+2025-07-09 10:39:18,411 - INFO - 保存接口返回的第6个图片
+2025-07-09 10:39:18,411 - INFO - 一共6张图片
+2025-07-09 10:39:19,654 - INFO - 点击未连接    =>定位值: ('id', 'com.nelko.printer:id/tv_connect'), 
+2025-07-09 10:39:22,724 - INFO - 点击11:FB:AF:F5:6F:52    =>定位值: ('xpath', '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_ble_address" and @text="11:FB:AF:F5:6F:52"]'), 
+2025-07-09 10:39:24,717 - INFO - 点击已连接    =>定位值: ('id', 'com.nelko.printer:id/tv_connect'), 

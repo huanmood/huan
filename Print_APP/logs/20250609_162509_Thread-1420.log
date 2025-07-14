@@ -1,0 +1,49 @@
+2025-06-09 16:25:09,194 - INFO - 测试开始 - 设备: R5CT31Y438P , 版本: 14
+2025-06-09 16:25:24,510 - INFO - 开始测试设备: P21
+2025-06-09 16:25:24,510 - INFO - 开始处理设备: P21
+2025-06-09 16:25:24,510 - INFO - 正在选择设备: P21
+2025-06-09 16:25:24,653 - INFO - 点击PL80E    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-06-09 16:25:32,633 - INFO - 点击P21    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P21"], 
+2025-06-09 16:25:33,446 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-06-09 16:25:33,514 - INFO - 设备 P21 选择完成
+2025-06-09 16:25:35,427 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-06-09 16:25:37,031 - INFO - 点击AI图库    =>定位值: //android.widget.TextView[@text="AI图库"], 
+2025-06-09 16:25:41,547 - INFO - 完整API模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-06-09 16:25:41,547 - INFO - 完整APP模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-06-09 16:25:42,641 - INFO - 执行返回
+2025-06-09 16:25:43,678 - INFO - 执行返回
+2025-06-09 16:25:43,678 - INFO - 设备 P21 处理完成
+2025-06-09 16:25:43,678 - INFO - 设备 P21 测试完成
+2025-06-09 16:25:43,678 - INFO - 开始测试设备: P31S
+2025-06-09 16:25:43,678 - INFO - 开始处理设备: P31S
+2025-06-09 16:25:43,678 - INFO - 正在选择设备: P31S
+2025-06-09 16:25:43,912 - INFO - 点击P21    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-06-09 16:25:45,563 - INFO - 点击P31S    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P31S"], 
+2025-06-09 16:25:46,527 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-06-09 16:25:46,623 - INFO - 设备 P31S 选择完成
+2025-06-09 16:25:48,095 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-06-09 16:25:49,490 - INFO - 点击AI图库    =>定位值: //android.widget.TextView[@text="AI图库"], 
+2025-06-09 16:25:53,528 - INFO - 完整API模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-06-09 16:25:53,528 - INFO - 完整APP模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-06-09 16:25:54,592 - INFO - 执行返回
+2025-06-09 16:25:55,629 - INFO - 执行返回
+2025-06-09 16:25:55,629 - INFO - 设备 P31S 处理完成
+2025-06-09 16:25:55,629 - INFO - 设备 P31S 测试完成
+2025-06-09 16:25:55,629 - INFO - 开始测试设备: PM220
+2025-06-09 16:25:55,629 - INFO - 开始处理设备: PM220
+2025-06-09 16:25:55,629 - INFO - 正在选择设备: PM220
+2025-06-09 16:25:56,414 - INFO - 点击P31S    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-06-09 16:25:57,923 - INFO - 点击PM220    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="PM220"], 
+2025-06-09 16:25:58,901 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-06-09 16:25:59,020 - INFO - 设备 PM220 选择完成
+2025-06-09 16:26:01,274 - INFO - 点击AI打印    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"], 
+2025-06-09 16:26:02,681 - INFO - 点击AI图库    =>定位值: //android.widget.TextView[@text="AI图库"], 
+2025-06-09 16:26:06,901 - INFO - 完整API模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-06-09 16:26:06,901 - INFO - 完整APP模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-06-09 16:26:07,989 - INFO - 执行返回
+2025-06-09 16:26:09,046 - INFO - 执行返回
+2025-06-09 16:26:09,046 - INFO - 设备 PM220 处理完成
+2025-06-09 16:26:09,046 - INFO - 设备 PM220 测试完成
+2025-06-09 16:26:24,821 - INFO - 元素 ('xpath', '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.nelko.printer:id/act_ai_category_rcv"]') 超时未找到
+2025-06-09 16:26:24,823 - INFO - 执行第二个测试用例
+2025-06-09 16:26:24,823 - INFO - 测试结束 - 设备: R5CT31Y438P , 版本: 14. 结果: 1错误, 0失败

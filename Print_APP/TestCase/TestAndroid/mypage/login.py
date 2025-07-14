@@ -8,25 +8,25 @@ from parameterized import parameterized
 
 import time
 
-from Print_APP.Page.PageAndroid.LoginPage import Login
-from Print_APP.common.logger import Log
-from Print_APP.common.read_json import read_json
+from Page.PageAndroid.LoginPage import Login
+
+from common.read_json import read_json
 
 
 class TestLogin(unittest.TestCase):
-    log = Log()
     def setUp(self):
         self.base = Login()
     @parameterized.expand(read_json("data.json", "userinfo"))
     def test_login_success(self, email, pwd):
         '''正常登录'''
         try:
+            self.base.click_mein()
             self.base.app_login(email, pwd)
             time.sleep(5)
             # self.base.assertEqual(self.base.login_success(), '首页')
-            self.log.info('登录成功')
+            self.base.log('登录成功')
         except Exception as e:
-            self.log.error(e)
+            self.base.log(e)
 
 
 if __name__ == '__main__':

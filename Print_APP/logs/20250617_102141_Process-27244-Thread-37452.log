@@ -1,0 +1,16 @@
+2025-06-17 10:21:47,656 - INFO - Driver initialized, starting test cases
+2025-06-17 10:21:48,104 - INFO - P21
+2025-06-17 10:21:51,943 - ERROR - 点击PM230    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-06-17 10:21:58,550 - ERROR - 元素 ('xpath', '//android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P21"]') 超时未找到
+2025-06-17 10:21:58,550 - ERROR - 获取位置失败 //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P21"], 点击事件执行失败
+2025-06-17 10:21:58,550 - ERROR - 测试失败: 获取位置失败 //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P21"], 点击事件执行失败
+2025-06-17 10:21:58,556 - INFO - PM220
+2025-06-17 10:21:58,635 - ERROR - 点击PM230    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-06-17 10:22:03,730 - ERROR - 元素 ('xpath', '//android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="PM220"]') 超时未找到
+2025-06-17 10:22:03,730 - ERROR - 获取位置失败 //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="PM220"], 点击事件执行失败
+2025-06-17 10:22:03,730 - ERROR - 测试失败: 获取位置失败 //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="PM220"], 点击事件执行失败
+2025-06-17 10:22:03,731 - INFO - PM230
+2025-06-17 10:22:08,848 - ERROR - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-06-17 10:22:08,848 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-06-17 10:22:08,848 - ERROR - 测试失败: 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-06-17 10:22:08,850 - INFO - Test case execution finished

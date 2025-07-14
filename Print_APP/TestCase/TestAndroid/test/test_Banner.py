@@ -9,9 +9,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 import requests
 import unittest
 from Page.PageAndroid.Banner import Banner
-from TestCase.TestAndroid.share_devices import thread_context
 from common.GlobalValue import GlobalVar
-
+from TestCase.TestAndroid.share_devices import process_context
 app_banner = r'D:\huan\Print_APP\screenshots\app_banner'
 jieko_banner = r'D:\huan\Print_APP\screenshots\jieko_banner'
 
@@ -24,7 +23,6 @@ class BannerTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.base = Banner()  # 实例化Base对象
-        cls.base.firstDownload_open()
 
     def test_01_jiekoPic(self):
         # 保存接口返回image到文件夹
@@ -66,7 +64,7 @@ class BannerTest(unittest.TestCase):
                 with open(save_path, 'wb') as file:
                     # 将响应内容写入文件
                     file.write(image_response.content)
-                    thread_context.log(f"保存接口返回的第{i + 1}个图片")
+                    process_context.log(f"保存接口返回的第{i + 1}个图片")
         self.base.log(f"一共{len(data['data'])}张图片")
 
     def test_02_banner(self):
@@ -108,7 +106,7 @@ class BannerTest(unittest.TestCase):
 
                 # 检查哈希值是否已经存在于集合中
                 if banner_hash in saved_hashes:
-                    thread_context.log("图片已经被保存过，跳过。")
+                    process_context.log("图片已经被保存过，跳过。")
                     continue
 
                 # 将哈希值添加到集合中，表示已经保存过
@@ -121,9 +119,9 @@ class BannerTest(unittest.TestCase):
                 # 保存图片并确保成功
                 banner_image.save(image_path)
                 if os.path.exists(image_path):
-                    thread_context.log(f"成功保存截图到：{image_path}")
+                    process_context.log(f"成功保存截图到：{image_path}")
                 else:
-                    thread_context.log(f"保存截图失败：{image_path}")
+                    process_context.log(f"保存截图失败：{image_path}")
 
                 # 等待一段时间以确保文件系统有时间处理保存操作
                 time.sleep(2)
@@ -141,7 +139,7 @@ class BannerTest(unittest.TestCase):
         for image_file1 in image_files1:
             for image_file2 in image_files2:
                 if self.base.images_are_similar(image_file1, image_file2, threshold=0.95):
-                    thread_context.log("APP保存的图片与接口返回的图片有95%以上相似，无需手动确认")
+                    process_context.log("APP保存的图片与接口返回的图片有95%以上相似，无需手动确认")
                     confirmNum += 1
         if confirmNum == self.global_var.get_value("banner_Len"):
             self.base.clear_images_in_folder(app_banner)

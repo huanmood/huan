@@ -10,7 +10,7 @@ DEVICE_TEMPLATE_MAPPING = {
     "P21": {
         "AiPrint_locator": (
             By.XPATH,
-            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI打印"]'),
+            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI图库"]'),
         "AiPrint_Picture": (
             By.XPATH,
             '//android.widget.TextView[@text="AI图库"]'),
@@ -130,13 +130,15 @@ favourite_Num = 0
 
 
 class AiPrint(Action):
+    def print(self):
+        pass
     def get_aiprint(self, devName):
         self.log(f"开始处理设备: {devName}")
         self._select_device(devName)
         self._handle_device_template(devName)
-        self._compare_templates(devName)
-        self._add_Favourite()
-        self.back_button()
+        self._compare_templates()
+        # self._add_Favourite()
+        # self.back_button()
         self.back_button()
         self.log(f"设备 {devName} 处理完成")
 
@@ -185,10 +187,10 @@ class AiPrint(Action):
         if devName == 'PM230':
             self.click_button(self.buttonElement.moreButton)
             self.click_button(device_config['AiPrint_locator'])
-            self.click_button(device_config['AiPrint_Picture'])
+            # self.click_button(device_config['AiPrint_Picture'])
         else:
             self.click_button(device_config['AiPrint_locator'])
-            self.click_button(device_config['AiPrint_Picture'])
+            # self.click_button(device_config['AiPrint_Picture'])
 
     # 获取AI图库类型 ：APP
     def _get_app_Aiprints(self):
@@ -207,10 +209,11 @@ class AiPrint(Action):
         }
         response = requests.get('https://app.nelko.net/api/picture/getPictureTypeList', headers=headers)
         response.raise_for_status()
+
         return [i['name'] for i in response.json().get('data', [])]
 
     # 比较 AI图库类型
-    def _compare_templates(self, devName):
+    def _compare_templates(self):
         """比较API和APP的模板数据"""
         get_app_Aiprints = self._get_app_Aiprints()
         get_api_Aiprints = self._get_api_Aiprints()
@@ -222,30 +225,30 @@ class AiPrint(Action):
         diff_in_app = app_set - api_set
 
         if not diff_in_api and not diff_in_app:
-            print(f"{devName}所有模板类型与接口返回一致")
+            print(f"所有模板类型与接口返回一致")
         else:
             if diff_in_api:
-                self.log_debug(f"{devName}AI图库类型在接口但不在APP中: {', '.join(diff_in_api)}")
+                self.log_debug(f"AI图库类型在接口但不在APP中: {', '.join(diff_in_api)}")
             if diff_in_app:
-                self.log_debug(f"{devName}AI图库类型在APP但不在接口中: {', '.join(diff_in_app)}")
+                self.log_debug(f"AI图库类型在APP但不在接口中: {', '.join(diff_in_app)}")
 
-        self.log(f"{devName}完整API模板: {get_api_Aiprints}")
-        self.log(f"{devName}完整APP模板: {get_app_Aiprints}")
+        self.log(f"完整API模板: {get_api_Aiprints}")
+        self.log(f"完整APP模板: {get_app_Aiprints}")
 
     #  增加收藏数量
-    @check_login(collect)
-    def _add_Favourite(self):
-        global favourite_Num
-        self.click_button(all_type)
-        self.click_button(AiPrint_01)
-        self.click_button(add_Favourite)
-        favourite_Num += 1
-        self.back_button()
-
-    def _remove_Favourite(self):
-        global favourite_Num
-        self.click_button(all_type)
-        self.click_button(AiPrint_01)
-        self.click_button(add_Favourite)
-        favourite_Num -= 1
-        self.back_button()
+    # @check_login(collect)
+    # def _add_Favourite(self):
+    #     global favourite_Num
+    #     self.click_button(all_type)
+    #     self.click_button(AiPrint_01)
+    #     self.click_button(add_Favourite)
+    #     favourite_Num += 1
+    #     self.back_button()
+    #
+    # def _remove_Favourite(self):
+    #     global favourite_Num
+    #     self.click_button(all_type)
+    #     self.click_button(AiPrint_01)
+    #     self.click_button(add_Favourite)
+    #     favourite_Num -= 1
+    #     self.back_button()

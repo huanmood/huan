@@ -11,7 +11,7 @@ from appium.webdriver.common.touch_action import TouchAction
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from Page import PageAndroid
-from TestCase.TestAndroid.share_devices import thread_context
+from TestCase.TestAndroid.share_devices import process_context
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
 cur_path = os.path.dirname(os.path.realpath(__file__))
@@ -24,12 +24,32 @@ import unittest
 class Action(unittest.TestCase):
     def __init__(self):
         super().__init__()
-        self.driver = thread_context.driver
+        self.driver = process_context.driver
         self.buttonElement = PageAndroid
+
+    def find_element(self, loc):
+        """重写查找元素方法"""
+        try:
+            WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(loc))
+            return self.driver.find_element(*loc)
+        except TimeoutException:
+            self.log_error(f"元素 {loc} 超时未找到")
+        except NoSuchElementException:
+            self.log_error(f"元素 {loc} 不存在")
+        except Exception as e:
+            self.log_error(f"其他错误: {e}")
+
+    def find_elements(self, loc):
+        """重写查找元素方法"""
+        try:
+            WebDriverWait(self.driver, 15).until(lambda driver: driver.find_element(*loc).is_displayed())
+            return self.driver.find_elements(*loc)
+        except Exception:
+            self.log_error('%s 页面中未能找到%s 元素' % (self, loc))
 
     def log(self, message, level=logging.INFO):
         """统一的日志记录方法"""
-        thread_context.log(message, level)
+        process_context.log(message, level)
 
     def log_debug(self, message):
         self.log(message, logging.DEBUG)
@@ -40,53 +60,46 @@ class Action(unittest.TestCase):
     def log_fatal(self, message):
         self.log(message, logging.FATAL)
 
-    def find_element(self, loc):
-        """重写查找元素方法"""
-        try:
-            WebDriverWait(self.driver, 15).until(EC.visibility_of_element_located(loc))
-            return self.driver.find_element(*loc)
-        except TimeoutException:
-            thread_context.log(f"元素 {loc} 超时未找到")
-        except NoSuchElementException:
-            thread_context.log(f"元素 {loc} 不存在")
-        except Exception as e:
-            thread_context.log(f"其他错误: {e}")
-
-    def find_elements(self, loc):
-        """重写查找元素方法"""
-        try:
-            WebDriverWait(self.driver, 15).until(lambda driver: driver.find_element(*loc).is_displayed())
-            return self.driver.find_elements(*loc)
-        except Exception:
-            thread_context.log('%s 页面中未能找到%s 元素' % (self, loc))
-
     def clear_key(self, loc):
         """重写清空文本输入法"""
         self.find_element(loc).clear()
 
     def send_keys(self, loc, value):
         """重写在文本框中输入内容的方法"""
-        # self.clear_key(loc)  # 先调用
         self.find_element(loc).send_keys(value)
 
-    def click_button(self, loc):
-        element = self.find_element(loc)  # 先获取元素对象
-        try:
-            # 尝试获取元素文本（兼容空文本情况）
-            element_text = element.text if element.text else "[无可见文本]"
-            # 打印定位器类型+定位值 + 元素文本
-            thread_context.log(f"点击{element_text}    =>定位值: {loc[1]}, ")
-            element.click()  # 再执行点击
-        except:
-            error_msg = f"获取位置失败 {loc[1]}, 点击事件执行失败"
-            self.log_error(error_msg)
+    # def click_button(self, loc):
+    #     element = self.find_element(loc)  # 先获取元素对象
+    #     try:
+    #         element_text = element.text if element.text else "[无可见文本]"
+    #         self.log_error(f"点击{element_text}    =>定位值: {loc[1]}, ")
+    #         element.click()
+    #     except:
+    #         error_msg = f"获取位置失败 {loc[1]}, 点击事件执行失败"
+    #         self.log_error(error_msg)
+    #         self.fail(error_msg)  # 这将使测试标记为失败
+    def click_button(self, loc, timeout=10):
+
+        element = self.find_element(loc)
+        if element is None:
+            error_msg = f"获取位置失败 {loc}, 点击事件执行失败"
+            process_context.log(error_msg)
             self.fail(error_msg)  # 这将使测试标记为失败
+        try:
+            if self.wait_for_element(loc, timeout):
+                element_text = element.text if element.text else "[无可见文本]"
+                process_context.log(f"点击{element_text}    =>定位值: {loc}, ")
+                element.click()
+        except Exception as e:
+            error_msg = f"点击元素失败 {loc}, 原因: {e}"
+            process_context.log(error_msg)
+            self.fail(error_msg)
 
     def back_button(self):
         """点击返回按钮"""
         self.driver.back()
-        thread_context.log("执行返回")
         time.sleep(0.5)
+        self.log_error("执行返回")
 
     def exists_element(self, loc):
         """判断元素是否存在 ==0为不存在  !=0为存在"""
@@ -144,16 +157,25 @@ class Action(unittest.TestCase):
             if self.exists_element(self.buttonElement.connect_Dev_know):
                 self.click_button(self.buttonElement.connect_Dev_know)
 
-    def wait_for_element(self, locator, timeout=10):
-        """
-        等待元素出现
-        :param driver: WebDriver 实例
-        :param locator: 元素定位器，例如 (By.ID, "element_id")
-        :param timeout: 最大等待时间，默认10秒
-        :return: 找到的元素
-        """
-        return WebDriverWait(self.driver, timeout).until(
-            EC.presence_of_element_located((locator[0], locator[1])))
+    # def wait_for_element(self, locator, timeout=10):
+    #     """
+    #     等待元素出现
+    #     :param driver: WebDriver 实例
+    #     :param locator: 元素定位器，例如 (By.ID, "element_id")
+    #     :param timeout: 最大等待时间，默认10秒
+    #     :return: 找到的元素
+    #     """
+    #     return WebDriverWait(self.driver, timeout).until(
+    #         EC.presence_of_element_located((locator[0], locator[1])))
+    def wait_for_element(self, locator: object, timeout: object = 20) -> object:
+        try:
+            WebDriverWait(self.driver, timeout).until(
+                EC.element_to_be_clickable(locator)
+            )
+            return True
+        except Exception as e:
+            print(f"等待点击元素超时: {locator}")
+            return False
 
     def double_tap_element(self, element):
         """
@@ -188,6 +210,7 @@ class Action(unittest.TestCase):
         else:
             print("当前不在首页位置，无法判断是否处于连接状态")
             return False
+
     def capture_element_screenshot(self, element):
         """
         截取屏幕截图1

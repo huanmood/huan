@@ -1,0 +1,42 @@
+2025-06-09 16:35:44,829 - INFO - 测试开始 - 设备: 6ebb6b77, 版本: 12
+2025-06-09 16:36:00,578 - INFO - P21
+2025-06-09 16:36:01,217 - INFO - 点击PM220    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-06-09 16:36:04,450 - INFO - 点击P21    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P21"], 
+2025-06-09 16:36:05,123 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-06-09 16:36:07,011 - INFO - 点击模板    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"], 
+2025-06-09 16:36:09,479 - INFO - P21完整API模板: ['存储', '零售', '工作', '学习', '名字', '医疗', '祝福', '开关', '地址', '日常生活', '其他']
+2025-06-09 16:36:09,483 - INFO - P21完整APP模板: ['存储', '零售', '工作', '学习', '名字', '医疗', '祝福', '开关', '地址', '日常生活', '其他']
+2025-06-09 16:36:09,647 - INFO - 点击全部尺寸    =>定位值: com.nelko.printer:id/text_size, 
+2025-06-09 16:36:12,092 - INFO - P21接口返回尺寸: ['14x40', '30x14', '40x12', '40x14', '40x15', '50x14', '75x14']
+2025-06-09 16:36:12,092 - INFO - P21APP展示尺寸: ['14x40', '30x14', '40x12', '40x14', '40x15', '50x14', '75x14']
+2025-06-09 16:36:13,071 - INFO - 执行返回
+2025-06-09 16:36:13,921 - INFO - 点击搜索    =>定位值: com.nelko.printer:id/view_et_content, 
+2025-06-09 16:36:15,356 - INFO - 点击请输入搜索内容    =>定位值: com.nelko.printer:id/view_et_content, 
+2025-06-09 16:36:21,127 - INFO - 点击全部尺寸    =>定位值: com.nelko.printer:id/text_size, 
+2025-06-09 16:36:22,750 - INFO - 点击40x14    =>定位值: //android.widget.CheckBox[@text="40x14"], 
+2025-06-09 16:36:23,645 - INFO - 点击确定    =>定位值: com.nelko.printer:id/btn_selected, 
+2025-06-09 16:36:25,456 - INFO - 执行返回
+2025-06-09 16:36:27,632 - INFO - 执行返回
+2025-06-09 16:36:28,861 - INFO - 执行返回
+2025-06-09 16:36:28,861 - INFO - PM220
+2025-06-09 16:36:44,185 - INFO - 点击P21    =>定位值: com.nelko.printer:id/tv_printer_model, 
+2025-06-09 16:36:45,677 - INFO - 点击PM220    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="PM220"], 
+2025-06-09 16:36:46,434 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
+2025-06-09 16:36:47,829 - INFO - 点击模板    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"], 
+2025-06-09 16:36:49,745 - INFO - PM220完整API模板: ['存储', '零售', '工作', '名片', '学习', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+2025-06-09 16:36:49,745 - INFO - PM220完整APP模板: ['存储', '零售', '工作', '名片', '学习', '名字', '医疗', '祝福', '条码', '地址', 'DIY', '家居']
+2025-06-09 16:36:49,805 - INFO - 点击全部尺寸    =>定位值: com.nelko.printer:id/text_size, 
+2025-06-09 16:36:52,603 - INFO - PM220接口返回尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '80x50']
+2025-06-09 16:36:52,603 - INFO - PM220APP展示尺寸: ['30x20', '30x40', '30x50', '31x31', '40x30', '40x60', '50x30', '50x50', '50x80', '51x51', '80x50']
+2025-06-09 16:36:53,711 - INFO - 执行返回
+2025-06-09 16:36:54,177 - INFO - 点击搜索    =>定位值: com.nelko.printer:id/view_et_content, 
+2025-06-09 16:36:55,913 - INFO - 点击请输入搜索内容    =>定位值: com.nelko.printer:id/view_et_content, 
+2025-06-09 16:37:01,198 - INFO - 点击全部尺寸    =>定位值: com.nelko.printer:id/text_size, 
+2025-06-09 16:37:17,264 - INFO - 元素 ('xpath', '//android.widget.CheckBox[@text="80x50"]') 超时未找到
+2025-06-09 16:37:17,264 - ERROR - 获取位置失败 //android.widget.CheckBox[@text="80x50"], 点击事件执行失败
+2025-06-09 16:37:17,264 - ERROR - 测试失败: 获取位置失败 //android.widget.CheckBox[@text="80x50"], 点击事件执行失败
+2025-06-09 16:37:17,265 - INFO - PM230
+2025-06-09 16:37:32,903 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-06-09 16:37:32,903 - ERROR - 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-06-09 16:37:32,903 - ERROR - 测试失败: 获取位置失败 com.nelko.printer:id/tv_printer_model, 点击事件执行失败
+2025-06-09 16:37:32,904 - INFO - 测试结束 - 设备: 6ebb6b77, 版本: 12. 结果: 0错误, 2失败

@@ -27,7 +27,7 @@ def read_json_nokey(filename):
     with open(file_path, "r", encoding="utf-8") as f:
         for data in json.load(f).get("add_device"):
             arrs.append(tuple(data.values())[1:])
-        # print(arrs)
+        print(arrs)
         return arrs
 # read_json("data.json",'userinfo')
 # read_json_nokey("Android_12.json")

@@ -93,6 +93,7 @@ DEVICE_TEMPLATE_MAPPING = {
 
 class Template(Action):
 
+
     def  get_getCategory(self, devName):
         """获取并比较模板类型和尺寸"""
         try:
