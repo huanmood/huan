@@ -1,4 +1,0 @@
-2025-06-09 16:34:16,898 - INFO - 测试开始 - 设备: 34021JEHN00888, 版本: 16
-2025-06-09 16:34:47,658 - INFO - 元素 ('id', 'com.nelko.printer:id/tv_connect') 超时未找到
-2025-06-09 16:34:47,658 - ERROR - 获取位置失败 com.nelko.printer:id/tv_connect, 点击事件执行失败
-2025-06-09 16:35:11,848 - INFO - 点击未连接    =>定位值: com.nelko.printer:id/tv_connect, 

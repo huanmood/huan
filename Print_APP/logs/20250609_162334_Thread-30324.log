@@ -1,5 +1,0 @@
-2025-06-09 16:23:34,490 - INFO - 测试开始 - 设备: 6ebb6b77, 版本: 12
-2025-06-09 16:23:49,848 - INFO - P21
-2025-06-09 16:23:49,952 - INFO - 点击PM230    =>定位值: com.nelko.printer:id/tv_printer_model, 
-2025-06-09 16:23:52,931 - INFO - 点击P21    =>定位值: //android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P21"], 
-2025-06-09 16:23:53,689 - INFO - 点击确定    =>定位值: com.nelko.printer:id/tv_ok, 
