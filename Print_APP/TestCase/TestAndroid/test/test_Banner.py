@@ -11,66 +11,78 @@ import unittest
 from Page.PageAndroid.Banner import Banner
 from common.GlobalValue import GlobalVar
 from TestCase.TestAndroid.share_devices import process_context
+from common.DB_utils import get_mysql_conn, get_redis_conn
+
 app_banner = r'D:\huan\Print_APP\screenshots\app_banner'
 jieko_banner = r'D:\huan\Print_APP\screenshots\jieko_banner'
 
 
+requests.packages.urllib3.disable_warnings()
 class BannerTest(unittest.TestCase):
     base = None
 
-    global_var = GlobalVar()
+    # global_var = GlobalVar()
 
     @classmethod
     def setUpClass(cls):
+        # cls.mysql = get_mysql_conn()
+        cls.redis = get_redis_conn()
         cls.base = Banner()  # 实例化Base对象
 
     def test_01_jiekoPic(self):
-        # 保存接口返回image到文件夹
-        # 发送请求获取图片
-        url1 = 'http://app.nelko.net/api/user/login'
-        data1 = {
-            "email": "1508908114@qq.com",
-            "password": "111111"
-        }
-        headers1 = {
-            "language": "zh",
-        }
-        login = requests.post(url=url1, json=data1, headers=headers1)
-        login = login.json()
-        accessToken = login['data']['accessToken']
-        language = login['data']['language']
-        url2 = 'http://app.nelko.net/api/banner/list'
-        data2 = {
-            "dev": "P21",
-            "position": 1
-        }
-        header2 = {
-            "accessToken": accessToken,
-            "language": language
-        }
-        response = requests.post(url=url2, json=data2, headers=header2)
-        data = response.json()
-        data_len = len(data['data'])
-        self.global_var.set_value("banner_Len", data_len)
-        for i in range(data_len):
-            imageUrl = data['data'][i]['image']
-            image_response = requests.get(imageUrl)
-            if image_response.status_code == 200:
-                file_name = os.path.basename(imageUrl)
-                bannerPicPath = jieko_banner
-                if not os.path.exists(bannerPicPath):
-                    os.makedirs(bannerPicPath)
-                save_path = os.path.join(bannerPicPath, file_name)
-                with open(save_path, 'wb') as file:
-                    # 将响应内容写入文件
-                    file.write(image_response.content)
-                    process_context.log(f"保存接口返回的第{i + 1}个图片")
-        self.base.log(f"一共{len(data['data'])}张图片")
+        jieko_banner_img = []
+        # 先判断redis有没有数据，如果没有就请求获取
+        if not self.redis.exists("jieko_banner_img"):
+            url = 'http://app.nelko.net/api/banner/list'
+            data = {
+                "dev": "P21",
+                "position": 1
+            }
+
+            response = requests.post(url=url, json=data, verify=False)
+            response_data = response.json()
+
+            if response_data.get('ret') != 200:
+                self.fail(f"API请求失败: {response_data}")
+            banners = response_data.get('data', [])  # 如果获取不到数据就返回一个空列表
+            for banner in banners:
+                img_url = banner.get('image')
+                if img_url:
+                    jieko_banner_img.append(img_url)
+                    self.redis.rpush('jieko_banner_img', img_url)  # 使用rpush保持顺序 右放左拿
+            if banners:  # 确保列表非空
+                self.redis.expire("jieko_banner_img", 3000)
+        # 从Redis获取所有图片URL，注意编码，直接拿是一个字节内容，需要编码
+        image_urls = [url.decode('utf-8') if isinstance(url, bytes) else url
+                      for url in self.redis.lrange('jieko_banner_img', 0, -1)]
+        # 确保保存目录存在
+        os.makedirs(jieko_banner, exist_ok=True)
+        # 下载并保存图片
+        success_count = 0
+        for i, url in enumerate(image_urls, 1):
+            try:
+                response = requests.get(url, stream=True,verify=False)
+                response.raise_for_status()
+                file_name = os.path.basename(url)
+                save_path = os.path.join(jieko_banner, file_name)
+
+                with open(save_path, 'wb') as f:
+                    for chunk in response.iter_content(1024):
+                        f.write(chunk)
+
+                self.base.log(f"成功保存第{i}张图片: {file_name}")
+                success_count += 1
+            except Exception as e:
+                self.base.log(f"下载第{i}张图片失败: {str(e)}")
+
+        self.base.log(f"图片处理完成，共尝试下载{len(image_urls)}张，成功{success_count}张")
+        self.assertGreater(success_count, 0, "至少应该成功下载一张图片")
+
 
     def test_02_banner(self):
         # 定位到banner图片的元素
         banner_element = self.base.find_element(
-            (By.XPATH, '//androidx.viewpager.widget.ViewPager[@resource-id="com.nelko.printer:id/viewpager_inner"]'))
+            (By.XPATH, '    //androidx.viewpager.widget.ViewPager[@resource-id="com.nelko.printer:id/viewpager_inner"]'))
         # 创建一个空集合来存储已经保存过的图片的哈希值
         saved_hashes = set()
         # 创建保存截图的目录
@@ -78,7 +90,7 @@ class BannerTest(unittest.TestCase):
         if not os.path.exists(screenshot_folder):
             os.makedirs(screenshot_folder)
         wait = WebDriverWait(self.base.driver, 25)
-        while len(saved_hashes) < self.global_var.get_value("banner_Len"):  #
+        while len(saved_hashes) < self.redis.llen("jieko_banner_img"):  #
             try:
                 wait.until(EC.presence_of_element_located((By.XPATH,
                                                            '//androidx.viewpager.widget.ViewPager[@resource-id="com.nelko.printer:id/viewpager_inner"]')))
@@ -132,6 +144,7 @@ class BannerTest(unittest.TestCase):
 
         self.base.log(f"共截取并保存了 {len(saved_hashes)} 张唯一的banner截图。")
 
+
     def test_03_getPicList(self):
         confirmNum = 0
         image_files1 = self.base.get_images_from_folder(app_banner)
@@ -141,12 +154,13 @@ class BannerTest(unittest.TestCase):
                 if self.base.images_are_similar(image_file1, image_file2, threshold=0.95):
                     process_context.log("APP保存的图片与接口返回的图片有95%以上相似，无需手动确认")
                     confirmNum += 1
-        if confirmNum == self.global_var.get_value("banner_Len"):
+        if confirmNum == self.redis.llen('jieko_banner_img'):
             self.base.clear_images_in_folder(app_banner)
             self.base.clear_images_in_folder(jieko_banner)
-        if confirmNum < self.global_var.get_value("banner_Len"):
+        if confirmNum < self.redis.llen('jieko_banner_img'):
             self.base.log(f"APP保存的图片与接口返回的图片存在不相似，需要手动确认")
+
 
     @classmethod
     def tearDownClass(cls):
-        pass
+        cls.redis.close()

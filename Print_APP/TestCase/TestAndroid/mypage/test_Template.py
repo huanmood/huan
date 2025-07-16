@@ -4,6 +4,7 @@ from Page.PageAndroid.Template import Template
 from TestCase.TestAndroid.share_devices import process_context
 
 dev = [("P21"), ("PM220"), ("PM230")]
+# dev = [("P21")]
 
 class TemplateTest(unittest.TestCase):
     @classmethod

@@ -646,3 +646,23 @@ import numpy as np
 # ws.append(["张三", 25, "北京"])
 # ws.append(["李四", 30, "上海"])
 # wb.save("demo.xlsx")
+#
+# from common.DB_utils import get_redis_conn
+# a=get_redis_conn()
+# b=a.lrange('Template',0,-1)
+# for i in b:
+#     print(i.decode())
+
+# a.close()
+# a=set()
+# a.add("1")
+# a.add("2")
+# a.add("3")
+# b=set()
+# b.add("2")
+# b.add("1")
+# print(a)
+# print(b)
+# print(a-b)
+a=[1,2]
+print(type(json.dumps(a)))

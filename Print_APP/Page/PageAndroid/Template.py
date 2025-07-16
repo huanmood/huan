@@ -1,8 +1,11 @@
+import json
 import time
 import requests
 from selenium.webdriver.common.by import By
 from Page import PageAndroid
 from Page.BasePage import Action
+from common.DB_utils import get_redis_conn
+
 # 设备配置映射表（更易维护和扩展）
 DEVICE_TEMPLATE_MAPPING = {
     # 模板位置位于首页第1个位置的设备
@@ -93,8 +96,7 @@ DEVICE_TEMPLATE_MAPPING = {
 
 class Template(Action):
 
-
-    def  get_getCategory(self, devName):
+    def get_getCategory(self, devName):
         """获取并比较模板类型和尺寸"""
         try:
             # 1. 选择设备
@@ -194,48 +196,10 @@ class Template(Action):
         self.log(f"{devName}完整API模板: {api_templates}")
         self.log(f"{devName}完整APP模板: {app_templates}")
 
-    def _compare_template_sizes(self, devName):
-        """比较模板尺寸"""
-        # 获取APP展示的尺寸
-        self.click_button(self.buttonElement.templateSize)
-        size_elements = self.find_elements(
-            (By.XPATH, '//android.widget.CheckBox[contains(@text, "x")]')
-        )
-        app_sizes = [elem.text for elem in size_elements]
-
-        # 获取接口返回的尺寸
-        try:
-            response = requests.get(
-                url=f"https://app.nelko.net/api/template/getSizeCategory/{devName}",
-                timeout=10
-            )
-            response.raise_for_status()
-            api_sizes = [item['idString'] for item in response.json().get('data', [])]
-        except requests.exceptions.RequestException as e:
-            self.log_error(f"获取尺寸API失败: {str(e)}")
-            api_sizes = []
-
-        # 比较尺寸
-        api_size_set = set(api_sizes)
-        app_size_set = set(app_sizes)
-
-        if api_size_set == app_size_set:
-            self.log_debug(f"{devName}所有模板尺寸与接口返回一致")
-        else:
-            # 找出不一致的尺寸
-            diff_in_api = api_size_set - app_size_set
-            diff_in_app = app_size_set - api_size_set
-
-            if diff_in_api:
-                self.log_error(f"{devName}接口返回但APP未展示的尺寸: {', '.join(diff_in_api)}")
-            if diff_in_app:
-                self.log_error(f"{devName}APP展示但接口未返回的尺寸: {', '.join(diff_in_app)}")
-
-        self.log(f"{devName}接口返回尺寸: {api_sizes}")
-        self.log(f"{devName}APP展示尺寸: {app_sizes}")
 
     def _select_device(self, devName):
         """选择指定设备"""
+        self.redis = get_redis_conn()
         self.click_button(PageAndroid.deviceName_loc)
         device_locator = (By.XPATH,
                           f'//android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="{devName}"]')
@@ -264,19 +228,6 @@ class Template(Action):
         # 点击模板
         self.click_button(device_config["template_locator"])
 
-    def _get_api_templates(self, devName):
-        """从API获取模板数据"""
-        url = f'https://app.nelko.net/api/template/getCategory/{devName}'
-        headers = {"language": "zh-Hans"}
-
-        try:
-            response = requests.get(url=url, headers=headers, timeout=10)
-            response.raise_for_status()
-            return [item['name'] for item in response.json().get('data', [])]
-        except requests.exceptions.RequestException as e:
-            self.log_error(f"API请求失败: {str(e)}")
-            return []
-
     def _get_app_templates(self):
         """从APP界面获取模板数据"""
         parent_locator = (By.XPATH,
@@ -304,3 +255,68 @@ class Template(Action):
 
             self.log(f"{devName}完整API模板: {api_templates}")
             self.log(f"{devName}完整APP模板: {app_templates}")
+
+    def _get_api_templates(self, devName):
+        """从API获取模板数据"""
+        redis_key = f"Template_{devName}"
+        Template = []
+
+        if not self.redis.exists(redis_key):
+            url = f'https://app.nelko.net/api/template/getCategory/{devName}'
+            headers = {"language": "zh-Hans"}
+            try:
+                response = requests.get(url=url, headers=headers, timeout=10)
+                response.raise_for_status()
+                data = response.json().get('data', [])
+                for i in data:
+                    Template.append(i['name'])
+                if Template:
+                    self.redis.hset(redis_key, "name",json.dumps(Template,ensure_ascii=False))
+                    self.redis.expire(redis_key,300)
+            except requests.exceptions.RequestException as e:
+                self.log_error(f"API请求失败: {str(e)}")
+        data=self.redis.hget(redis_key,"name")
+        data=data.decode()
+        return json.loads(data)
+    def _compare_template_sizes(self, devName):
+        """比较模板尺寸"""
+        # 获取APP展示的尺寸
+        redis_key = f"Template_{devName}"
+        self.click_button(self.buttonElement.templateSize)
+        size_elements = self.find_elements(
+            (By.XPATH, '//android.widget.CheckBox[contains(@text, "x")]')
+        )
+        app_sizes = [elem.text for elem in size_elements]
+
+        # 获取接口返回的尺寸
+        if not self.redis.hget("redis_key","size"):
+            response = requests.get(
+                url=f"https://app.nelko.net/api/template/getSizeCategory/{devName}",
+                timeout=10
+            )
+            response.raise_for_status()
+            api_sizes = [item['idString'] for item in response.json().get('data', [])]
+            self.redis.hset(redis_key,"size",json.dumps(api_sizes))
+            self.redis.expire(redis_key,300)
+        data=self.redis.hget(redis_key, "size")
+        data = json.loads(data.decode())
+        api_sizes = data
+
+        # 比较尺寸
+        api_size_set = set(api_sizes)
+        app_size_set = set(app_sizes)
+
+        if api_size_set == app_size_set:
+            self.log_debug(f"{devName}所有模板尺寸与接口返回一致")
+        else:
+            # 找出不一致的尺寸
+            diff_in_api = api_size_set - app_size_set
+            diff_in_app = app_size_set - api_size_set
+
+            if diff_in_api:
+                self.log_error(f"{devName}接口返回但APP未展示的尺寸: {', '.join(diff_in_api)}")
+            if diff_in_app:
+                self.log_error(f"{devName}APP展示但接口未返回的尺寸: {', '.join(diff_in_app)}")
+
+        self.log(f"{devName}接口返回尺寸: {api_sizes}")
+        self.log(f"{devName}APP展示尺寸: {app_sizes}")
