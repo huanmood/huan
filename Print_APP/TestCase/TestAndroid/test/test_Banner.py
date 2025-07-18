@@ -1,5 +1,6 @@
 import hashlib
 import os
+import threading
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -25,11 +26,11 @@ class BannerTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+
         # cls.mysql = get_mysql_conn()
         cls.redis = get_redis_conn()
         cls.base = Banner()  # 实例化Base对象
-
-    def test_01_jiekoPic(self):
+    def jiekoPic(self):
         jieko_banner_img = []
         # 先判断redis有没有数据，如果没有就请求获取
         if not self.redis.exists("jieko_banner_img"):
@@ -79,8 +80,9 @@ class BannerTest(unittest.TestCase):
         self.assertGreater(success_count, 0, "至少应该成功下载一张图片")
 
 
-    def test_02_banner(self):
+    def banner(self):
         # 定位到banner图片的元素
+
         banner_element = self.base.find_element(
             (By.XPATH, '    //androidx.viewpager.widget.ViewPager[@resource-id="com.nelko.printer:id/viewpager_inner"]'))
         # 创建一个空集合来存储已经保存过的图片的哈希值
@@ -145,7 +147,7 @@ class BannerTest(unittest.TestCase):
         self.base.log(f"共截取并保存了 {len(saved_hashes)} 张唯一的banner截图。")
 
 
-    def test_03_getPicList(self):
+    def test_02_getPicList(self):
         confirmNum = 0
         image_files1 = self.base.get_images_from_folder(app_banner)
         image_files2 = self.base.get_images_from_folder(jieko_banner)
@@ -160,7 +162,31 @@ class BannerTest(unittest.TestCase):
         if confirmNum < self.redis.llen('jieko_banner_img'):
             self.base.log(f"APP保存的图片与接口返回的图片存在不相似，需要手动确认")
 
+    def run_in_thread(self,target_func, name):
+        t = threading.Thread(target=target_func, name=name)
+        t.start()
+        return t
+
+    def test_01_parallel(self):
+        """同时运行 test_01_jiekoPic 和 test_02_banner 的逻辑"""
+
+        # 把方法体封装到函数中
+        def jieko_logic():
+            self.jiekoPic()
+
+        def banner_logic():
+            self.banner()
+
+        # 启动两个线程
+        t1 = self.run_in_thread(jieko_logic, "JiekoThread")
+        t2 = self.run_in_thread(banner_logic, "BannerThread")
+
+        # 等待两个线程执行完
+        t1.join()
+        t2.join()
+
 
     @classmethod
     def tearDownClass(cls):
         cls.redis.close()
+

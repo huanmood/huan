@@ -43,7 +43,7 @@ def add_case(devices_data_file, testPyName):
 
 matched_file_names = [
     # ("Android_11.json", r"D:\huan\Print_APP\TestCase\TestAndroid\index"),
-    ("Android_12.json", r"D:\huan\Print_APP\TestCase\TestAndroid\mypage")
+    ("Android_12.json", r"D:\huan\Print_APP\TestCase\TestAndroid\index")
 ]
 # 构建进程组
 desired_process = []

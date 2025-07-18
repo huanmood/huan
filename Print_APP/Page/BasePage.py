@@ -197,7 +197,8 @@ class Action(unittest.TestCase):
     # 软键盘执行搜索操作
     def search(self):
         self.driver.execute_script('mobile: performEditorAction', {'action': 'search'})
-
+    def hide_keyboard(self):
+        self.driver.hide_keyboard()
     def isConnect(self):
         if self.exists_element(self.buttonElement.myTemplate):
             print("现在位置是首页")

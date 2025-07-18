@@ -4,6 +4,7 @@
 
 import unittest
 
+import requests
 from parameterized import parameterized
 
 import time
@@ -13,9 +14,11 @@ from Page.PageAndroid.LoginPage import Login
 from common.read_json import read_json
 
 
+
 class TestLogin(unittest.TestCase):
     def setUp(self):
         self.base = Login()
+
     @parameterized.expand(read_json("data.json", "userinfo"))
     def test_login_success(self, email, pwd):
         '''正常登录'''
@@ -28,6 +31,6 @@ class TestLogin(unittest.TestCase):
         except Exception as e:
             self.base.log(e)
 
-
-if __name__ == '__main__':
-    unittest.main()
+#
+# if __name__ == '__main__':
+#     unittest.main()

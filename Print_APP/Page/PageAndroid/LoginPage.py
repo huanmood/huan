@@ -2,10 +2,14 @@
 # @Time   : 2025-03-05 14:52
 # @Author : TestTeam
 import time
+
+import requests
+
 from common.GlobalValue import GlobalVar
 from Page import PageAndroid
 from Page.BasePage import Action
-
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class Login(Action):
 
@@ -49,12 +53,24 @@ class Login(Action):
     def app_login(self, email, pwd):
         '''组合业务方法'''
         try:
-            self.click_use_email_login()
+
             self.input_email(email)
             self.input_pwd(pwd)
-            self.back_button()
+            self.hide_keyboard()
             self.click_ticked()
             self.click_login()
             self.login_status = GlobalVar.set_value("login_status", "ture")
         except:
             self.login_status = GlobalVar.set_value("login_status", "false")
+
+class login_api:
+    def get_token(self):
+        data = {
+            "password": "111111",
+            "email": "1508908114@qq.com"
+        }
+        header={
+            "User-Agent":"Nelko/4.1.0 (com.nelko.printer; build:436; iOS 18.5.0) Alamofire/5.10.2",
+            "language":"zh-Hans"
+        }
+        return requests.post("https://app.nelko.net/api/user/login", json=data,headers=header,verify=False).json()['data']['accessToken']

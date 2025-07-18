@@ -130,7 +130,6 @@ class Banner(Action):
 
         # 计算两个图像之间的差异
         diff = cv2.absdiff(img1, img2_resized)
-
         # 将差异矩阵转换为灰度图像
         gray_diff = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
 

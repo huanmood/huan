@@ -1,0 +1,22 @@
+2025-07-18 09:23:19,188 - INFO - Driver initialized, starting test cases
+2025-07-18 09:23:19,608 - INFO - 开始测试设备: P21
+2025-07-18 09:23:19,608 - INFO - 开始处理设备: P21
+2025-07-18 09:23:19,608 - INFO - 正在选择设备: P21
+2025-07-18 09:23:22,904 - INFO - 点击P21    =>定位值: ('id', 'com.nelko.printer:id/tv_printer_model'), 
+2025-07-18 09:23:24,098 - INFO - 点击P21    =>定位值: ('xpath', '//android.widget.TextView[@resource-id="com.nelko.printer:id/text_device_name" and @text="P21"]'), 
+2025-07-18 09:23:24,954 - INFO - 点击确定    =>定位值: ('id', 'com.nelko.printer:id/tv_ok'), 
+2025-07-18 09:23:24,996 - INFO - 设备 P21 选择完成
+2025-07-18 09:23:26,660 - INFO - 点击AI图库    =>定位值: ('xpath', '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="AI图库"]'), 
+2025-07-18 09:23:31,302 - INFO - 完整API模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-07-18 09:23:31,302 - INFO - 完整APP模板: ['黑白', '动物', '特色', '饮料', '节日', '食物', '日记', '自然', '运动', '旅行']
+2025-07-18 09:23:31,642 - INFO - 点击全部    =>定位值: ('xpath', '//android.widget.TextView[@text="全部"]'), 
+2025-07-18 09:23:32,485 - INFO - 点击[无可见文本]    =>定位值: ('xpath', '(//android.widget.ImageView[@resource-id="com.nelko.printer:id/item_aigallery_image"])[1]'), 
+2025-07-18 09:23:34,376 - INFO - 点击789    =>定位值: ('id', 'com.nelko.printer:id/act_ai_detail_cv_tv'), 
+2025-07-18 09:23:36,421 - INFO - 开始测试设备: P31S
+2025-07-18 09:23:36,421 - INFO - 开始处理设备: P31S
+2025-07-18 09:23:36,422 - INFO - 正在选择设备: P31S
+2025-07-18 09:23:41,970 - ERROR - 元素 ('id', 'com.nelko.printer:id/tv_printer_model') 超时未找到
+2025-07-18 09:23:41,970 - INFO - 获取位置失败 ('id', 'com.nelko.printer:id/tv_printer_model'), 点击事件执行失败
+2025-07-18 09:23:41,971 - INFO - 开始测试设备: PM220
+2025-07-18 09:23:41,971 - INFO - 开始处理设备: PM220
+2025-07-18 09:23:41,971 - INFO - 正在选择设备: PM220

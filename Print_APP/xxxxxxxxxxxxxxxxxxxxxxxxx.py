@@ -664,5 +664,18 @@ import numpy as np
 # print(a)
 # print(b)
 # print(a-b)
-a=[1,2]
-print(type(json.dumps(a)))
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+class login_api:
+    def get_token(self):
+        data = {
+            "password": "111111",
+            "email": "1508908114@qq.com"
+        }
+        header={
+            "User-Agent":"Nelko/4.1.0 (com.nelko.printer; build:436; iOS 18.5.0) Alamofire/5.10.2",
+            "language":"zh-Hans"
+        }
+        return requests.post("https://app.nelko.net/api/user/login", json=data,headers=header,verify=False).json()['data']['accessToken']
+a=login_api()
+print(a.get_token())

@@ -1,9 +1,14 @@
+import time
+
 import requests
 from selenium.webdriver.common.by import By
 from Page import PageAndroid
 from Page.BasePage import Action
 from common.GlobalValue import GlobalVar
 from Page.PageAndroid.LoginPage import Login
+from common.DB_utils import get_redis_conn
+from Page import PageAndroid
+from Page.PageAndroid.LoginPage import login_api
 
 DEVICE_TEMPLATE_MAPPING = {
     # 模板位置位于首页第1个位置的设备
@@ -132,13 +137,16 @@ favourite_Num = 0
 class AiPrint(Action):
     def print(self):
         pass
+
     def get_aiprint(self, devName):
+        self.redis = get_redis_conn()
         self.log(f"开始处理设备: {devName}")
         self._select_device(devName)
         self._handle_device_template(devName)
         self._compare_templates()
-        # self._add_Favourite()
-        # self.back_button()
+        self._add_Favourite()
+        self._remove_Favourite()
+        self.back_button()
         self.back_button()
         self.log(f"设备 {devName} 处理完成")
 
@@ -146,10 +154,15 @@ class AiPrint(Action):
         def my_decorator(func):
             def wrapper(self, *args, **kwargs):  # 显式传递 self
                 self.click_button(element)
-                if self.exists_element(self.buttonElement.uer_email_login):
-                    login.app_login('1508908114@qq.com', '111111')
-                else:
-                    return func(self, *args, **kwargs)  # 注意传递 self
+                if not self.redis.get("token"):
+                    time.sleep(3)
+                    if self.exists_element(PageAndroid.email_loc):
+                        login.app_login('1508908114@qq.com', '111111')
+                        token = "success"
+                        self.redis.setnx("token", token)
+                    else:
+                        return func(self, *args, **kwargs)  # 注意传递 self
+                return func(self, *args, **kwargs)
             return wrapper
         return my_decorator
 
@@ -234,17 +247,17 @@ class AiPrint(Action):
 
         self.log(f"完整API模板: {get_api_Aiprints}")
         self.log(f"完整APP模板: {get_app_Aiprints}")
+        self.click_button(all_type)
+        self.click_button(AiPrint_01)
 
     #  增加收藏数量
-    # @check_login(collect)
-    # def _add_Favourite(self):
-    #     global favourite_Num
-    #     self.click_button(all_type)
-    #     self.click_button(AiPrint_01)
-    #     self.click_button(add_Favourite)
-    #     favourite_Num += 1
-    #     self.back_button()
-    #
+    @check_login(add_Favourite)
+    def _add_Favourite(self):
+        global favourite_Num
+        self.click_button(add_Favourite)
+        favourite_Num += 1
+        self.back_button()
+
     # def _remove_Favourite(self):
     #     global favourite_Num
     #     self.click_button(all_type)
