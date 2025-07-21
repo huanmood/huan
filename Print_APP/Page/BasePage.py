@@ -229,13 +229,50 @@ class Action(unittest.TestCase):
                              int(location['x']):int(location['x'] + size['width'])]
         return element_screenshot
 
-    def compare_images(self, img1, img2):
-        """
-        比较两张图片是否一致，调用一次方法生成一张
-        和capture_element_screenshot()方法联用
-        :param img1:
-        :param img2:
-        :return:Unknown
-        """
-        difference = np.subtract(img1, img2)
-        return not np.any(difference)
+    # def compare_images(self, img1, img2):
+    #     """
+    #     比较两张图片是否一致，调用一次方法生成一张
+    #     和capture_element_screenshot()方法联用
+    #     :param img1:
+    #     :param img2:
+    #     :return:Unknown
+    #     """
+    #
+    #     difference = np.subtract(img1, img2)
+    #     return not np.any(difference)
+    #
+    # if not redis.hget('getDeviceList', "P21"):  # 检查 "P21" 是否已存在
+    #     print("redis没有机型列表数据")  # 如果不存在，则重新获取数据
+    #     # 获取设备列表
+    #     url = 'http://app.nelko.net/api/templateVip/getDeviceList'
+    #     resp = requests.get(url).json().get('data', [])
+    #     if not resp:
+    #         print("设备列表 API 返回数据为空！")
+    #         exit()
+    #
+    #     # 获取字典数据
+    #     url1 = 'https://admin.nelko.net/prod-api/system/dict/data/list?pageNum=1&pageSize=30&dictType=model_index_show'
+    #     header1 = {
+    #         'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxNzQ5NzIxOTY0NjM2Mjg2OTc3Iiwicm5TdHIiOiJycWhLSzVudURFME14bGRuYUNsMXdUWnZwb09UNGVqNSIsInVzZXJJZCI6MTc0OTcyMTk2NDYzNjI4Njk3N30.mesDoGSA9ra5UpN8vYukxPkHvD9aaoKjTKbM70JbydI'
+    #     }
+    #     resp1 = requests.get(url1, headers=header1).json().get('rows', [])
+    #     if not resp1:
+    #         print("字典数据 API 返回数据为空！")
+    #         exit()
+    #
+    #     # 遍历设备列表，匹配 indexShow 和 dictSort
+    #     for device in resp:
+    #         device_name = device['deviceName']
+    #         index_show_values = device['indexShow'].split(',')  # 如 ["0", "13", "14", ...]
+    #
+    #         # 存储匹配的 dictLabel
+    #         matched_labels = []
+    #         for dict_item in resp1:
+    #             if str(dict_item['dictSort']) in index_show_values:
+    #                 matched_labels.append(dict_item['dictLabel'])
+    #
+    #         # 将匹配的 dictLabel 存入 Redis（用逗号连接）
+    #         if matched_labels:
+    #             redis.hset('getDeviceList', device_name, ', '.join(matched_labels))
+    #         else:
+    #             print(f"警告：设备 {device_name} 的 indexShow 未匹配到字典数据！")

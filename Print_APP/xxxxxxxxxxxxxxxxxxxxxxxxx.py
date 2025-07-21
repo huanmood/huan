@@ -578,6 +578,8 @@ import logging
 from PIL import Image, ImageDraw
 import numpy as np
 
+from common.DB_utils import get_redis_conn
+
 # 配置参数
 # from PIL import Image, ImageDraw
 # import re
@@ -664,18 +666,52 @@ import numpy as np
 # print(a)
 # print(b)
 # print(a-b)
-import urllib3
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-class login_api:
-    def get_token(self):
-        data = {
-            "password": "111111",
-            "email": "1508908114@qq.com"
-        }
-        header={
-            "User-Agent":"Nelko/4.1.0 (com.nelko.printer; build:436; iOS 18.5.0) Alamofire/5.10.2",
-            "language":"zh-Hans"
-        }
-        return requests.post("https://app.nelko.net/api/user/login", json=data,headers=header,verify=False).json()['data']['accessToken']
-a=login_api()
-print(a.get_token())
+# import urllib3
+# urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+# class login_api:
+#     def get_token(self):
+#         data = {
+#             "password": "111111",
+#             "email": "1508908114@qq.com"
+#         }
+#         header={
+#             "User-Agent":"Nelko/4.1.0 (com.nelko.printer; build:436; iOS 18.5.0) Alamofire/5.10.2",
+#             "language":"zh-Hans"
+#         }
+#         return requests.post("https://app.nelko.net/api/user/login", json=data,headers=header,verify=False).json()['data']['accessToken']
+# a=login_api()
+# print(a.get_token())
+requests.packages.urllib3.disable_warnings()
+# url='https://admin.nelko.net/prod-api/system/dict/data/list?pageNum=1&pageSize=10&dictType=model_index_show'
+# header={
+#     'Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxNzQ5NzIxOTY0NjM2Mjg2OTc3Iiwicm5TdHIiOiJycWhLSzVudURFME14bGRuYUNsMXdUWnZwb09UNGVqNSIsInVzZXJJZCI6MTc0OTcyMTk2NDYzNjI4Njk3N30.mesDoGSA9ra5UpN8vYukxPkHvD9aaoKjTKbM70JbydI'
+# }
+# resp=requests.get(url,headers=header,verify=False)
+# print(resp.text)
+# resp=resp.json().get('data','')
+# for i in resp:
+#     data=i['deviceName']
+#     print(data)
+
+
+# session=requests.session()
+# session.get('https://admin.nelko.net/index',headers=header)
+
+
+# url1 = 'https://admin.nelko.net/prod-api/system/dict/data/list?pageNum=1&pageSize=10&dictType=model_index_show'
+# header1 = {
+#     'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxNzQ5NzIxOTY0NjM2Mjg2OTc3Iiwicm5TdHIiOiJycWhLSzVudURFME14bGRuYUNsMXdUWnZwb09UNGVqNSIsInVzZXJJZCI6MTc0OTcyMTk2NDYzNjI4Njk3N30.mesDoGSA9ra5UpN8vYukxPkHvD9aaoKjTKbM70JbydI'
+# }
+# resp1 = requests.get(url1, headers=header1).json()['rows']
+# print(resp1)
+dev = []
+url = 'http://app.nelko.net/api/templateVip/getDeviceList'
+resp = requests.get(url).json().get('data', [])
+for i in resp:
+    index_show_values = i['indexShow'].split(',')
+    print(index_show_values)
+    for j in index_show_values:
+        if j == '0':
+            dev.append(i['deviceName'])
+
+print(dev)
