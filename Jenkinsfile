@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/yourname/auto-test.git'
+                git branch: 'main', url: 'https://github.com/huanmood/huan.git'
             }
         }
         stage('Install Dependencies') {
