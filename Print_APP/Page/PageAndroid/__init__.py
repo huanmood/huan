@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 # 我的
 mein_button_loc = ('xpath', "//*[@text='我的']")
 # 打印机名称
-deviceName_loc = (By.ID, 'com.nelko.printer:id/tv_printer_model')
+deviceName_loc = (By.ID, 'com.nelko.printer:id/frag_home_devices_name_tv')
 # 选择打印机后的确认
 deviceConfirm = (By.ID, 'com.nelko.printer:id/tv_ok')
 # 点击查看更多功能(提示语)
@@ -23,7 +23,7 @@ replacePrintPaper = (By.ID, 'com.nelko.printer:id/btn_replace_label_paper')
 # 我知道了
 know = (By.ID, 'com.nelko.printer:id/btn_ok')
 # 未连接/连接
-connectState = (By.ID, 'com.nelko.printer:id/tv_connect')
+connectState = (By.ID, 'com.nelko.printer:id/frag_home_devices_connect_status_tv')
 # 我的模板
 myTemplate = (
 By.XPATH, '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_tab_title" and @text="我的模板"]')
@@ -31,7 +31,7 @@ By.XPATH, '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_tab_t
 # 点击登录/用户名称
 username_button_loc = ('id', 'com.nelko.printer:id/text_user_name')
 # 首页连接
-Homepage_connect = (By.ID, 'com.nelko.printer:id/tv_connect')
+Homepage_connect = (By.ID, 'com.nelko.printer:id/frag_home_devices_connect_status_tv')
 
 '''登录页面'''
 # 邮箱
@@ -73,7 +73,7 @@ connectPage_Allow_in_use = (By.ID, 'com.lbe.security.miui:id/permission_allow_bu
 # 授权
 connectPage_shouquan = (By.ID, 'com.nelko.printer:id/tv_sure')
 # 顶部排序连接
-connectPage_title = (By.XPATH, '//android.widget.TextView[@resource-id="com.nelko.printer:id/tv_title"]')
+connectPage_title = (By.ID, 'com.nelko.printer:id/tv_title')
 # 刷新
 connectPage_refresh = (By.XPATH, '//android.widget.TextView[@text="刷新"]')
 # 连接失败
@@ -81,14 +81,16 @@ connectFaile = (By.ID, 'com.nelko.printer:id/tv_title')
 # 连接失败->确认
 connectFaile_sure = (By.ID, 'com.nelko.printer:id/tv_sure')
 # 要与***配对吗？
-alertTitle = (By.ID, 'com.coloros.wirelesssettings:id/message')
+alertTitle = (By.ID, 'com.android.settings:id/alertTitle')
 # 要与***配对吗？->配对
-accept_button = (By.ID, 'android:id/button1')
+accept_button = (By.ID, 'com.android.settings:id/pairing_accept_button')
 # 断开连接
 disconnect=(By.ID,'com.nelko.printer:id/act_two_inch_bt_disconnect_tv')
 # 确认
 connect_sure=(By.ID,'com.nelko.printer:id/tv_sure')
 '''模板'''
+#系统模板
+System_Templates=(By.XPATH,'//android.widget.TextView[@resource-id="com.nelko.printer:id/item_home_menu_name_tv" and @text="系统模板"]')
 # 搜索
 search = (By.ID, 'com.nelko.printer:id/view_et_content')
 # 模板尺寸列表

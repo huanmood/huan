@@ -1,0 +1,5 @@
+2025-09-17 20:29:06,430 - INFO - 进入__init__
+2025-09-17 20:29:06,430 - INFO - 进入__init__，action.driver=<appium.webdriver.webdriver.WebDriver (session="a56c1d61-1cc9-41cd-82f6-e428379f3115")>
+2025-09-17 20:29:06,431 - INFO - 进入check_connect
+2025-09-17 20:29:07,863 - INFO - 进入connect
+2025-09-17 20:29:13,087 - INFO - 进入connect

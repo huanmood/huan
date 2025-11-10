@@ -7,91 +7,23 @@ from Page.BasePage import Action
 from common.DB_utils import get_redis_conn
 
 # 设备配置映射表（更易维护和扩展）
-DEVICE_TEMPLATE_MAPPING = {
-    # 模板位置位于首页第1个位置的设备
-    "P21": {
-        "template_locator": (
-            By.XPATH,
-            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
-        "position": 1
-    },
-    "P31S": {
-        "template_locator": (
-            By.XPATH,
-            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
-        "position": 1
-    },
-    "PM220": {
-        "template_locator": (
-            By.XPATH,
-            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
-        "position": 1
-    },
-    "PM220S": {
-        "template_locator": (
-            By.XPATH,
-            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
-        "position": 1
-    },
-    "PM230": {
-        "template_locator": (
-            By.XPATH,
-            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
-        "position": 2,
-        "special_handlers": [
-            {
-                "element": "moreFeatures",
-                "action": "sure"
-            }
-        ]
-    },
-    # 模板位置位于首页第2个位置的设备
-    "PL70e-BT": {
-        "template_locator": (
-            By.XPATH,
-            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
-        "position": 2,
-        "special_handlers": [
-            {
-                "element": "moreFeatures",
-                "action": "sure"
-            },
-            {
-                "element": "replacePrintPaper",
-                "action": "know"
-            }
-        ]
-    },
-    "PM360": {
-        "template_locator": (
-            By.XPATH,
-            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
-        "position": 1
-    },
-    "P22": {
-        "template_locator": (
-            By.XPATH,
-            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
-        "position": 1
-    },
-    "PL80E": {
-        "template_locator": (
-            By.XPATH,
-            '//android.widget.TextView[@resource-id="com.nelko.printer:id/view_menu_title" and @text="模板"]'),
-        "position": 2,
-        # "special_handlers": [
-        #     {
-        #         "element": "moreFeatures",
-        #         "action": "sure"
-        #     },
-        #     {
-        #         "element": "replacePrintPaper",
-        #         "action": "know"
-        #     }
-        # ]
-    }
-
-}
+# DEVICE_TEMPLATE_MAPPING = {  # 模板位置位于首页第1个位置的设备
+#     "P21": {"template_locator": (By.XPATH,
+#                                  '//android.widget.TextView[@resource-id="com.nelko.printer:id/item_home_menu_name_tv" and @text="系统模板"]'),
+#             "position": 1},
+#     "P31S": {"template_locator": (By.XPATH,
+#                                   '//android.widget.TextView[@resource-id="com.nelko.printer:id/item_home_menu_name_tv" and @text="系统模板"]'),
+#              "position": 1},
+#     "PM220": {"template_locator": (By.XPATH,
+#                                    '//android.widget.TextView[@resource-id="com.nelko.printer:id/item_home_menu_name_tv" and @text="系统模板"]'),
+#               "position": 1},
+#     "PM220S": {"template_locator": (By.XPATH,
+#                                     '//android.widget.TextView[@resource-id="com.nelko.printer:id/item_home_menu_name_tv" and @text="系统模板"]'),
+#                "position": 1},
+#     "PM230": {"template_locator": (By.XPATH,
+#                                    '//android.widget.TextView[@resource-id="com.nelko.printer:id/item_home_menu_name_tv" and @text="系统模板"]'),
+#               "position": 2, "special_handlers": [{"element": "moreFeatures", "action": "sure"}]}}
+# 模板位置位于首页第2个位置的设备"PL70e-BT": {"template_locator": (By.XPATH,'//android.widget.TextView[@resource-id="com.nelko.printer:id/item_home_menu_name_tv" and @text="系统模板"]'),"position": 2,"special_handlers": [{"element": "moreFeatures","action": "sure"},{"element": "replacePrintPaper","action": "know"}]},"PM360": {"template_locator": (By.XPATH,'//android.widget.TextView[@resource-id="com.nelko.printer:id/item_home_menu_name_tv" and @text="系统模板"]'),"position": 1},"P22": {"template_locator": (By.XPATH,'//android.widget.TextView[@resource-id="com.nelko.printer:id/item_home_menu_name_tv" and @text="系统模板"]'),"position": 1},"PL80E": {"template_locator": (By.XPATH,'//android.widget.TextView[@resource-id="com.nelko.printer:id/item_home_menu_name_tv" and @text="系统模板"]'),"position": 2,# "special_handlers": [#     {#         "element": "moreFeatures",#         "action": "sure"#     },#     {#         "element": "replacePrintPaper",#         "action": "know"#     }# ]}}
 
 
 class Template(Action):
@@ -100,10 +32,10 @@ class Template(Action):
         """获取并比较模板类型和尺寸"""
         try:
             # 1. 选择设备
-            self._select_device(devName)
-
-            # 2. 处理设备特定模板
-            self._handle_device_template(devName)
+            # self._select_device(devName)
+            #
+            # # 2. 处理设备特定模板
+            # self._handle_device_template(devName)
 
             # 3. 获取并比较模板类型
             self._compare_template_types(devName)
@@ -119,6 +51,7 @@ class Template(Action):
             self._get_app_templateName()
 
             self.back_button()
+
         except Exception as e:
             self.log_error(f"测试失败: {str(e)}")
             raise
@@ -173,6 +106,7 @@ class Template(Action):
     def _compare_template_types(self, devName):
         """比较模板类型"""
         # 获取API模板数据
+        self.redis = get_redis_conn()
         api_templates = self._get_api_templates(devName)
 
         # 获取APP界面模板数据
@@ -196,7 +130,6 @@ class Template(Action):
         self.log(f"{devName}完整API模板: {api_templates}")
         self.log(f"{devName}完整APP模板: {app_templates}")
 
-
     def _select_device(self, devName):
         """选择指定设备"""
         self.redis = get_redis_conn()
@@ -206,30 +139,31 @@ class Template(Action):
         self.click_button(device_locator)
         self.click_button(PageAndroid.deviceConfirm)
 
-    def _handle_device_template(self, devName):
-        F = '•'
-        i = 1
-        """处理设备特定模板"""
-        device_config = DEVICE_TEMPLATE_MAPPING.get(devName)
-        if not device_config:
-            raise ValueError(f"未知设备: {devName}")
-        # 处理特殊操作（如弹窗等）
-        if "special_handlers" in device_config:
-            print(f"正在查找是否有引导提示中", end='')
-            for handler in device_config["special_handlers"]:
-                print(f"{F * i}", end='')
-                element = getattr(self.buttonElement, handler["element"])
-                if self.exists_element(element):
-                    print('\n')
-                    getattr(self, f"click_button")(getattr(self.buttonElement, handler["action"]))
-                else:
-                    i += 5
-
-        # 点击模板
-        self.click_button(device_config["template_locator"])
+    # def _handle_device_template(self, devName):
+    #     F = '•'
+    #     i = 1
+    #     """处理设备特定模板"""
+    #     device_config = DEVICE_TEMPLATE_MAPPING.get(devName)
+    #     if not device_config:
+    #         raise ValueError(f"未知设备: {devName}")
+    #     # 处理特殊操作（如弹窗等）
+    #     if "special_handlers" in device_config:
+    #         print(f"正在查找是否有引导提示中", end='')
+    #         for handler in device_config["special_handlers"]:
+    #             print(f"{F * i}", end='')
+    #             element = getattr(self.buttonElement, handler["element"])
+    #             if self.exists_element(element):
+    #                 print('\n')
+    #                 getattr(self, f"click_button")(getattr(self.buttonElement, handler["action"]))
+    #             else:
+    #                 i += 5
+    #
+    #     # 点击模板
+    #     self.click_button(device_config["template_locator"])
 
     def _get_app_templates(self):
         """从APP界面获取模板数据"""
+        self.click_button(self.buttonElement.System_Templates)
         parent_locator = (By.XPATH,
                           '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.nelko.printer:id/act_ai_category_rcv"]')
         parent = self.find_element(parent_locator)
@@ -271,13 +205,14 @@ class Template(Action):
                 for i in data:
                     Template.append(i['name'])
                 if Template:
-                    self.redis.hset(redis_key, "name",json.dumps(Template,ensure_ascii=False))
-                    self.redis.expire(redis_key,300)
+                    self.redis.hset(redis_key, "name", json.dumps(Template, ensure_ascii=False))
+                    self.redis.expire(redis_key, 300)
             except requests.exceptions.RequestException as e:
                 self.log_error(f"API请求失败: {str(e)}")
-        data=self.redis.hget(redis_key,"name")
-        data=data.decode()
+        data = self.redis.hget(redis_key, "name")
+        data = data.decode()
         return json.loads(data)
+
     def _compare_template_sizes(self, devName):
         """比较模板尺寸"""
         # 获取APP展示的尺寸
@@ -289,16 +224,16 @@ class Template(Action):
         app_sizes = [elem.text for elem in size_elements]
 
         # 获取接口返回的尺寸
-        if not self.redis.hget("redis_key","size"):
+        if not self.redis.hget("redis_key", "size"):
             response = requests.get(
                 url=f"https://app.nelko.net/api/template/getSizeCategory/{devName}",
                 timeout=10
             )
             response.raise_for_status()
             api_sizes = [item['idString'] for item in response.json().get('data', [])]
-            self.redis.hset(redis_key,"size",json.dumps(api_sizes))
-            self.redis.expire(redis_key,300)
-        data=self.redis.hget(redis_key, "size")
+            self.redis.hset(redis_key, "size", json.dumps(api_sizes))
+            self.redis.expire(redis_key, 300)
+        data = self.redis.hget(redis_key, "size")
         data = json.loads(data.decode())
         api_sizes = data
 

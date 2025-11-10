@@ -4,12 +4,11 @@ import unittest
 from parameterized import parameterized
 
 from Page.PageAndroid.AiPrint import AiPrint
-from TestCase.TestAndroid.share_devices import process_context
 
 dev = [("P21"), ("P31S"), ("PM220")]
 
 
-class AiPrintTest(unittest.TestCase):
+class Test_AiPrint(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.base = AiPrint()

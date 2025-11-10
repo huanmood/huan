@@ -19,7 +19,7 @@ class TestLogin(unittest.TestCase):
     def setUp(self):
         self.base = Login()
 
-    @parameterized.expand(read_json("data.json", "userinfo"))
+    # @parameterized.expand(read_json("data.json", "userinfo"))
     def test_login_success(self, email, pwd):
         '''正常登录'''
         try:

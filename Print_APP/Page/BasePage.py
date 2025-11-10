@@ -4,28 +4,46 @@
 import logging
 import time
 import os
-
 import cv2
 import numpy as np
 from appium.webdriver.common.touch_action import TouchAction
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from Page import PageAndroid
-from TestCase.TestAndroid.share_devices import process_context
+from TestCase.share_devices import process_context
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
 cur_path = os.path.dirname(os.path.realpath(__file__))
 screenshot_path = os.path.join(os.path.dirname(cur_path), 'screenshots')
 if not os.path.exists(screenshot_path): os.mkdir(screenshot_path)
 
-import unittest
 
+class Action:
+    def __init__(self, driver):
+        self.driver = driver
 
-class Action(unittest.TestCase):
-    def __init__(self):
-        super().__init__()
-        self.driver = process_context.driver
-        self.buttonElement = PageAndroid
+    def tap_click(self, loc, sleep=1):
+        try:
+            ele_list = self.driver.find_elements(*loc)
+            if ele_list != '[]':
+                location = ele_list[0].location
+                size = ele_list[0].size
+                x = location['x'] + size['width'] / 2
+                y = location['y'] + size['height'] / 2
+                self.driver.tap([(x, y)], 100)
+                try:
+                    element_text = ele_list[0].text
+                    if not element_text:
+                        element_text = "[无可见文本]"
+                except Exception:
+                    element_text = "[无法获取文本]"
+
+                process_context.log(f"点击=>{element_text}  {loc}")
+                time.sleep(sleep)
+                return
+            else:
+                print("ele_list为空：：：：", ele_list)
+        except Exception as e:
+            process_context.log(f"点击失败: {loc}")
 
     def find_element(self, loc):
         """重写查找元素方法"""
@@ -33,40 +51,11 @@ class Action(unittest.TestCase):
             WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(loc))
             return self.driver.find_element(*loc)
         except TimeoutException:
-            self.log_error(f"元素 {loc} 超时未找到")
+            self.log_error(f"元素 {loc}超时未找到")
         except NoSuchElementException:
             self.log_error(f"元素 {loc} 不存在")
         except Exception as e:
             self.log_error(f"其他错误: {e}")
-
-    def find_elements(self, loc):
-        """重写查找元素方法"""
-        try:
-            WebDriverWait(self.driver, 15).until(lambda driver: driver.find_element(*loc).is_displayed())
-            return self.driver.find_elements(*loc)
-        except Exception:
-            self.log_error('%s 页面中未能找到%s 元素' % (self, loc))
-
-    def log(self, message, level=logging.INFO):
-        """统一的日志记录方法"""
-        process_context.log(message, level)
-
-    def log_debug(self, message):
-        self.log(message, logging.DEBUG)
-
-    def log_error(self, message):
-        self.log(message, logging.ERROR)
-
-    def log_fatal(self, message):
-        self.log(message, logging.FATAL)
-
-    def clear_key(self, loc):
-        """重写清空文本输入法"""
-        self.find_element(loc).clear()
-
-    def send_keys(self, loc, value):
-        """重写在文本框中输入内容的方法"""
-        self.find_element(loc).send_keys(value)
 
     # def click_button(self, loc):
     #     element = self.find_element(loc)  # 先获取元素对象
@@ -78,22 +67,28 @@ class Action(unittest.TestCase):
     #         error_msg = f"获取位置失败 {loc[1]}, 点击事件执行失败"
     #         self.log_error(error_msg)
     #         self.fail(error_msg)  # 这将使测试标记为失败
-    def click_button(self, loc, timeout=10):
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.support import expected_conditions as EC
 
-        element = self.find_element(loc)
-        if element is None:
-            error_msg = f"获取位置失败 {loc}, 点击事件执行失败"
-            process_context.log(error_msg)
-            self.fail(error_msg)  # 这将使测试标记为失败
+    def click_button(self, loc, timeout=10):
+        """
+        点击按钮元素
+        :param loc: (by, value) 元组
+        :param timeout: 等待时间
+        """
         try:
-            if self.wait_for_element(loc, timeout):
-                element_text = element.text if element.text else "[无可见文本]"
-                process_context.log(f"点击{element_text}    =>定位值: {loc}, ")
-                element.click()
+            # 等待元素可点击
+            element = WebDriverWait(self.driver, timeout).until(
+                EC.element_to_be_clickable(loc)
+            )
+            element_text = element.text if element.text else "[无可见文本]"
+            process_context.log(f"点击 {element_text} => 定位值: {loc}")
+            element.click()
+            return True
         except Exception as e:
-            error_msg = f"点击元素失败 {loc}, 原因: {e}"
+            error_msg = f"❌ 点击元素失败 {loc}, 原因: {e}"
             process_context.log(error_msg)
-            self.fail(error_msg)
+            return False
 
     def back_button(self):
         """点击返回按钮"""
@@ -102,8 +97,11 @@ class Action(unittest.TestCase):
         self.log_error("执行返回")
 
     def exists_element(self, loc):
-        """判断元素是否存在 ==0为不存在  !=0为存在"""
-        return self.driver.find_elements(*loc)
+        """移动端最佳实践：判断元素是否存在"""
+        self.driver.implicitly_wait(0)  # 临时禁用隐式等待
+        elements = self.driver.find_elements(loc[0], loc[1])
+        self.driver.implicitly_wait(10)  # 恢复默认等待
+        return len(elements) > 0
 
     def getScreenShot(self):
         """重写截图方法"""
@@ -115,59 +113,45 @@ class Action(unittest.TestCase):
         windows_size = self.driver.get_window_size()
         return windows_size
 
-    def drag_location(self, start_x, start_y, end_x, end_y):
+    def ios_swipe(self, start_x, start_y, end_x, end_y, duration=800):
         """
-        拖动操作
-        :param start_x: 起始位置的X坐标
-        :param start_y: 起始位置的Y坐标
-        :param end_x: 结束位置的X坐标
-        :param end_y: 结束位置的Y坐标
+        iOS专用滑动方法
+        :param duration: 滑动持续时间(ms)
         """
+        self.driver.swipe(start_x, start_y, end_x, end_y, duration)
+        time.sleep(1)
 
-        action = TouchAction(self.driver)
-        action.long_press(x=start_x, y=start_y).move_to(x=end_x, y=end_y).release().perform()
-
-    def first_connect(self):
-        """
-        首次点击右上角连接的授权
-        :return:
-        """
-        if self.exists_element(self.buttonElement.connectPage_shouquan):
-            # 授权
-            self.click_button(self.buttonElement.connectPage_shouquan)
-            # 始终允许
-            self.click_button(self.buttonElement.connectPage_Allow_in_use)
-
-    def firstDownload_open(self):
-        """
-         首次下载打开APP的授权
-        :return:
-        """
-        # 判断元素是否存在
-        a = self.exists_element(self.buttonElement.firstDownload_UserAgreementPrivacyPolicy)  # 用户协议和隐私政策
-        if a:
-            if self.exists_element(self.buttonElement.firstDownload_sure):  # 用户协议和隐私政策->确认
-                self.click_button(self.buttonElement.firstDownload_sure)
-            if self.exists_element(self.buttonElement.firstDownload_afterConnect):  # 稍后连接
-                self.click_button(self.buttonElement.firstDownload_afterConnect)
-            if self.exists_element(self.buttonElement.firstDownload_confirm):  # 确定
-                self.click_button(self.buttonElement.firstDownload_confirm)
-            if self.exists_element(self.buttonElement.skip):  # 关闭
-                self.click_button(self.buttonElement.skip)
-            if self.exists_element(self.buttonElement.connect_Dev_know):
-                self.click_button(self.buttonElement.connect_Dev_know)
-
-    # def wait_for_element(self, locator, timeout=10):
+    # def first_connect(self):
     #     """
-    #     等待元素出现
-    #     :param driver: WebDriver 实例
-    #     :param locator: 元素定位器，例如 (By.ID, "element_id")
-    #     :param timeout: 最大等待时间，默认10秒
-    #     :return: 找到的元素
+    #     首次点击右上角连接的授权
+    #     :return:
     #     """
-    #     return WebDriverWait(self.driver, timeout).until(
-    #         EC.presence_of_element_located((locator[0], locator[1])))
-    def wait_for_element(self, locator: object, timeout: object = 20) -> object:
+    #     if self.exists_element(self.buttonElement.connectPage_shouquan):
+    #         # 授权
+    #         self.click_button(self.buttonElement.connectPage_shouquan)
+    #         # 始终允许
+    #         self.click_button(self.buttonElement.connectPage_Allow_in_use)
+    #
+    # def firstDownload_open(self):
+    #     """
+    #      首次下载打开APP的授权
+    #     :return:
+    #     """
+    #     # 判断元素是否存在
+    #     a = self.exists_element(self.buttonElement.firstDownload_UserAgreementPrivacyPolicy)  # 用户协议和隐私政策
+    #     if a:
+    #         if self.exists_element(self.buttonElement.firstDownload_sure):  # 用户协议和隐私政策->确认
+    #             self.click_button(self.buttonElement.firstDownload_sure)
+    #         if self.exists_element(self.buttonElement.firstDownload_afterConnect):  # 稍后连接
+    #             self.click_button(self.buttonElement.firstDownload_afterConnect)
+    #         if self.exists_element(self.buttonElement.firstDownload_confirm):  # 确定
+    #             self.click_button(self.buttonElement.firstDownload_confirm)
+    #         if self.exists_element(self.buttonElement.skip):  # 关闭
+    #             self.click_button(self.buttonElement.skip)
+    #         if self.exists_element(self.buttonElement.connect_Dev_know):
+    #             self.click_button(self.buttonElement.connect_Dev_know)
+
+    def wait_for_element(self, locator, timeout=20) -> object:
         try:
             WebDriverWait(self.driver, timeout).until(
                 EC.element_to_be_clickable(locator)
@@ -190,27 +174,38 @@ class Action(unittest.TestCase):
     def quit(self):
         self.driver.quit()
 
-    def refresh_connection_page(self):
-        self.click_button(self.buttonElement.connectPage_refresh)
-        self.drag_location(start_x=539, start_y=1711, end_x=539, end_y=475)
-
+    # def refresh_connection_page(self):
+    #     self.click_button(self.buttonElement.connectPage_refresh)
+    #     self.drag_location(start_x=539, start_y=1711, end_x=539, end_y=475)
+    # def wait_for_element(self, locator, timeout=10):
+    #     """
+    #     等待元素出现
+    #     :param driver: WebDriver 实例
+    #     :param locator: 元素定位器，例如 (By.ID, "element_id")
+    #     :param timeout: 最大等待时间，默认10秒
+    #     :return: 找到的元素
+    #     """
+    #     return WebDriverWait(self.driver, timeout).until(
+    #         EC.presence_of_element_located((locator[0], locator[1])))
     # 软键盘执行搜索操作
     def search(self):
         self.driver.execute_script('mobile: performEditorAction', {'action': 'search'})
+
     def hide_keyboard(self):
         self.driver.hide_keyboard()
-    def isConnect(self):
-        if self.exists_element(self.buttonElement.myTemplate):
-            print("现在位置是首页")
-            text = self.find_element(self.buttonElement.connectState)
-            if text.text == "已连接":
-                print("打印机已连接")
-            if text.text == '未连接':
-                print("打印机未连接")
-            return True
-        else:
-            print("当前不在首页位置，无法判断是否处于连接状态")
-            return False
+
+    # def isConnect(self):
+    #     if self.exists_element(self.buttonElement.myTemplate):
+    #         print("现在位置是首页")
+    #         text = self.find_element_android(self.buttonElement.connectState)
+    #         if text.text == "已连接":
+    #             print("打印机已连接")
+    #         if text.text == '未连接':
+    #             print("打印机未连接")
+    #         return True
+    #     else:
+    #         print("当前不在首页位置，无法判断是否处于连接状态")
+    #         return False
 
     def capture_element_screenshot(self, element):
         """
@@ -228,6 +223,15 @@ class Action(unittest.TestCase):
         element_screenshot = screenshot[int(location['y']):int(location['y'] + size['height']),
                              int(location['x']):int(location['x'] + size['width'])]
         return element_screenshot
+
+    # def tap_click(self, loc):
+    #
+    #     location = self.driver.find_element(loc[0], loc[1]).location
+    #     size = self.driver.find_element(loc[0], loc[1]).size
+    #     x = location['x'] + size['width'] / 2
+    #     y = location['y'] + size['height'] / 2
+    #
+    #     self.driver.tap([(x, y)], 100)
 
     # def compare_images(self, img1, img2):
     #     """
@@ -276,3 +280,24 @@ class Action(unittest.TestCase):
     #             redis.hset('getDeviceList', device_name, ', '.join(matched_labels))
     #         else:
     #             print(f"警告：设备 {device_name} 的 indexShow 未匹配到字典数据！")
+
+    def log(self, message, level=logging.INFO):
+        """统一的日志记录方法"""
+        process_context.log(message, level)
+
+    def log_debug(self, message):
+        self.log(message, logging.DEBUG)
+
+    def log_error(self, message):
+        self.log(message, logging.ERROR)
+
+    def log_fatal(self, message):
+        self.log(message, logging.FATAL)
+
+    def clear_key(self, loc):
+        """重写清空文本输入法"""
+        self.find_element(loc).clear()
+
+    def send_keys(self, loc, value):
+        """重写在文本框中输入内容的方法"""
+        self.find_element(loc).send_keys(value)

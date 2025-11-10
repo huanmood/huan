@@ -1,10 +1,11 @@
 {
   "add_device": [
     {
-      "desc": "安卓14系统_修改注意同步修改deviceName",
-      "platformVersion": "11",
-      "deviceName": "a12b830d",
-      "port": "4723"
+      "desc": "ios11系统_修改注意同步修改deviceName",
+      "platformVersion": "15.4.1",
+      "deviceName": "iPhone 11",
+      "udid": "00008030-0001314236E9802E",
+      "webDriverAgentUrl": "http://127.0.0.1:8200"
     }
   ]
 }

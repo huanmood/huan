@@ -1,18 +1,13 @@
 platformName: iOS
-# 真机
-platformVersion: "16.3.1"
-deviceName: "iPhone 11 Pro Max"
+bundleId: com.nelko.printer
+automationName:  XCUITest
 noReset: True
-udid: "00008030-001224810C10802E"
-showIOSLog: True
-webDriverAgentUrl: "http://localhost:8200"
-usePrebuiltWDA: False
 useXctestrunFile: False
 skipLogCapture: True
-bundleId: "com.nelko.printer"
-ip: 172.16.130.79
-port: 4723
-
+wdaLocalPort: 8100
+usePrebuiltWDA: True
+useNewWDA: False
+startWDA: False
 
 
 

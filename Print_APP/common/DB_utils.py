@@ -26,6 +26,7 @@ def get_redis_conn():
     pool = redis.ConnectionPool(
         host=config['redis']['host'],
         port=config['redis']['port'],
+        password=config['redis']['password'],
         db=config['redis']['db']
     )
     return redis.Redis(connection_pool=pool)

@@ -131,7 +131,7 @@ stderr_redirector = OutputRedirector(sys.stderr)
 
 
 # ----------------------------------------------------------------------
-# Template
+# app_Template
 
 
 class Template_mixin(object):
@@ -182,7 +182,7 @@ class Template_mixin(object):
     DEFAULT_DESCRIPTION = ''
 
     # ------------------------------------------------------------------------
-    # HTML Template
+    # HTML app_Template
 
     HTML_TMPL = r"""<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -818,7 +818,7 @@ class Template_mixin(object):
 
     ENDING_TMPL = """<div id='ending'>&nbsp;</div>"""
 
-    # -------------------- The end of the Template class -------------------
+    # -------------------- The end of the app_Template class -------------------
     def __getattribute__(self, item):
         value = object.__getattribute__(self, item)
         if PY3K:
