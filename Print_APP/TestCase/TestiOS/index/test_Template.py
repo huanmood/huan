@@ -13,15 +13,15 @@ devices = [
 
 
 @pytest.fixture(scope="function")
-def print_ios_Connect(action):
+def print_ios_Connect(ios_Testing):
     """获取ios_Connect类方法"""
-    return ios_Connect(action)
+    return ios_Connect(ios_Testing)
 
 
 @pytest.fixture(scope="function")
-def template(action):
+def template(ios_Testing):
     """获取ios_Connect类方法"""
-    return Template(action)
+    return Template(ios_Testing)
 
 
 @pytest.mark.parametrize("deviceName,deviceMac", devices)

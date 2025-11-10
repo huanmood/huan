@@ -2,7 +2,6 @@ import pytest
 import requests
 from appium import webdriver
 from Page.BasePage import Action
-from Page.PageAndroid.Connect import android_Connect
 from TestCase.share_devices import process_context
 from appium.options.common import AppiumOptions
 
@@ -67,8 +66,6 @@ def action(driver):
 
 
 '''ios单元测试'''
-
-
 @pytest.fixture(scope="session")
 def ios_Testing():
     options.load_capabilities({
