@@ -256,11 +256,11 @@ class Template:
             if best_score >= min_keep_threshold:
                 to_delete.extend([app_path, best_match])
                 deleted_count += 2
-                print(f"✅ [通过] 相似度 {best_score:.3f}，标记删除")
+                print(f"[通过] 相似度 {best_score:.3f}，标记删除")
             else:
                 to_keep.extend([app_path, best_match])
                 kept_count += 2
-                print(f"⚠ [保留] 相似度 {best_score:.3f}，需人工复查")
+                print(f"[保留] 相似度 {best_score:.3f}，需人工复查")
 
         # --- 统一删除 ---
         for path in to_delete:
@@ -268,11 +268,11 @@ class Template:
                 if os.path.exists(path):
                     os.remove(path)
             except Exception as e:
-                print(f"❌ 删除文件时出错: {e}")
+                print(f"删除文件时出错: {e}")
 
         print("\n===== 比对完成 =====")
-        print(f"✅ 已删除图片数: {deleted_count}")
-        print(f"⚠ 保留图片数: {kept_count}")
+        print(f"已删除图片数: {deleted_count}")
+        print(f"保留图片数: {kept_count}")
 
         return results
 
@@ -290,7 +290,7 @@ class Template:
             print(f"{os.path.basename(r['app_image'])} → {os.path.basename(r['best_match'])} | 相似度={r['score']:.3f}")
         low_matches = [r for r in results if r['score'] < 0.85]
         if low_matches:
-            print("\n⚠ 以下图片相似度较低:")
+            print("\n以下图片相似度较低:")
             for r in low_matches:
                 print(f"  {r['app_image']} => {r['best_match']} ({r['score']:.2f})")
 
