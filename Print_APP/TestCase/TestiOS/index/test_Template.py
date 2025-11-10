@@ -34,6 +34,7 @@ def test_connected_print(print_ios_Connect, template, deviceName, deviceMac):
         print("11")
         print("22")
         print("33")
+        print("44")
     except Exception as e:
 
         pytest.fail(f"设备 {deviceName} 测试失败: {str(e)}")

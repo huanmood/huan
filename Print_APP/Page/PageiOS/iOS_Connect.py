@@ -42,7 +42,7 @@ class ios_Connect:
             elements1 = self.driver.find_elements(*device_locator)
             if elements1:
                 self.action.tap_click(device_locator, sleep=5)
-                process_context.log(f"✅ 找到并点击设备: {deviceName}:{deviceMac}")
+                process_context.log(f" 找到并点击设备: {deviceName}:{deviceMac}")
                 return True
             else:
                 # 滑动页面
@@ -54,7 +54,7 @@ class ios_Connect:
                 refresh_btns = self.driver.find_elements(*self.ios.refresh)
                 if refresh_btns:
                     self.action.tap_click(self.ios.refresh, sleep=2)
-                    process_context.log("🔄 点击刷新按钮")
+                    process_context.log(" 点击刷新按钮")
                 retry_count += 1
 
         process_context.log(f"❌ 未找到设备: {deviceMac}，已重试 {max_retry} 次")

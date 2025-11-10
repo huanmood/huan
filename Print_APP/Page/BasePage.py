@@ -86,7 +86,7 @@ class Action:
             element.click()
             return True
         except Exception as e:
-            error_msg = f"❌ 点击元素失败 {loc}, 原因: {e}"
+            error_msg = f" 点击元素失败 {loc}, 原因: {e}"
             process_context.log(error_msg)
             return False
 
