@@ -1,3 +1,5 @@
+import time
+
 import pytest
 import requests
 from appium import webdriver
@@ -91,6 +93,7 @@ def ios_Testing():
             command_executor=f"http://127.0.0.1:4723",
             options=options
         )
+        time.sleep(4)
     except Exception as e:
         import traceback
         print("❌ driver 初始化失败:", repr(e))
