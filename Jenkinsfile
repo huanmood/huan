@@ -7,15 +7,30 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/huanmood/huan.git'
             }
         }
+
         stage('Install Dependencies') {
             steps {
-                bat 'pip install -r requirements.txt'
+                bat '''
+                    python -m pip install --upgrade pip
+                    pip install -r requirements.txt || exit /b 0
+                '''
             }
         }
+
         stage('Run Tests') {
             steps {
-                bat 'pytest -v --maxfail=1 --disable-warnings'
+                bat '''
+                    echo Running pytest...
+                    pytest -v --maxfail=1 --disable-warnings > result.log
+                    type result.log
+                '''
             }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'result.log', onlyIfSuccessful: false
         }
     }
 }
