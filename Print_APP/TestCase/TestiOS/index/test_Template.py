@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from Page.PageiOS.iOS_Template import Template
 
 import pytest
@@ -30,6 +31,7 @@ def test_connected_print(print_ios_Connect, template, deviceName, deviceMac):
         print_ios_Connect.check_connect()
         print_ios_Connect.connect(deviceName, deviceMac)
         template.get_getCategory(deviceName)
+        print("11")
     except Exception as e:
 
         pytest.fail(f"设备 {deviceName} 测试失败: {str(e)}")

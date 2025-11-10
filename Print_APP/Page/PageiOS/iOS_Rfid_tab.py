@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from appium.webdriver.common.appiumby import AppiumBy
 from Page import PageiOS
 
