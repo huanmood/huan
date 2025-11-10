@@ -51,7 +51,7 @@ def add_case(devices_data_file, testPyName):
         )
         time.sleep(3)
     process_context.driver = driver
-    pytest.main(["TestCase/TestiOS/index/test_aiPicture.py", "-s", "-q"])
+    pytest.main(["TestCase/TestiOS/index/aiPicture.py", "-s", "-q"])
 
 
 matched_file_names = [
