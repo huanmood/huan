@@ -12,8 +12,9 @@ pipeline {
             steps {
                 bat '''
                     echo Installing dependencies...
-                    pip install --upgrade pip
-                    pip install -r requirements.txt || echo No requirements.txt found, skip.
+                    cd Print_APP
+                    python -m pip install --upgrade pip
+                    pip install -r requirements.txt || exit /b 0
                 '''
             }
         }
