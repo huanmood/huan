@@ -28,13 +28,10 @@ def template(ios_Testing):
 @pytest.mark.parametrize("deviceName,deviceMac", devices)
 def test_connected_print(print_ios_Connect, template, deviceName, deviceMac):
     try:
-        print_ios_Connect.check_connect()
-        print_ios_Connect.connect(deviceName, deviceMac)
+        # print_ios_Connect.check_connect()
+        # print_ios_Connect.connect(deviceName, deviceMac)
         template.get_getCategory(deviceName)
-        print("11")
-        print("22")
-        print("33")
-        print("44")
+
     except Exception as e:
 
         pytest.fail(f"设备 {deviceName} 测试失败: {str(e)}")

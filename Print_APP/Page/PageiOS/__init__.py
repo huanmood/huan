@@ -14,11 +14,16 @@ not_connect_btn = (AppiumBy.IOS_PREDICATE, 'name == "未连接" OR label == "未
 # 编辑器元素
 printBT = (AppiumBy.IOS_PREDICATE, 'name == "打印" OR label == "打印"')  # 打印按钮
 
+
+
 # 连接页面元素
 refresh = (AppiumBy.XPATH, '//XCUIElementTypeStaticText[@label="刷新"]')  # 连接页面刷新按钮
 sure = (AppiumBy.XPATH, '//XCUIElementTypeStaticText[@label="确定"]')  # 确定按钮
 disconnect = (AppiumBy.IOS_PREDICATE, 'name == "断开连接" OR label == "断开连接"')  # 确定按钮
 deviceName = (AppiumBy.IOS_PREDICATE, 'type == "XCUIElementTypeStaticText"')  # 需要find_elements()里面的[2]可以获取到打印机名称
+
+
+
 
 # 系统模板元素
 template = (AppiumBy.IOS_PREDICATE, 'name == "系统模板" OR label == "系统模板"')
@@ -31,6 +36,8 @@ allType = (AppiumBy.IOS_PREDICATE, 'name == "全部场景" OR label == "全部�
 showAllType = "xpath", '//XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeStaticText'#展开所有模板类型按钮
 #content
 Template_preview = "xpath", '//XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage'#匹配系统模板页面有多少个img元素
+TemplateFirstContentName='xpath','//XCUIElementTypeCollectionView//XCUIElementTypeCell//XCUIElementTypeStaticText[1]'
+
 
 #AI图库元素
 aiPicture = (AppiumBy.IOS_PREDICATE, 'name == "AI图库" OR label == "AI图库"')

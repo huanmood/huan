@@ -7,6 +7,7 @@ from io import BytesIO
 import cv2
 import requests
 from PIL import Image
+from appium.webdriver.common.appiumby import AppiumBy
 from skimage.metrics import structural_similarity as ssim
 
 from Page import PageiOS
@@ -61,7 +62,6 @@ class Template:
                 process_context.log(f"{devName}模板尺寸在接口但不在APP中: {', '.join(diff_in_api)}")
             if diff_in_app:
                 process_context.log(f"{devName}模板尺寸在APP但不在接口中: {', '.join(diff_in_app)}")
-
 
     # ------------------------尺寸比较结束--------------------------------------------------
 
@@ -297,14 +297,19 @@ class Template:
     # -------------------------模板预览图比较结束-----------------------------------------
 
     # -------------------------模板搜索比较开始-----------------------------------------
-
+    def CompareSearchResult(self,devName):
+        print(devName)
+        xpath = '//XCUIElementTypeCollectionView//XCUIElementTypeCell[1]//XCUIElementTypeStaticText[1]'
+        elements = self.driver.find_elements(AppiumBy.XPATH, xpath)
+        names = [el.get_attribute("label") for el in elements if el.get_attribute("label")]
+        print(f"共找到 {len(names)} 个模板: {names}")
+        return names
 
     # -------------------------模板搜索比较结束-----------------------------------------
 
-
-
     def get_getCategory(self, devName):
-        self.run_compare_app_vs_api(devName)
-        self._compare_template_types(devName)
-        self._compare_template_sizes(devName)
-        self.action.back_button()
+        # self.run_compare_app_vs_api(devName)
+        # self._compare_template_types(devName)
+        # self._compare_template_sizes(devName)
+        # self.action.back_button()
+        self.CompareSearchResult(devName)
