@@ -1,0 +1,10 @@
+platformName: Android
+# 真机
+noReset: True
+noSign: True
+unicodeKeyBoard: True
+resetKeyboard: True
+appPackage: com.nelko.printer
+appActivity: com.ezink.app.nelko.ui.SplashActivity
+ip: 172.16.130.63
+automationName: UiAutomator2

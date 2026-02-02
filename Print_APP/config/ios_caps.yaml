@@ -1,0 +1,14 @@
+platformName: iOS
+bundleId: com.nelko.printer
+automationName:  XCUITest
+noReset: True
+useXctestrunFile: False
+skipLogCapture: True
+wdaLocalPort: 8100
+usePrebuiltWDA: True
+useNewWDA: False
+startWDA: False
+
+
+
+
