@@ -764,7 +764,7 @@ import requests
 # from common.DB_utils import get_redis_conn
 # a=get_redis_conn()
 # a.delete('templateCacheList:1')
-#*************************************************************************************************************************************
+# *************************************************************************************************************************************
 # desired_caps = {
 #     "platformName": "iOS",
 #     "platformVersion": "15.4.1",
@@ -854,6 +854,8 @@ import requests
 
 import json
 import requests
+
+
 # response=requests.get('http://app.nelko.net/api/templateVip/getDeviceList')
 # # 假设response是你的HTTP响应数据
 # data = response.json()["data"]
@@ -876,14 +878,26 @@ import requests
 #     data = response.json()["data"]
 #     return {device["deviceName"]: device for device in data if device.get("deviceName")}
 #
-import requests
-json_data = {
-    'dev': 'P21',
-    'page': 1,
-    'pageSize': 10,
-    'paperCode': '0112020003011212154B0F0E',
-    'sizeIdStrings': ["0"]
-}
-print(json_data, type(json_data['paperCode']))
-data = requests.post('http://app.labelnize.com/api/templateVip/getSysTmpl2', json=json_data)
-print(data.json())
+# import requests
+# json_data = {
+#     'dev': 'P21',
+#     'page': 1,
+#     'pageSize': 10,
+#     'paperCode': '0112020003011212154B0F0E',
+#     'sizeIdStrings': ["0"]
+# }
+# print(json_data, type(json_data['paperCode']))
+# data = requests.post('http://app.labelnize.com/api/templateVip/getSysTmpl2', json=json_data)
+# print(data.json())
+
+#
+# def test_a(db):
+# #     a=db.exec_many([
+# #     "USE test",
+# #     "SHOW TABLES",
+# #     "CREATE TABLE IF NOT EXISTS ti (id INT)",
+# #     "ALTER TABLE ti DROP PRIMARY KEY",
+# #     "ALTER TABLE ti ADD namesss INT NOT NULL AUTO_INCREMENT PRIMARY KEY"
+# # ])
+#     a=db.redis.set("name",'hua')
+#     print(a)

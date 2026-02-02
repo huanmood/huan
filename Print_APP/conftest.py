@@ -1,5 +1,6 @@
 import time
-
+import pytest
+from common.DB_utils import DB
 import pytest
 import requests
 from appium import webdriver
@@ -10,7 +11,7 @@ from appium.options.common import AppiumOptions
 options = AppiumOptions()
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def driver():
     """获取启动APP时的 driver"""
     return process_context.driver
@@ -105,29 +106,39 @@ def ios_Testing():
 '''android单元测试'''
 
 
-@pytest.fixture(scope="session")
-def android_Testing():
-    desired_caps = {
-        "platformName": "Android",
-        "platformVersion": "12",
-        "appPackage": "com.nelko.printer",
-        "appActivity": "com.ezink.app.nelko.ui.SplashActivity",
-        "deviceName": "6ebb6b77",
-        "automationName": "UiAutomator2"
-    }
-    driver = webdriver.Remote(f"http://127.0.0.1:4726", desired_caps)
-    driver.implicitly_wait(15)
-    action = Action(driver)
-    return android_Connect(action)
+# @pytest.fixture(scope="session")
+# def android_Testing():
+#     desired_caps = {
+#         "platformName": "Android",
+#         "platformVersion": "12",
+#         "appPackage": "com.nelko.printer",
+#         "appActivity": "com.ezink.app.nelko.ui.SplashActivity",
+#         "deviceName": "6ebb6b77",
+#         "automationName": "UiAutomator2"
+#     }
+#     driver = webdriver.Remote(f"http://127.0.0.1:4726", desired_caps)
+#     driver.implicitly_wait(15)
+#     action = Action(driver)
+#     return android_Connect(action)
 
 
-# @pytest.fixture(autouse=True)
-# def autoUse():
-#     print("进入")
-#     yield
-#     """传入一个driver 返回 Action 对象"""
-#     print("退出")
 
+import pymysql
+import redis
+import pytest
+
+
+
+
+@pytest.fixture(scope="session", autouse=True)
+def db():
+    print("🔧 初始化数据库与 Redis ...")
+    d = DB()
+
+    yield d
+
+    print("🔧 关闭数据库连接 ...")
+    d.close()
 
 @pytest.fixture(scope="session")
 def setup_teardown(action):

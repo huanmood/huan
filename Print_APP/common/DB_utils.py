@@ -1,33 +1,65 @@
-# -*- coding:utf-8 -*-
 import pymysql
 import redis
-import yaml
-import os
-import config
-# 读取配置文件
+import pytest
 
 
-config_path = os.path.join(config.DIR_PATH, 'DB.yaml')
-with open(config_path, 'r', encoding='utf-8') as f:
-    config = yaml.safe_load(f)
+class DB:
 
-# MySQL连接
-def get_mysql_conn():
-    return pymysql.connect(
-        host=config['mysql']['host'],
-        port=config['mysql']['port'],
-        user=config['mysql']['user'],
-        password=config['mysql']['password'],
-        database=config['mysql']['database'],
-        cursorclass=pymysql.cursors.DictCursor  # 返回字典形式
-    )
+    def __init__(self):
+        # --- MySQL ---
+        self.conn = pymysql.connect(
+            host="127.0.0.1",
+            user="root",
+            password="123456",
+            database="test",
+            charset="utf8mb4"
+        )
+        self.cursor = self.conn.cursor()
 
-# Redis连接
-def get_redis_conn():
-    pool = redis.ConnectionPool(
-        host=config['redis']['host'],
-        port=config['redis']['port'],
-        password=config['redis']['password'],
-        db=config['redis']['db']
-    )
-    return redis.Redis(connection_pool=pool)
+        # --- Redis ---
+        self.redis = redis.Redis(
+            host="127.0.0.1",
+            port=6379,
+            db=0,
+            password=None
+        )
+
+    # ---------------------------------------------------------
+    # 执行单条 SQL
+    # ---------------------------------------------------------
+    def exec(self, sql: str):
+        sql = sql.strip().rstrip(";")
+        self.cursor.execute(sql)
+
+        # 返回查询结果
+        if sql.lower().startswith(("select", "show", "describe")):
+            return self.cursor.fetchall()
+        else:
+            self.conn.commit()
+            return "OK"
+
+    # ---------------------------------------------------------
+    # 执行多条 SQL，返回 dict
+    # ---------------------------------------------------------
+    def exec_many(self, sql_list):
+        results = {}
+        for sql in sql_list:
+            clean_sql = sql.strip().rstrip(";")
+            self.cursor.execute(clean_sql)
+
+            if clean_sql.lower().startswith(("select", "show", "describe")):
+                results[clean_sql] = self.cursor.fetchall()
+            else:
+                self.conn.commit()
+                results[clean_sql] = "OK"
+
+        return results
+
+    # ---------------------------------------------------------
+    def close(self):
+        try:
+            self.cursor.close()
+            self.conn.close()
+        except:
+            pass
+        # Redis 无需关闭

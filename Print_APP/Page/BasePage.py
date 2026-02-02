@@ -21,6 +21,8 @@ class Action:
     def __init__(self, driver):
         self.driver = driver
 
+
+
     def tap_click(self, loc, sleep=1):
         try:
             ele_list = self.driver.find_elements(*loc)
