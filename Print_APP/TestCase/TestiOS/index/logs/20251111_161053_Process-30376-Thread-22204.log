@@ -1,3 +1,0 @@
-2025-11-11 16:11:00,298 - INFO - 进入check_connect
-2025-11-11 16:11:01,534 - INFO - 点击=>未连接  ('-ios predicate string', 'name == "未连接" OR label == "未连接"')
-2025-11-11 16:11:02,540 - INFO - 进入connect，目标设备: P21:43:2C:42:48:63:5F

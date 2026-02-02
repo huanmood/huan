@@ -1,3 +1,0 @@
-2025-11-11 16:12:57,708 - INFO - 点击=>[无法获取文本]  ('-ios predicate string', 'name == "系统模板" OR label == "系统模板"')
-2025-11-11 16:13:02,268 - INFO - 点击失败: ('-ios predicate string', 'name == "系统模板" OR label == "系统模板"')
-2025-11-11 16:13:02,460 - INFO - 点击失败: ('-ios predicate string', 'name == "系统模板" OR label == "系统模板"')
