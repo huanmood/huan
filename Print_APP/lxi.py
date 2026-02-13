@@ -167,7 +167,7 @@
 # #
 # #
 # # def worker(printer):
-# #     printer.print("第一条消息")
+# #     printer.print("第一条aaaaa消息")
 # #     printer.print("第二条消息")
 # #
 # #
