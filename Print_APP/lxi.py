@@ -716,6 +716,7 @@
 # #
 # # print(dev)
 import re
+import time
 
 import requests
 
@@ -855,7 +856,6 @@ import requests
 import json
 import requests
 
-
 # response=requests.get('http://app.nelko.net/api/templateVip/getDeviceList')
 # # 假设response是你的HTTP响应数据
 # data = response.json()["data"]
@@ -901,3 +901,614 @@ import requests
 # # ])
 #     a=db.redis.set("name",'hua')
 #     print(a)
+
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+import time
+import random
+import math
+
+CHROME_PATH = "D:\google浏览器\chrome-win64\chrome.exe"  # 你的主 Chrome
+class HumanLikeFiller:
+    def __init__(self):
+        # 配置驱动（添加更多选项来模拟真实浏览器）
+        options = webdriver.ChromeOptions()
+        options.binary_location=CHROME_PATH
+        # 添加真实的用户代理
+        user_agents = [
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+        ]
+
+        # 添加一些常见的浏览器扩展特征
+        options.add_argument(f"user-agent={random.choice(user_agents)}")
+        options.add_argument("--disable-blink-features=AutomationControlled")
+        options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        options.add_experimental_option('useAutomationExtension', False)
+
+        # 添加一些常见的配置
+        options.add_argument("--window-size=1366,768")
+        options.add_argument("--disable-infobars")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--no-sandbox")
+
+        # 创建driver
+        self.driver = webdriver.Chrome(options=options)
+
+        # 执行JavaScript来隐藏自动化特征
+        self.driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+            "source": """
+                Object.defineProperty(navigator, 'webdriver', {
+                    get: () => undefined
+                });
+                Object.defineProperty(navigator, 'plugins', {
+                    get: () => [1, 2, 3, 4, 5]
+                });
+                Object.defineProperty(navigator, 'languages', {
+                    get: () => ['zh-CN', 'zh', 'en']
+                });
+            """
+        })
+
+        self.wait = WebDriverWait(self.driver, 15)
+        self.actions = ActionChains(self.driver)
+
+    def human_delay(self, min_seconds=2, max_seconds=4.0):
+        """人类化延迟，随机等待时间"""
+        delay = random.uniform(min_seconds, max_seconds)
+        time.sleep(delay)
+        return delay
+
+    def human_scroll(self, element=None, scroll_amount=None):
+        """模拟人类滚动行为"""
+        if element:
+            # 滚动到元素位置
+            try:
+                self.driver.execute_script(
+                    "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center', inline: 'center'});",
+                    element
+                )
+            except:
+                self.driver.execute_script("arguments[0].scrollIntoView();", element)
+        else:
+            # 随机滚动
+            if scroll_amount is None:
+                scroll_amount = random.randint(100, 400)
+
+            # 获取当前滚动位置
+            current_scroll = self.driver.execute_script("return window.pageYOffset;")
+            target_scroll = max(0, current_scroll + scroll_amount)
+
+            # 分多步滚动，更自然
+            steps = random.randint(3, 8)
+            for i in range(steps):
+                scroll_step = current_scroll + (target_scroll - current_scroll) * (i / steps)
+                self.driver.execute_script(f"window.scrollTo(0, {scroll_step});")
+                time.sleep(random.uniform(0.05, 0.15))
+
+    def human_mouse_move(self, element):
+        """模拟人类鼠标移动轨迹到元素（使用贝塞尔曲线）"""
+        try:
+            # 使用Selenium的move_to_element_with_offset添加随机偏移
+            offset_x = random.randint(-5, 5)
+            offset_y = random.randint(-5, 10)
+
+            # 移动到元素
+            self.actions.move_to_element_with_offset(element, offset_x, offset_y)
+            self.actions.perform()
+
+            # 随机微小的鼠标抖动
+            time.sleep(random.uniform(0.1, 0.3))
+
+        except Exception as e:
+            print(f"鼠标移动失败: {e}")
+            # 如果失败，直接滚动到元素
+            self.human_scroll(element)
+
+    def human_click(self, element):
+        """模拟人类点击行为"""
+        try:
+            # 先确保元素可见
+            self.human_scroll(element)
+
+            # 随机延迟
+            self.human_delay(0.1, 0.3)
+
+            # 模拟鼠标悬停
+            self.actions.move_to_element(element)
+            self.actions.perform()
+            self.human_delay(0.1, 0.2)
+
+            # 有时候会"犹豫"一下再点击
+            if random.random() < 0.25:  # 15%的概率犹豫
+                time.sleep(random.uniform(0.2, 0.5))
+
+            # 点击元素
+            element.click()
+
+            # 点击后随机延迟
+            self.human_delay(0.2, 0.5)
+
+        except Exception as e:
+            print(f"点击失败，尝试JavaScript点击: {e}")
+            try:
+                self.driver.execute_script("arguments[0].click();", element)
+            except:
+                print(f"JavaScript点击也失败: {e}")
+
+    def human_radio_select(self, question_name, options_count, selected_index=None):
+        """模拟人类选择单选按钮"""
+        try:
+            # 获取所有选项
+            options = self.driver.find_elements(By.NAME, question_name)
+
+            if not options:
+                # 尝试通过XPath查找
+                options = self.driver.find_elements(By.XPATH, f"//input[@name='{question_name}']")
+
+            if not options:
+                print(f"未找到问题 {question_name} 的选项")
+                return
+
+            if selected_index is None:
+                selected_index = random.randint(0, len(options) - 1)
+
+            # 确保索引在范围内
+            selected_index = min(selected_index, len(options) - 1)
+
+            # 有时会"浏览"其他选项
+            if random.random() < 0.3 and len(options) > 1:  # 30%的概率会浏览其他选项
+                browse_count = random.randint(1, min(2, len(options) - 1))
+                available_indices = [i for i in range(len(options)) if i != selected_index]
+                if available_indices:
+                    browse_indices = random.sample(available_indices, min(browse_count, len(available_indices)))
+
+                    for idx in browse_indices:
+                        self.human_mouse_move(options[idx])
+                        self.human_delay(0.1, 0.3)
+
+            # 最终选择
+            self.human_click(options[selected_index])
+
+        except Exception as e:
+            print(f"选择单选按钮失败: {e}")
+
+    def human_checkbox_select(self, question_name, options_count, select_indices=None):
+        """模拟人类选择复选框"""
+        try:
+            options = self.driver.find_elements(By.NAME, question_name)
+
+            if not options:
+                # 尝试通过XPath查找
+                options = self.driver.find_elements(By.XPATH, f"//input[@name='{question_name}']")
+
+            if not options:
+                print(f"未找到问题 {question_name} 的复选框")
+                return
+
+            if select_indices is None:
+                select_count = random.randint(1, min(3, len(options)))
+                select_indices = random.sample(range(len(options)), select_count)
+
+            # 随机顺序选择
+            random.shuffle(select_indices)
+
+            for idx in select_indices:
+                if idx < len(options):
+                    # 有时会取消选择（模拟误操作）
+                    if random.random() < 0.05:  # 5%的概率误操作
+                        self.human_click(options[idx])
+                        self.human_delay(0.2, 0.4)
+                        # 再次点击取消
+                        self.human_click(options[idx])
+                        self.human_delay(0.1, 0.3)
+                        # 最终选择
+                        self.human_click(options[idx])
+                    else:
+                        self.human_click(options[idx])
+
+                    # 选项间的随机延迟
+                    self.human_delay(0.3, 0.7)
+
+        except Exception as e:
+            print(f"选择复选框失败: {e}")
+
+    def simulate_reading_time(self, min_seconds=1.0, max_seconds=3.0):
+        """模拟阅读题目时间"""
+        reading_time = random.uniform(min_seconds, max_seconds)
+        time.sleep(reading_time)
+        return reading_time
+
+    def answer_questionnaire(self, iteration):
+        """填写问卷"""
+        print(f"\n{'=' * 50}")
+        print(f"开始第 {iteration} 次填写（模拟人类行为）")
+        print(f"{'=' * 50}")
+
+        try:
+            # 等待页面加载
+            initial_delay = self.human_delay(2, 4)
+            print(f"初始等待: {initial_delay:.1f}秒")
+
+            # 随机滚动页面开始
+            if random.random() < 0.7:
+                scroll_amount = random.randint(200, 500)
+                print(f"初始滚动: {scroll_amount}px")
+                self.human_scroll(scroll_amount=scroll_amount)
+                self.human_delay(1, 2)
+
+            # ========== 第1题：年龄段 ==========
+            print("\n填写第1题：年龄段")
+            self.simulate_reading_time(0.5, 1.5)
+
+            # 80%青少年，20%中年
+            if random.random() < 0.8:
+                selected = 0  # 18-30岁
+                print("选择: 18-30岁")
+            else:
+                selected = 1  # 31-45岁
+                print("选择: 31-45岁")
+
+            self.human_radio_select("q1", 4, selected)
+
+            # ========== 第2题：使用目的（多选） ==========
+            print("\n填写第2题：使用目的")
+            self.simulate_reading_time(1.0, 2.0)
+            self.human_scroll()
+
+            # 选择2-3个选项，避免选"很少或从未使用过"
+            options_count = 5
+            available_indices = list(range(4))  # 只从前4个选
+            select_count = random.randint(2, 3)
+            select_indices = random.sample(available_indices, select_count)
+
+            print(f"选择 {select_count} 个选项")
+            self.human_checkbox_select("q2", options_count, select_indices)
+
+            # ========== 第3题：使用频率 ==========
+            print("\n填写第3题：使用频率")
+            self.simulate_reading_time(0.5, 1.5)
+
+            # 偏少频率
+            freq_weights = [0.1, 0.2, 0.3, 0.25, 0.15]  # 给低频更高权重
+            selected = random.choices(range(5), weights=freq_weights)[0]
+
+            freq_labels = ["每月多次", "每月1-2次", "每季度1-2次", "每半年1-2次", "从未使用"]
+            print(f"选择: {freq_labels[selected]}")
+
+            self.human_radio_select("q3", 5, selected)
+
+            # ========== 第4-14题：满意度评价 ==========
+            print(f"\n填写第4-14题：满意度评价")
+
+            # 定义每个满意度级别的权重（偏不满意）
+            # 非常不同意: 不同意: 一般: 同意: 非常同意
+            weights = [0.05, 0.35, 0.40, 0.15, 0.05]
+            satisfaction_labels = ["非常不同意", "不同意", "一般", "同意", "非常同意"]
+
+            for q_num in range(4, 15):
+                # 随机滚动（不是每题都滚）
+                if random.random() < 0.3:
+                    self.human_scroll(scroll_amount=random.randint(50, 150))
+
+                # 模拟阅读题目
+                if random.random() < 0.5:
+                    self.simulate_reading_time(0.3, 1.0)
+
+                # 使用加权随机选择
+                selected = random.choices(range(5), weights=weights)[0]
+
+                # 偶尔会"思考"更久
+                think_time = random.uniform(0.5, 2.0) if random.random() < 0.2 else random.uniform(0.3, 1.0)
+                time.sleep(think_time)
+
+                self.human_radio_select(f"q{q_num}", 5, selected)
+
+                # 每题后的延迟
+                self.human_delay(0.5, 1.2)
+
+            print("已完成满意度评价")
+
+            # ========== 第15题：影响体验的问题 ==========
+            print("\n填写第15题：影响体验的问题")
+            self.simulate_reading_time(1.0, 2.5)
+            self.human_scroll()
+
+            # 选择2-4个问题，避免选"其他"
+            options_count = 7
+            available_indices = list(range(6))  # 不选"其他"
+            select_count = random.randint(2, 4)
+            select_indices = random.sample(available_indices, select_count)
+
+            print(f"选择 {select_count} 个问题")
+            self.human_checkbox_select("q15", options_count, select_indices)
+
+            # ========== 第16题：优先改进方面 ==========
+            print("\n填写第16题：优先改进方面")
+            self.simulate_reading_time(0.8, 1.8)
+
+            # 随机选择一个
+            selected = random.randint(0, 4)
+            improve_labels = [
+                "简化操作流程",
+                "加强数据共享",
+                "优化界面设计",
+                "增加帮办代办渠道",
+                "提高系统稳定性"
+            ]
+            print(f"选择: {improve_labels[selected]}")
+
+            self.human_radio_select("q16", 5, selected)
+
+            # ========== 第17题：帮助老年人的方式 ==========
+            print("\n填写第17题：帮助老年人的方式")
+            self.simulate_reading_time(1.0, 2.0)
+            self.human_scroll()
+
+            # 选择2-3个
+            options_count = 5
+            select_count = random.randint(2, 3)
+            select_indices = random.sample(range(options_count), select_count)
+
+            print(f"选择 {select_count} 种方式")
+            self.human_checkbox_select("q17", options_count, select_indices)
+
+            # ========== 第18题：反馈渠道 ==========
+            print("\n填写第18题：反馈渠道")
+            self.simulate_reading_time(0.8, 1.5)
+
+            # 选择2-3个，避免选"都不太会主动反馈"
+            options_count = 6
+            available_indices = list(range(5))  # 不选最后一个
+            select_count = random.randint(2, 3)
+            select_indices = random.sample(available_indices, select_count)
+
+            print(f"选择 {select_count} 个反馈渠道")
+            self.human_checkbox_select("q18", options_count, select_indices)
+
+            # ========== 第19题：未来首选方式 ==========
+            print("\n填写第19题：未来首选方式")
+            self.simulate_reading_time(0.5, 1.2)
+
+            # 主要选择"看情况"
+            weights_19 = [0.2, 0.1, 0.6, 0.1]  # 给"看情况"更高权重
+            selected = random.choices(range(4), weights=weights_19)[0]
+
+            future_labels = ["优先线上办理", "优先线下大厅", "看情况选择", "不确定"]
+            print(f"选择: {future_labels[selected]}")
+
+            self.human_radio_select("q19", 4, selected)
+
+            # ========== 第20题：是否愿意更多使用 ==========
+            print("\n填写第20题：是否愿意更多使用")
+            self.simulate_reading_time(0.5, 1.2)
+
+            # 大部分比较愿意，小部分一般
+            weights_20 = [0.1, 0.6, 0.25, 0.04, 0.01]
+            selected = random.choices(range(5), weights=weights_20)[0]
+
+            willing_labels = ["非常愿意", "比较愿意", "一般", "不太愿意", "仍然不愿意"]
+            print(f"选择: {willing_labels[selected]}")
+
+            self.human_radio_select("q20", 5, selected)
+
+            # 最终滚动到底部
+            print("\n滚动到底部准备提交...")
+            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            self.human_delay(1, 2)
+
+            # 模拟"检查"答案的行为
+            if random.random() < 0.4:  # 40%的概率会往回滚动检查
+                print("模拟检查答案...")
+                check_scroll = random.randint(-400, -150)
+                self.human_scroll(scroll_amount=check_scroll)
+                self.human_delay(1, 3)
+
+                # 再滚动回底部
+                self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                self.human_delay(0.5, 1.5)
+
+            # ========== 提交问卷 ==========
+            print("提交问卷...")
+
+            # 等待提交按钮可点击
+            try:
+                submit_btn = self.wait.until(
+                    EC.element_to_be_clickable((By.ID, "ctlNext"))
+                )
+
+                # 模拟人类提交前的犹豫
+                hesitation = self.human_delay(1, 3)
+                print(f"提交前犹豫: {hesitation:.1f}秒")
+
+                # 模拟鼠标在按钮上悬停
+                self.actions.move_to_element(submit_btn).perform()
+                self.human_delay(0.5, 1)
+
+                # 点击提交
+                submit_btn.click()
+                print("✓ 问卷提交成功！")
+
+                # 等待提交完成
+                self.human_delay(3, 5)
+
+                # 检查是否成功提交（根据页面变化判断）
+                current_url = self.driver.current_url
+                if "success" in current_url or "thank" in current_url.lower() or "完成" in self.driver.page_source:
+                    print("✓ 确认提交成功")
+                else:
+                    print("⚠ 提交完成，但无法确认是否成功")
+
+                return True
+
+            except Exception as e:
+                print(f"✗ 提交按钮点击失败: {e}")
+                # 尝试通过JavaScript提交
+                try:
+                    self.driver.execute_script("document.getElementById('ctlNext').click();")
+                    print("✓ 通过JavaScript提交成功！")
+                    self.human_delay(3, 5)
+                    return True
+                except:
+                    print("✗ JavaScript提交也失败")
+                    return False
+
+        except Exception as e:
+            print(f"✗ 填写失败: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
+
+    def run(self, url, times=2):
+        """运行主程序"""
+        print("=" * 60)
+        print("模拟人类填写问卷程序启动")
+        print(f"目标URL: {url}")
+        print(f"计划填写次数: {times}")
+        print("=" * 60)
+
+        success_count = 0
+
+        for i in range(1, times + 1):
+            print(f"\n{'=' * 30}")
+            print(f"准备第 {i}/{times} 次填写...")
+            print(f"{'=' * 30}")
+
+            try:
+                # 打开问卷页面
+                print("打开问卷页面...")
+                self.driver.get(url)
+
+                # 随机初始延迟
+                initial_delay = self.human_delay(3, 7)
+                print(f"等待页面加载 ({initial_delay:.1f}秒)...")
+
+                # 随机初始滚动
+                if random.random() < 0.8:
+                    init_scroll = random.randint(100, 400)
+                    print(f"初始滚动 ({init_scroll}px)...")
+                    self.human_scroll(scroll_amount=init_scroll)
+                    self.human_delay(1, 2)
+
+                # 填写问卷
+                if self.answer_questionnaire(i):
+                    success_count += 1
+                    print(f"✓ 第 {i} 次填写成功")
+                else:
+                    print(f"✗ 第 {i} 次填写失败")
+
+                # 如果不是最后一次，等待并准备下一次
+                if i < times:
+                    wait_time = random.uniform(8, 15)
+                    print(f"\n等待 {wait_time:.1f} 秒后开始下一次填写...")
+                    time.sleep(wait_time)
+
+                    # 随机决定是否刷新页面或重新打开
+                    if random.random() < 0.6:
+                        print("重新打开问卷页面...")
+                        self.driver.get(url)
+                        self.human_delay(2, 4)
+                    elif random.random() < 0.5:
+                        print("刷新页面...")
+                        self.driver.refresh()
+                        self.human_delay(2, 4)
+
+            except Exception as e:
+                print(f"第 {i} 次运行失败: {e}")
+                import traceback
+                traceback.print_exc()
+                # 出错后等待一段时间再继续
+                time.sleep(random.uniform(5, 10))
+
+                try:
+                    # 尝试恢复
+                    self.driver.get(url)
+                    self.human_delay(3, 5)
+                except:
+                    print("无法恢复，跳过本次填写")
+
+        print(f"\n{'=' * 60}")
+        print(f"填写完成！成功次数: {success_count}/{times}")
+        print(f"{'=' * 60}")
+
+        # 完成后等待一会儿
+        time.sleep(3)
+        self.driver.quit()
+
+
+def main():
+    # 问卷URL（需要替换）
+    # 请将下面的URL替换为实际的问卷URL
+    questionnaire_url = "https://v.wjx.cn/vm/YCWs2Ug.aspx"
+
+    # 显示使用说明
+    print("""
+    ╔═══════════════════════════════════════════════╗
+    ║       模拟人类问卷填写程序 - 使用说明         ║
+    ╚═══════════════════════════════════════════════╝
+
+    特征说明：
+    1. 随机延迟和思考时间
+    2. 模拟鼠标移动和滚动
+    3. 模拟阅读题目时间
+    4. 偶尔的"误操作"和修正
+    5. 随机浏览选项行为
+    6. 隐藏自动化特征
+
+    答题策略：
+    • 年龄段：80%青少年(18-30岁)，20%中年(31-45岁)
+    • 满意度：偏不满意（35%不同意 + 40%一般）
+    • 使用频率：偏低
+    • 未来偏好：主要"看情况选择"
+
+    注意事项：
+    1. 请将代码中的问卷URL替换为实际URL
+    2. 如果问卷有验证码，需要手动处理
+    3. 请确保填写问卷符合相关规定
+    """)
+
+    # 确认URL是否正确
+    if questionnaire_url == "YOUR_QUESTIONNAIRE_URL_HERE":
+        print("\n⚠ 警告：请先修改代码，将问卷URL替换为实际URL！")
+        response = input("是否继续？(输入'y'继续，其他键退出): ").lower()
+        if response != 'y':
+            print("程序退出")
+            return
+
+    # 确认是否继续
+    response = input("\n是否开始填写问卷？(y/n): ").lower()
+    if response != 'y':
+        print("程序退出")
+        return
+
+    # 创建并运行填写器
+    filler = HumanLikeFiller()
+
+    # 设置填写次数
+    fill_times = 2
+
+    try:
+        filler.run(questionnaire_url, fill_times)
+    except KeyboardInterrupt:
+        print("\n\n用户中断程序")
+    except Exception as e:
+        print(f"\n程序运行出错: {e}")
+        import traceback
+        traceback.print_exc()
+    finally:
+        try:
+            filler.driver.quit()
+        except:
+            pass
+
+
+if __name__ == "__main__":
+    main()
