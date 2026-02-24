@@ -1,6 +1,10 @@
 // 最简单的 Jenkinsfile 示例
 pipeline {
     agent any
+ stage('Checkout Code') {
+            steps {
+                checkout scm
+            }
     stages {
         stage('Build') {
             steps {
